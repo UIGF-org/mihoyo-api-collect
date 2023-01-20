@@ -26,10 +26,10 @@ salt = APP版本所用的salt
 timestamp = 当前Unix时间戳
 
 if 是国服或渠道服 {
-  number = 随机整数(100001, 200000)
+  random = 随机整数(100001, 200000)
 }
 else if 是国际服 {
-  number = 随机6位字母()
+  random = 随机6位字母()
 }
 
 if 要发送的请求 是 POST请求 则 {
