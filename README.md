@@ -23,12 +23,12 @@
 - [ ] [鉴权](other/authentication.md)
 - [ ] [错误码](other/error_code.md)
 
-- [ ] [米游社](mihoyobbs)
-  - [ ] [登录](mihoyobbs/login)
-    - [ ] [密码登录](mihoyobbs/login/password.md)
-    - [ ] [验证码登录](mihoyobbs/login/sms.md)
-  - [ ] [文章](mihoyobbs/article)
-    - [ ] [首页文章](mihoyobbs/article/home.md)
+- [ ] [米游社](hoyolab)
+  - [ ] [登录](hoyolab/login)
+    - [ ] [密码登录](hoyolab/login/password.md)
+    - [ ] [验证码登录](hoyolab/login/sms.md)
+  - [ ] [文章](hoyolab/article)
+    - [ ] [首页文章](hoyolab/article/home.md)
 
 - [ ] [原神](yuanshen)
   - [ ] [登录](yuanshen/login)
