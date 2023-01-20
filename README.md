@@ -34,8 +34,6 @@
   - [ ] [登录](yuanshen/login)
     - [ ] [密码登录](yuanshen/login/password.md)
     - [ ] [验证码登录](yuanshen/login/sms.md)
-<!--   - [ ] [](yuanshen/)
-    - [ ] [公告](yuanshen/notice.md) -->
   - [ ] [用户信息](yuanshen/user)
     - [ ] [基本信息](yuanshen/user/info.md)
     - [ ] [深境螺旋信息](yuanshen/user/deep_spiral.md)
