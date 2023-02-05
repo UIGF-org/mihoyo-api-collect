@@ -22,24 +22,49 @@
 
 暂时还没有内容，正在建设中……
 
+已完结的文章会选中Checkbox。
+
 - [ ] [鉴权](other/authentication.md)
 - [ ] [错误码](other/error_code.md)
+- [ ] [游戏ID](other/game_id.md)
+
+---
+
+米游社（HoYoLab，MiYouShe）
+
+米游社的API几乎均为REST API结构。使用URL参数（URL Query，GET方式）或者JSON（POST方式）来传递参数，返回类型为JSON格式。使用HTTP不会强制301跳转至HTTPS协议通信，但是会返回401。
 
 - [ ] [米游社](hoyolab)
   - [ ] [登录](hoyolab/login)
     - [ ] [密码登录](hoyolab/login/password.md)
     - [ ] [验证码登录](hoyolab/login/sms.md)
+  - [ ] [论坛](hoyolab/forum)
+    - [ ] [基本信息](hoyolab/forum/info.md)
   - [ ] [文章](hoyolab/article)
-    - [ ] [首页文章](hoyolab/article/home.md)
+    - [ ] [文章](hoyolab/article/article.md)
+    - [ ] [公告](hoyolab/article/announcement.md)
+    - [ ] [文章操作](hoyolab/article/article_operation.md)
+  - [ ] [用户](hoyolab/user)
+    - [ ] [用户信息](hoyolab/user/info.md)
+    - [ ] [用户游戏信息](hoyolab/user/game_info.md)
 
-<!--
-- [ ] [原神](yuanshen)
-  - [ ] [登录](yuanshen/login)
-    - [ ] [密码登录](yuanshen/login/password.md)
-    - [ ] [验证码登录](yuanshen/login/sms.md)
-  - [ ] [用户信息](yuanshen/user)
-    - [ ] [基本信息](yuanshen/user/info.md)
-    - [ ] [深境螺旋信息](yuanshen/user/deep_spiral.md)
-    - [ ] [角色信息](yuanshen/user/characters.md)
+---
 
--->
+《原神（Genshin Impact，早期代号为hk4e）》
+
+- [ ] [原神](genshin_impact)
+  - [ ] [登录](genshin_impact/login)
+    - [ ] [密码登录](genshin_impact/login/password.md)
+    - [ ] [验证码登录](genshin_impact/login/sms.md)
+  - [ ] [用户信息](genshin_impact/user)
+    - [ ] [基本信息](genshin_impact/user/info.md)
+    - [ ] [深境螺旋信息](genshin_impact/user/deep_spiral.md)
+    - [ ] [角色信息](genshin_impact/user/characters.md)
+  - [ ] [公告](genshin_impact/announcement/)
+    - [ ] [官方公告](hoyolab/article/announcement.md)
+
+---
+
+
+
+
