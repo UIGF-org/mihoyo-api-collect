@@ -58,7 +58,7 @@
     - [ ] [验证码登录](genshin_impact/login/sms.md)
   - [ ] [用户信息](genshin_impact/user)
     - [ ] [基本信息](genshin_impact/user/info.md)
-    - [ ] [深境螺旋信息](genshin_impact/user/deep_spiral.md)
+    - [ ] [深境螺旋信息](genshin_impact/user/spiral_abyss.md)
     - [ ] [角色信息](genshin_impact/user/characters.md)
   - [ ] [公告](genshin_impact/announcement/)
     - [ ] [官方公告](hoyolab/article/announcement.md)
