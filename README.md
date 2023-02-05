@@ -3,8 +3,8 @@
 <p align="center">米游社、原神、崩坏</p>
 
 ---
-  
-<h3 align="center">野生API文档</h3>
+
+<!-- <h3 align="center">野生API文档</h3> -->
 
 目的是收集米哈游的米游社、原神、崩坏等应用、游戏的API。
 
@@ -20,13 +20,13 @@
 
 ---
 
-暂时还没有内容，正在建设中……
+暂时还缺少内容，正在建设中……
 
 已完结的文章会选中Checkbox。
 
 - [ ] [鉴权](other/authentication.md)
 - [ ] [错误码](other/error_code.md)
-- [ ] [游戏ID](other/game_id.md)
+- [ ] [各种ID对照表](other/id.md)
 
 ---
 
@@ -50,7 +50,9 @@
 
 ---
 
-《原神（Genshin Impact，早期代号为hk4e）》
+《原神（Genshin Impact，Genshin，hk4e）》
+
+《原神》游戏内的API。
 
 - [ ] [原神](genshin_impact)
   - [ ] [登录](genshin_impact/login)
@@ -60,8 +62,8 @@
     - [ ] [基本信息](genshin_impact/user/info.md)
     - [ ] [深境螺旋信息](genshin_impact/user/spiral_abyss.md)
     - [ ] [角色信息](genshin_impact/user/characters.md)
-  - [ ] [公告](genshin_impact/announcement/)
-    - [ ] [官方公告](hoyolab/article/announcement.md)
+  <!-- - [ ] [公告](genshin_impact/announcement/)
+    - [ ] [官方公告](hoyolab/article/announcement.md) -->
 
 ---
 
