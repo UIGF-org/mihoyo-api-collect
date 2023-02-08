@@ -10,7 +10,7 @@
 
 ---
 
-**声明**：
+## 声明
 
 1. 本项目遵守CC-BY-NC 4.0协议，禁止一切商业使用，如需转载请注明作者及原文档地址。
 2. **请勿滥用，本项目仅用于学习和测试！**  
@@ -22,6 +22,8 @@
 
 ---
 
+## 目录
+
 暂时还缺少内容，正在建设中……
 
 已完结的文章会选中Checkbox。
@@ -32,7 +34,7 @@
 
 ---
 
-米游社（HoYoLab，MiYouShe）
+### 米游社（HoYoLab，MiYouShe）
 
 米游社的API几乎均为REST API结构。使用URL参数（URL Query，GET方式）或者JSON（POST方式）来传递参数，返回类型为JSON格式。使用HTTP不会强制301跳转至HTTPS协议通信，但是会返回401。
 
@@ -52,7 +54,7 @@
 
 ---
 
-《原神（Genshin Impact，Genshin，hk4e）》
+### 《原神（Genshin Impact，Genshin，hk4e）》
 
 《原神》游戏内的API。
 
@@ -69,6 +71,8 @@
 
 ---
 
+## 相关项目
 
+* [Genshin Kits for Node.js](https://github.com/genshin-kit/genshin-kit-node) - Node.js原神玩家信息查询库。
 
 
