@@ -12,11 +12,13 @@
 
 **声明**：
 
-1. 本项目遵守 CC-BY-NC 4.0 协议，禁止一切商业使用，如需转载请注明作者 ID
-2. **请勿滥用，本项目仅用于学习和测试！请勿滥用，本项目仅用于学习和测试！请勿滥用，本项目仅用于学习和测试！**
-3. 利用本项目提供的接口、文档等造成不良影响及后果与本人无关
-4. 由于本项目的特殊性，可能随时停止开发或删档
-5. 本项目为开源项目，不接受任何形式的催单和索取行为，更不容许存在付费内容
+1. 本项目遵守CC-BY-NC 4.0协议，禁止一切商业使用，如需转载请注明作者及原文档地址。
+2. **请勿滥用，本项目仅用于学习和测试！**  
+**请勿滥用，本项目仅用于学习和测试！**  
+**请勿滥用，本项目仅用于学习和测试！**  
+3. 利用本项目提供的接口、文档等造成不良影响及后果与本人无关。
+4. 由于本项目的特殊性，可能随时停止编写或删档。
+5. 本项目为开源项目，不接受任何形式的催单和索取行为，更不容许存在付费内容。
 
 ---
 
@@ -60,10 +62,10 @@
     - [ ] [验证码登录](genshin_impact/login/sms.md)
   - [ ] [用户信息](genshin_impact/user)
     - [ ] [基本信息](genshin_impact/user/info.md)
-    - [ ] [深境螺旋信息](genshin_impact/user/spiral_abyss.md)
-    - [ ] [角色信息](genshin_impact/user/characters.md)
-  <!-- - [ ] [公告](genshin_impact/announcement/)
-    - [ ] [官方公告](hoyolab/article/announcement.md) -->
+    <!--- [ ] [深境螺旋信息](genshin_impact/user/spiral_abyss.md)
+    - [ ] [角色信息](genshin_impact/user/characters.md)-->
+  - [ ] [其它](genshin_impact/other/)
+    - [ ] [公告](genshin_impact/other/announcement.md)
 
 ---
 
