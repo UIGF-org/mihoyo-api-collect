@@ -16,7 +16,9 @@
 _请求方式：GET_
 
 > _需要验证请求头_
+> 
 > `x-rpc-client_type`：`5`
+> 
 > _需要验证网页Cookie_
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index`
@@ -227,7 +229,9 @@ _请求方式：GET_
 _请求方式：GET_
 
 > _需要验证请求头_
+> 
 > `x-rpc-client_type`：`5`
+> 
 > _需要验证网页Cookie_
 
 `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index`
@@ -247,7 +251,9 @@ _请求方式：GET_
 _请求方式：POST_
 
 > _需要验证请求头_
+> 
 > `x-rpc-client_type`：`5`
+> 
 > _需要验证网页Cookie_
 
 
@@ -455,7 +461,9 @@ _请求方式：POST_
 _请求方式：POST_
 
 > _需要验证请求头_
+> 
 > `x-rpc-client_type`：`5`
+> 
 > _需要验证网页Cookie_
 
 
@@ -464,20 +472,7 @@ _请求方式：POST_
 
 **参数：**
 
-| 字段 | 类型 | 内容 | 备注 |
-| ---- | ---- | ---- | ---- |
-| server | str | 服务器名称 | |
-| role_id | num | 原神UID | |
-
 **JSON返回**
-
-根对象：
-
-<!-- | 字段 | 类型 | 内容 | 备注 |
-| ---- | ---- | ---- | ---- |
-| retcode | num | 返回码 | |
-| message | str | 返回消息 | |
-| data | obj | 该游戏账号的角色信息 | | -->
 
 
 ### 获取玩家深境螺旋信息
@@ -489,7 +484,9 @@ _请求方式：POST_
 _请求方式：GET_
 
 > _需要验证请求头_
+> 
 > `x-rpc-client_type`：`5`
+> 
 > _需要验证网页Cookie_
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss`
@@ -1776,3 +1773,17 @@ _请求方式：GET_
 }
 ```
 </details>
+
+
+
+**国际服：**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+> 
+> `x-rpc-client_type`：`5`
+> 
+> _需要验证网页Cookie_
+
+`未知`
