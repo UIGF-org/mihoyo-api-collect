@@ -58,6 +58,8 @@
 
 《原神》游戏内的API。
 
+查询玩家信息请查看[米游社](#米游社hoyolabmiyoushe)。
+
 - [ ] [原神](genshin_impact)
   - [ ] [登录](genshin_impact/login)
     - [ ] [密码登录](genshin_impact/login/password.md)
