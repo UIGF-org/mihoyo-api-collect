@@ -148,7 +148,7 @@ DS值通过一系列算法得出。
 整体思路：
 
 1. 获取当前的Unix时间戳（整数）。
-1. 在100001到200000中选取随机整数。
+1. 在100000到200000中选取随机整数，但是如果随机到100000，则加上542367，得到642367。
 1. 若将发送Post请求，则将发送的数据转为JSON字符串，存储至变量（下文称`body`）。若将发送Get请求，则将URL参数进行英文字母顺序排序（键）后存储至变量（下文称`query`），例如URL参数为`server=cn_gf01&role_id=114514191`则结果为`role_id=222681079&server=cn_gf01`。若不需要传递数据或URL参数，则为空字符串。
 1. 格式化字符串：`salt={salt值}&t={第1步的结果}&r={第2步的结果}&b={第3步的body}&q={第3步的query}`。
 1. 将第4步的结果进行UTF-8编码，再进行MD5编码。
@@ -170,7 +170,9 @@ body = '{"role": "123456789"}'
 query = "&".join(sorted("server=cn_gf01&role_id=123456789".split("&")))
 
 t = int(time.time())
-r = random.randint(100001, 200000)
+r = random.randint(100000, 200000)
+if r == 100000:
+  r = 642367
 main = f"salt={salt}&t={t}&r={r}&b={body}&q={query}"
 ds = md5(main.encode(encoding='UTF-8')).hexdigest()
 
@@ -217,6 +219,8 @@ final = f"{t},{r},{ds}" # 最终结果。
 
 一些API（例如文章点赞、签到等）需要登录账号，为Cookie的形式。
 
+需要验证Cookie的API会进行标注。
+
 若API无需登录账号，就不需要设置Cookie。
 
 ### 米游社
@@ -234,7 +238,7 @@ final = f"{t},{r},{ds}" # 最终结果。
 
 以下字段可选：
 
-* `cookie_token_v2`
+* `cookie_token_v2` - **米游社签到福利（游戏内道具）需要验证该字段**
 * `account_mid_v2` - 与`ltmid_v2`相同
 * `account_id_v2` - 米游社UID
 * `cookie_token_v2`

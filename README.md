@@ -1,4 +1,8 @@
 
+
+<img src="https://raw.githubusercontent.com/Kamisato-Ayaka-233/mihoyo-api-collect/main/files/images/top.jpg" height="130" style="text-align: center;margin: 0 auto;">
+
+
 <h1 align="center">米哈游API</h1>
 <p align="center">米游社、原神、崩坏</p>
 
@@ -46,11 +50,11 @@
     - [ ] [基本信息](hoyolab/forum/info.md)
   - [ ] [文章](hoyolab/article)
     - [ ] [文章](hoyolab/article/article.md)
-    - [ ] [公告](hoyolab/article/announcement.md)
     - [ ] [文章操作](hoyolab/article/article_operation.md)
+    - [ ] [公告](hoyolab/article/announcement.md)
   - [ ] [用户](hoyolab/user)
     - [ ] [用户信息](hoyolab/user/info.md)
-    - [ ] [用户游戏信息](hoyolab/user/game_info.md)
+    - [ ] [用户游戏信息](hoyolab/user/game_account_info.md)
 
 ---
 
