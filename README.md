@@ -1,14 +1,14 @@
 
 
-<img src="https://raw.githubusercontent.com/Kamisato-Ayaka-233/mihoyo-api-collect/main/files/images/top.jpg" height="130" style="text-align: center;margin: 0 auto;">
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Kamisato-Ayaka-233/mihoyo-api-collect/main/files/images/top.jpg" height="200">
+</p>
 
 
 <h1 align="center">米哈游API</h1>
 <p align="center">米游社、原神、崩坏</p>
 
 ---
-
-<!-- <h3 align="center">野生API文档</h3> -->
 
 目的是收集米哈游的米游社、原神、崩坏等应用、游戏的API。
 
@@ -28,7 +28,7 @@
 
 ## 目录
 
-暂时还缺少内容，正在建设中……
+仅有部分内容，正在建设中……
 
 已完结的文章会选中Checkbox。
 
@@ -62,6 +62,8 @@
 
 《原神》游戏内的API。
 
+<!-- 《原神》游戏内使用Socket进行通信，数据结构为Protobuf协议，并且已加密。 -->
+
 查询玩家信息请查看[米游社](#米游社hoyolabmiyoushe)。
 
 - [ ] [原神](genshin_impact)
@@ -72,6 +74,16 @@
     - [ ] [基本信息](genshin_impact/user/info.md)
   - [ ] [其它](genshin_impact/other/)
     - [ ] [公告](genshin_impact/other/announcement.md)
+
+
+<!--
+---
+
+### 《崩坏3（Honkai Impact，Honkai）》
+
+《崩坏3》游戏内的API。
+
+-->
 
 ---
 
