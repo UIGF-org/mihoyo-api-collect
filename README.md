@@ -2,6 +2,16 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Kamisato-Ayaka-233/mihoyo-api-collect/main/files/images/top.jpg" height="200">
+  <br/><br/>
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Kamisato-Ayaka-233/mihoyo-api-collect?style=flat-square">
+  <br/>
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/Kamisato-Ayaka-233/mihoyo-api-collect?style=flat-square">
+  <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23555&style=flat-square">
+  <br/>
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23c0c0c0&style=flat-square">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23114514&style=flat-square">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23aa4499&style=flat-square">
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23456789&style=flat-square">
 </p>
 
 
