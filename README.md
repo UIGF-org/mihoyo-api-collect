@@ -117,6 +117,14 @@
 
 ## 相关项目
 
+* [Star Rail Warp Export](https://github.com/biuuu/star-rail-warp-export) - 星穹铁道跃迁记录导出工具。
+* [Genshin Wish Export](https://github.com/biuuu/genshin-wish-export/) - 原神析愿记录导出工具
+* [Genshin Wish Analyzer](https://github.com/voderl/genshin-gacha-analyzer) - 原神析愿记录分析器
 * [Genshin Kits for Node.js](https://github.com/genshin-kit/genshin-kit-node) - Node.js原神玩家信息查询库。
-
+* [Genshin Helper](https://github.com/y1ndan/genshinhelper2) - Python米游社API封装库
+* [Yunzai Bot](https://gitee.com/le-niao/Yunzai-Bot) - 原始云崽机器人，QQ群原神信息查询机器人。
+* [Miao Yunzai](https://github.com/yoimiya-kokomi/Miao-Yunzai) - “喵”版云崽机器人，QQ群原神信息和原神角色面板查询机器人。
+* [Genshin Player Query](https://github.com/Azure99/GenshinPlayerQuery) - 原神玩家信息查询
+* [Snap Hu Tao](https://github.com/DGP-Studio/Snap.Hutao) - 原神工具箱。
+* [Cocogoat](https://github.com/YuehaiTeam/cocogoat) - 原神成就记录与圣遗物管理。
 
