@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Kamisato-Ayaka-233/mihoyo-api-collect/main/files/images/top.jpg" height="200">
+  <img src="https://raw.githubusercontent.com/Kamisato-Ayaka-233/mihoyo-api-collect/main/files/images/logo.png" height="200">
   <br/><br/>
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Kamisato-Ayaka-233/mihoyo-api-collect?style=flat-square">
   <br/>
