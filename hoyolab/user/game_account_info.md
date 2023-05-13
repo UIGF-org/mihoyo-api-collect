@@ -1852,7 +1852,7 @@ end_id
 | name | str | 抽到的项目名称 | 文本语言通过参数`lang`指定 |
 | lang | str | 语言 | 与请求参数中的`lang`参数的值相同 |
 | item_type | str | 该项目的类别 | 文本语言通过参数`lang`指定 |
-| rank_type | str | 3 | |
+| rank_type | str | 该项目的稀有度 | |
 | id | str | 似乎前10位数字为接近于抽到该项目的时间的Unix时间戳，后面的数字含义未知 | |
 
 

@@ -127,4 +127,7 @@
 * [Genshin Player Query](https://github.com/Azure99/GenshinPlayerQuery) - 原神玩家信息查询
 * [Snap Hu Tao](https://github.com/DGP-Studio/Snap.Hutao) - 原神工具箱。
 * [Cocogoat](https://github.com/YuehaiTeam/cocogoat) - 原神成就记录与圣遗物管理。
+* [UIGF API](https://github.com/UIGF-org/UIGF-API) - 
+
+
 

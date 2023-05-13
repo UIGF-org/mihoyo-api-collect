@@ -152,6 +152,8 @@
 
 <h3 id="genshin-characters">角色ID</h3>
 
+UIGF收集了角色、物品、武器的ID，[此处](https://uigf.org/zh/API.html)即为他们的API使用指南。
+
 | ID | 角色 | 元素 | 国家 |
 | -- | ---- | --- | ---- |
 | 10000002 | 神里绫华 | 冰 | 稻妻 |
