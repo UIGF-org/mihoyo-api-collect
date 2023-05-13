@@ -50,7 +50,7 @@
 
 已完结的文章会选中Checkbox。
 
-- [ ] [鉴权](other/authentication.md)
+- [x] [绕过检测与鉴权](other/authentication.md)
 - [ ] [错误码](other/error_code.md)
 - [ ] [各种ID对照表](other/id.md)
 
@@ -85,13 +85,23 @@
 查询玩家信息请查看[米游社](#米游社hoyolabmiyoushe)。
 
 - [ ] [原神](genshin_impact)
-  - [ ] [登录](genshin_impact/login)
+  <!-- - [ ] [登录](genshin_impact/login)
     - [ ] [密码登录](genshin_impact/login/password.md)
     - [ ] [验证码登录](genshin_impact/login/sms.md)
   - [ ] [用户信息](genshin_impact/user)
-    - [ ] [基本信息](genshin_impact/user/info.md)
+    - [ ] [基本信息](genshin_impact/user/info.md) -->
   - [ ] [其它](genshin_impact/other/)
     - [ ] [公告](genshin_impact/other/announcement.md)
+
+### 《崩坏：星穹铁道（Honkai: Star Rail，Star Rail）》
+
+《崩坏：星穹铁道》游戏内的API。
+
+查询玩家信息请查看[米游社](#米游社hoyolabmiyoushe)。
+
+- [ ] [崩坏：星穹铁道](honkai_star_rail)
+  - [ ] [其它](honkai_star_rail/other/)
+    - [ ] [公告](honkai_star_rail/other/announcement.md)
 
 
 <!--

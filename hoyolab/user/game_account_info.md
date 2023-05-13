@@ -1,15 +1,21 @@
 # 游戏账号信息
 
 - [原神](#原神)
-  - [获取玩家首页信息](#获取玩家首页信息)
-  - [获取玩家角色信息](#获取玩家角色信息)
-  - [获取玩家深境螺旋信息](#获取玩家深境螺旋信息)
+  - [获取首页信息](#genshin-home)
+  - [获取角色信息](#genshin-characters)
+  - [获取深境螺旋信息](#genshin-spiral-abyss)
+  - [获取析愿记录](#genshin-wish)
+- [崩坏：星穹铁道](#崩坏星穹铁道)
+  - [获取首页信息](#star-rail-home)
+  - [获取角色信息](#star-rail-characters)
+  - [获取忘却之庭信息](#star-rail-forgotten-hall)
+  - [获取跃迁记录](#star-rail-warp)
 
 ---
 
 ## 原神
 
-### 获取玩家首页信息
+<h3 id="genshin-home">获取玩家首页信息</h3>
 
 **国服：**
 
@@ -244,7 +250,7 @@ _请求方式：GET_
 | server | str | 服务器名称 | |
 
 
-### 获取玩家角色信息
+<h3 id="genshin-characters">获取玩家角色信息</h3>
 
 **国服：**
 
@@ -475,7 +481,7 @@ _请求方式：POST_
 **JSON返回**
 
 
-### 获取玩家深境螺旋信息
+<h3 id="genshin-spiral-abyss">获取玩家深境螺旋信息</h3>
 
 
 **国服：**
@@ -1785,5 +1791,301 @@ _请求方式：GET_
 > `x-rpc-client_type`：`5`
 > 
 > _需要验证网页Cookie_
+
+`未知`
+
+<h3 id="genshin-wish">获取析愿记录</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+`https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| authkey_ver | num | 1 | |
+| authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/GenshinImpact_Data（或YuanShen_Data）/webCaches/Cache/Cache_Data/data_2”，寻找类似“https://webstatic.mihoyo.com/genshin/event/e20190909gacha-v2/index.html……”（国服）或“https://webstatic-sea.hoyoverse.com/genshin/event/e20190909gacha-v2/index.html……”（国际服）的链接，该参数的值在其中 |
+| lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
+| size | num | 返回数据中的最大数据数量 | |
+| page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页 |
+| gacha_type | num | 析愿池<br>100 初行者推荐析愿<br>200 常驻析愿<br>301 角色活动析愿<br>302 武器活动析愿 | |
+<!-- 
+以下参数目前似乎没有任何作用
+init_type
+gacha_id
+sign_type
+auth_appid
+end_id
+ -->
+
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码<br>-100 请求参数`authkey`不正确<br><br>-108 未指定语言或不是支持的语言<br>-110 请求过快 | |
+| message | str | 返回消息 | |
+| data | obj | 该游戏账号的析愿信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| page | num | 页数 | 与请求参数中的`page`参数的值相同 |
+| size | num | 该页的析愿记录数量 | |
+| total | num | 0 | |
+| list | arr | 析愿记录 | |
+| region | str | 该账号所属服务器的标识 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | str | 该玩家的UID | |
+| gacha_type | str | 析愿池 | 与请求参数中的`gacha_type`参数的值相同 |
+| item_id | str | 似乎总是为空字符串 | |
+| count | str | 1 | |
+| time | str | 该玩家抽到该项目的日期 | |
+| name | str | 抽到的项目名称 | 文本语言通过参数`lang`指定 |
+| lang | str | 语言 | 与请求参数中的`lang`参数的值相同 |
+| item_type | str | 该项目的类别 | 文本语言通过参数`lang`指定 |
+| rank_type | str | 3 | |
+| id | str | 似乎前10位数字为接近于抽到该项目的时间的Unix时间戳，后面的数字含义未知 | |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "page": "0",
+    "size": "20",
+    "total": "0",
+    "list": [
+      {
+        "uid": "222681079",
+        "gacha_type": "302",
+        "item_id": "",
+        "count": "1",
+        "time": "2023-04-21 20:54:19",
+        "name": "铁影阔剑",
+        "lang": "zh-cn",
+        "item_type": "武器",
+        "rank_type": "3",
+        "id": "1682078760003138679"
+      }
+    ],
+    "region": "cn_gf01"
+  }
+}
+```
+</details>
+
+
+
+**国际服：**
+
+`未知`
+
+# 崩坏：星穹铁道
+
+<h3 id="star-rail-home">获取首页信息</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+> 
+> `x-rpc-client_type`：`5`
+> 
+> _需要验证网页Cookie_
+
+`https://api-takumi-record.mihoyo.com/game_record/app/hkrpg/api/index`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| server | str |
+
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 玩家信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| stats | obj | 玩家基础信息 | |
+| avatar_list | arr | 该玩家拥有的角色的基本信息 | |
+
+`data`对象→`stats`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| active_days | num | 该玩家的游玩天数 | |
+| avatar_num | num | 该玩家拥有的角色数量 | |
+| achievement_num | num | 该玩家已解锁的成就数量 | |
+| chest_num | num | 该玩家已发现的战利品数量 | |
+| abyss_process | str | 该玩家达成的忘却之庭层级 | |
+
+`data`对象→`avatar_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 该角色的ID | |
+| name | str | 角色名称 | |
+| element | str | 该角色的元素属性 | 英文 |
+| icon | str | 该角色的头像 | |
+| rarity | num | 该角色的稀有度 | |
+| rank | num | 待调查 | |
+| is_chosen | bool | 是否收藏了该角色 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "stats": {
+      "active_days": 17,
+      "avatar_num": 15,
+      "achievement_num": 154,
+      "chest_num": 209,
+      "abyss_process": "回忆其六"
+    },
+    "avatar_list": [
+      {
+        "id": 1209,
+        "level": 60,
+        "name": "彦卿",
+        "element": "ice",
+        "icon": "https://uploadstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_7a87fe/a5512decb10359dd6e1484085da105de.png",
+        "rarity": 5,
+        "rank": 0,
+        "is_chosen": false
+      },
+      ...
+    ]
+  }
+}
+```
+</details>
+
+
+
+**国际服：**
+
+`未知`
+
+<h3 id="star-rail-characters">获取角色信息</h3>
+
+<h3 id="star-rail-forgotten-hall">获取忘却之庭信息</h3>
+
+<h3 id="star-rail-warp">获取跃迁记录</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+`https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| authkey_ver | num | 1 | |
+| authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……”的链接，该参数的值在其中 |
+| lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
+| size | num | 返回数据中的最大数据数量 | |
+| page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页 |
+| gacha_type | num | 跃迁池<br>1 群星跃迁<br>2 始发跃迁<br>11 角色活动跃迁<br>12 光锥活动跃迁 | |
+| game_biz | str | hkrpc_cn | |
+
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码<br>-100 请求参数`authkey`不正确<br>-111 请求参数`game_biz`不正确<br>-108 未指定语言或不是支持的语言<br>-110 请求过快 | |
+| message | str | 返回消息 | |
+| data | obj | 该游戏账号的析愿信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| page | num | 页数 | 与请求参数中的`page`参数的值相同 |
+| size | num | 该页的跃迁记录数量 | |
+| list | arr | 跃迁记录 | |
+| region | str | 该账号所属服务器的标识 | |
+| region_time_zone | num | 该玩家的所在时区的UTC时间偏移量 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | str | 该玩家的UID | |
+| gacha_id | str | 待调查 | |
+| gacha_type | str | 跃迁池 | |
+| item_id | str | 该项目的ID | |
+| count | str | 1 | |
+| time | str | 该玩家抽到该项目的日期 | |
+| name | str | 抽到的项目名称 | 文本语言通过参数`lang`指定 |
+| lang | str | 语言 | 与请求参数中的`lang`参数的值相同 |
+| item_type | str | 该项目的类别 | 文本语言通过参数`lang`指定 |
+| rank_type | str | 3 | |
+| id | str | 似乎前10位数字为接近于抽到该项目的时间的Unix时间戳，后面的数字含义未知 | |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "page": "1",
+    "size": "1",
+    "list": [
+      {
+        "uid": "108976226",
+        "gacha_id": "3003",
+        "gacha_type": "12",
+        "item_id": "20003",
+        "count": "1",
+        "time": "2023-05-07 15:15:27",
+        "name": "琥珀",
+        "lang": "zh-cn",
+        "item_type": "光锥",
+        "rank_type": "3",
+        "id": "1683443400001878626"
+      }
+    ],
+    "region": "prod_gf_cn",
+    "region_time_zone": 8
+  }
+}
+```
+</details>
+
+
+
+**国际服：**
 
 `未知`
