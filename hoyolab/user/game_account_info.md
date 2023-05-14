@@ -1809,7 +1809,7 @@ _请求方式：GET_
 | authkey_ver | num | 1 | |
 | authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/GenshinImpact_Data（或YuanShen_Data）/webCaches/Cache/Cache_Data/data_2”，寻找类似“https://webstatic.mihoyo.com/genshin/event/e20190909gacha-v2/index.html……”（国服）或“https://webstatic-sea.hoyoverse.com/genshin/event/e20190909gacha-v2/index.html……”（国际服）的链接，该参数的值在其中 |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
-| size | num | 返回数据中的最大数据数量 | |
+| size | num | 返回数据中的最大数据数量。最小为0，最大为20。 | |
 | page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页 |
 | gacha_type | num | 析愿池<br>100 初行者推荐析愿<br>200 常驻析愿<br>301 角色活动析愿<br>302 武器活动析愿 | |
 <!-- 
@@ -1826,7 +1826,7 @@ end_id
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码<br>-100 请求参数`authkey`不正确<br><br>-108 未指定语言或不是支持的语言<br>-110 请求过快 | |
+| retcode | num | 返回码<br>-100 请求参数`authkey`不正确<br>-108 未指定语言或不是支持的语言<br>-110 请求过快 | |
 | message | str | 返回消息 | |
 | data | obj | 该游戏账号的析愿信息 | |
 
@@ -1835,7 +1835,7 @@ end_id
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | page | num | 页数 | 与请求参数中的`page`参数的值相同 |
-| size | num | 该页的析愿记录数量 | |
+| size | num | 最大数据数量 | 与请求参数中的`size`参数的值相同 |
 | total | num | 0 | |
 | list | arr | 析愿记录 | |
 | region | str | 该账号所属服务器的标识 | |
