@@ -1809,8 +1809,9 @@ _请求方式：GET_
 | authkey_ver | num | 1 | |
 | authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/GenshinImpact_Data（或YuanShen_Data）/webCaches/Cache/Cache_Data/data_2”，寻找类似“https://webstatic.mihoyo.com/genshin/event/e20190909gacha-v2/index.html……”（国服）或“https://webstatic-sea.hoyoverse.com/genshin/event/e20190909gacha-v2/index.html……”（国际服）的链接，该参数的值在其中 |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
-| size | num | 返回数据中的最大数据数量。最小为0，最大为20。 | |
-| page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页 |
+| size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
+| end_id | num | 见下文的说明 | |
+| page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页。该参数实际上没有用处，要实现翻页请使用`end_id`参数。见下文。 |
 | gacha_type | num | 析愿池<br>100 初行者推荐析愿<br>200 常驻析愿<br>301 角色活动析愿<br>302 武器活动析愿 | |
 <!-- 
 以下参数目前似乎没有任何作用
@@ -1818,8 +1819,15 @@ init_type
 gacha_id
 sign_type
 auth_appid
-end_id
  -->
+
+当需要获取超过20个记录时，需要使用到`end_id`参数。
+
+具体步骤：
+
+1. 当`page`为`1`（即第1页）时，需要指定`end_id`为`0`。则会返回最新的参数`size`个析愿记录。
+1. 当需要翻页（增加`page`）时，需要指定`end_id`为上页的`data`对象→`list`数组→最后一个元素→`id`字符串。
+1. 重复第2步，直到获取完成想要获取的析愿记录数量。
 
 
 根对象：
@@ -1837,7 +1845,7 @@ end_id
 | page | num | 页数 | 与请求参数中的`page`参数的值相同 |
 | size | num | 最大数据数量 | 与请求参数中的`size`参数的值相同 |
 | total | num | 0 | |
-| list | arr | 析愿记录 | |
+| list | arr | 从新至旧排序的析愿记录 | |
 | region | str | 该账号所属服务器的标识 | |
 
 `data`对象→`list`数组→对象：
@@ -1853,7 +1861,7 @@ end_id
 | lang | str | 语言 | 与请求参数中的`lang`参数的值相同 |
 | item_type | str | 该项目的类别 | 文本语言通过参数`lang`指定 |
 | rank_type | str | 该项目的稀有度 | |
-| id | str | 似乎前10位数字为接近于抽到该项目的时间的Unix时间戳，后面的数字含义未知 | |
+| id | str | 该析愿记录的ID，可用于翻页获取析愿记录。 | |
 
 
 <details>
@@ -2011,10 +2019,20 @@ _请求方式：GET_
 | authkey_ver | num | 1 | |
 | authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……”的链接，该参数的值在其中 |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
-| size | num | 返回数据中的最大数据数量 | |
-| page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页 |
-| gacha_type | num | 跃迁池<br>1 群星跃迁<br>2 始发跃迁<br>11 角色活动跃迁<br>12 光锥活动跃迁 | |
-| game_biz | str | hkrpc_cn | |
+| size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
+| end_id | num | 见下文的说明 | |
+| page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页。该参数实际上没有用处，要实现翻页请使用`end_id`参数。见下文。 |
+| gacha_type | num | 跃迁池<br>1 常驻跃迁<br>2 新手跃迁<br>11 角色活动跃迁<br>12 光锥活动跃迁 | |
+| game_biz | str | `authkey`对应账号所属服务器的服务器标识 | |
+
+
+当需要获取超过20个记录时，需要使用到`end_id`参数。
+
+具体步骤：
+
+1. 当`page`为`1`（即第1页）时，需要指定`end_id`为`0`。则会返回最新的参数`size`个跃迁记录。
+1. 当需要翻页（增加`page`）时，需要指定`end_id`为上页的`data`对象→`list`数组→最后一个元素→`id`字符串。
+1. 重复第2步，直到获取完成想要获取的跃迁记录数量。
 
 
 根对象：
