@@ -4,7 +4,7 @@
   - [获取首页信息](#genshin-home)
   - [获取角色信息](#genshin-characters)
   - [获取深境螺旋信息](#genshin-spiral-abyss)
-  - [获取析愿记录](#genshin-wish)
+  - [获取祈愿记录](#genshin-wish)
 - [崩坏：星穹铁道](#崩坏星穹铁道)
   - [获取首页信息](#star-rail-home)
   - [获取角色信息](#star-rail-characters)
@@ -22,9 +22,9 @@
 _请求方式：GET_
 
 > _需要验证请求头_
-> 
+>
 > `x-rpc-client_type`：`5`
-> 
+>
 > _需要验证网页Cookie_
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index`
@@ -139,7 +139,6 @@ _请求方式：GET_
 | comfort_level_name | str | 尘歌壶该岛的洞天仙力的称号 | |
 | comfort_level_icon | str | 尘歌壶该岛的洞天仙力的图标 | |
 
-
 <details>
 <summary>查看示例</summary>
 
@@ -227,17 +226,17 @@ _请求方式：GET_
   }
 }
 ```
-</details>
 
+</details>
 
 **国际服：**
 
 _请求方式：GET_
 
 > _需要验证请求头_
-> 
+>
 > `x-rpc-client_type`：`5`
-> 
+>
 > _需要验证网页Cookie_
 
 `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index`
@@ -249,7 +248,6 @@ _请求方式：GET_
 | role_id | num | 原神UID | |
 | server | str | 服务器名称 | |
 
-
 <h3 id="genshin-characters">获取玩家角色信息</h3>
 
 **国服：**
@@ -257,11 +255,10 @@ _请求方式：GET_
 _请求方式：POST_
 
 > _需要验证请求头_
-> 
+>
 > `x-rpc-client_type`：`5`
-> 
+>
 > _需要验证网页Cookie_
-
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/character`
 
@@ -351,7 +348,6 @@ _请求方式：POST_
 | activation_number | num | 需要装备多少该套装内的圣遗物才能激活该效果 | |
 | effect | str | 该圣遗物套装效果的描述 | |
 
-
 `data`对象→`avatars`数组→对象→`constellations`数组→对象：
 
 | 字段 | 类型 | 内容 | 备注 |
@@ -379,7 +375,6 @@ _请求方式：POST_
 | nickname | str | 该账号的昵称 | |
 | region | str | 该账号在的服务器的名称 | |
 | level | num | 该账号的冒险等级 | |
-
 
 <details>
 <summary>查看示例</summary>
@@ -460,6 +455,7 @@ _请求方式：POST_
   }
 }
 ```
+
 </details>
 
 **国际服：**
@@ -467,32 +463,27 @@ _请求方式：POST_
 _请求方式：POST_
 
 > _需要验证请求头_
-> 
+>
 > `x-rpc-client_type`：`5`
-> 
+>
 > _需要验证网页Cookie_
 
-
 `未知`
-
 
 **参数：**
 
 **JSON返回**
 
-
 <h3 id="genshin-spiral-abyss">获取玩家深境螺旋信息</h3>
 
-
 **国服：**
-
 
 _请求方式：GET_
 
 > _需要验证请求头_
-> 
+>
 > `x-rpc-client_type`：`5`
-> 
+>
 > _需要验证网页Cookie_
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss`
@@ -504,7 +495,6 @@ _请求方式：GET_
 | server | str | 服务器名称 | |
 | role_id | num | 原神UID | |
 | schedule_type | num | 要查询的是哪期深渊信息<br/>1 当期<br/>2 上期 | |
-
 
 根对象：
 
@@ -634,7 +624,6 @@ _请求方式：GET_
 | icon | str | 该角色的图标 | |
 | level | num | 该角色的等级 | |
 | rarity | num | 该角色的稀有度 | |
-
 
 <details>
 <summary>查看示例</summary>
@@ -1778,23 +1767,22 @@ _请求方式：GET_
   }
 }
 ```
+
 </details>
-
-
 
 **国际服：**
 
 _请求方式：GET_
 
 > _需要验证请求头_
-> 
+>
 > `x-rpc-client_type`：`5`
-> 
+>
 > _需要验证网页Cookie_
 
 `未知`
 
-<h3 id="genshin-wish">获取析愿记录</h3>
+<h3 id="genshin-wish">获取祈愿记录</h3>
 
 **国服：**
 
@@ -1807,12 +1795,12 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | authkey_ver | num | 1 | |
-| authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/GenshinImpact_Data（或YuanShen_Data）/webCaches/Cache/Cache_Data/data_2”，寻找类似“https://webstatic.mihoyo.com/genshin/event/e20190909gacha-v2/index.html……”（国服）或“https://webstatic-sea.hoyoverse.com/genshin/event/e20190909gacha-v2/index.html……”（国际服）的链接，该参数的值在其中 |
+| authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/GenshinImpact_Data（或YuanShen_Data）/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://webstatic.mihoyo.com/genshin/event/e20190909gacha-v2/index.html……”（国服）或“https://webstatic-sea.hoyoverse.com/genshin/event/e20190909gacha-v2/index.html……”（国际服）的链接，该参数的值在其中> |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
 | size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
 | end_id | num | 见下文的说明 | |
 | page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页。该参数实际上没有用处，要实现翻页请使用`end_id`参数。见下文。 |
-| gacha_type | num | 析愿池<br>100 初行者推荐析愿<br>200 常驻析愿<br>301 角色活动析愿<br>302 武器活动析愿 | |
+| gacha_type | num | 祈愿池<br>100 初行者推荐祈愿<br>200 常驻祈愿<br>301 角色活动祈愿<br>302 武器活动祈愿 | |
 <!-- 
 以下参数目前似乎没有任何作用
 init_type
@@ -1825,10 +1813,9 @@ auth_appid
 
 具体步骤：
 
-1. 当`page`为`1`（即第1页）时，需要指定`end_id`为`0`。则会返回最新的参数`size`个析愿记录。
+1. 当`page`为`1`（即第1页）时，需要指定`end_id`为`0`。则会返回最新的参数`size`个祈愿记录。
 1. 当需要翻页（增加`page`）时，需要指定`end_id`为上页的`data`对象→`list`数组→最后一个元素→`id`字符串。
-1. 重复第2步，直到获取完成想要获取的析愿记录数量。
-
+1. 重复第2步，直到获取完成想要获取的祈愿记录数量。
 
 根对象：
 
@@ -1836,7 +1823,7 @@ auth_appid
 | ---- | ---- | ---- | ---- |
 | retcode | num | 返回码<br>-100 请求参数`authkey`不正确<br>-108 未指定语言或不是支持的语言<br>-110 请求过快 | |
 | message | str | 返回消息 | |
-| data | obj | 该游戏账号的析愿信息 | |
+| data | obj | 该游戏账号的祈愿信息 | |
 
 `data`对象：
 
@@ -1845,7 +1832,7 @@ auth_appid
 | page | num | 页数 | 与请求参数中的`page`参数的值相同 |
 | size | num | 最大数据数量 | 与请求参数中的`size`参数的值相同 |
 | total | num | 0 | |
-| list | arr | 从新至旧排序的析愿记录 | |
+| list | arr | 从新至旧排序的祈愿记录 | |
 | region | str | 该账号所属服务器的标识 | |
 
 `data`对象→`list`数组→对象：
@@ -1853,7 +1840,7 @@ auth_appid
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | uid | str | 该玩家的UID | |
-| gacha_type | str | 析愿池 | 与请求参数中的`gacha_type`参数的值相同 |
+| gacha_type | str | 祈愿池 | 与请求参数中的`gacha_type`参数的值相同 |
 | item_id | str | 似乎总是为空字符串 | |
 | count | str | 1 | |
 | time | str | 该玩家抽到该项目的日期 | |
@@ -1861,8 +1848,7 @@ auth_appid
 | lang | str | 语言 | 与请求参数中的`lang`参数的值相同 |
 | item_type | str | 该项目的类别 | 文本语言通过参数`lang`指定 |
 | rank_type | str | 该项目的稀有度 | |
-| id | str | 该析愿记录的ID，可用于翻页获取析愿记录。 | |
-
+| id | str | 该祈愿记录的ID，可用于翻页获取祈愿记录。 | |
 
 <details>
 <summary>查看示例</summary>
@@ -1893,9 +1879,8 @@ auth_appid
   }
 }
 ```
+
 </details>
-
-
 
 **国际服：**
 
@@ -1910,9 +1895,9 @@ auth_appid
 _请求方式：GET_
 
 > _需要验证请求头_
-> 
+>
 > `x-rpc-client_type`：`5`
-> 
+>
 > _需要验证网页Cookie_
 
 `https://api-takumi-record.mihoyo.com/game_record/app/hkrpg/api/index`
@@ -1922,7 +1907,6 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | server | str |
-
 
 根对象：
 
@@ -1992,9 +1976,8 @@ _请求方式：GET_
   }
 }
 ```
+
 </details>
-
-
 
 **国际服：**
 
@@ -2017,14 +2000,13 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | authkey_ver | num | 1 | |
-| authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……”的链接，该参数的值在其中 |
+| authkey | str | 验证密钥，用于标识游戏账号 | 打开“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……”的链接，该参数的值在其中> |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
 | size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
 | end_id | num | 见下文的说明 | |
 | page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页。该参数实际上没有用处，要实现翻页请使用`end_id`参数。见下文。 |
 | gacha_type | num | 跃迁池<br>1 常驻跃迁<br>2 新手跃迁<br>11 角色活动跃迁<br>12 光锥活动跃迁 | |
 | game_biz | str | `authkey`对应账号所属服务器的服务器标识 | |
-
 
 当需要获取超过20个记录时，需要使用到`end_id`参数。
 
@@ -2034,14 +2016,13 @@ _请求方式：GET_
 1. 当需要翻页（增加`page`）时，需要指定`end_id`为上页的`data`对象→`list`数组→最后一个元素→`id`字符串。
 1. 重复第2步，直到获取完成想要获取的跃迁记录数量。
 
-
 根对象：
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | retcode | num | 返回码<br>-100 请求参数`authkey`不正确<br>-111 请求参数`game_biz`不正确<br>-108 未指定语言或不是支持的语言<br>-110 请求过快 | |
 | message | str | 返回消息 | |
-| data | obj | 该游戏账号的析愿信息 | |
+| data | obj | 该游戏账号的祈愿信息 | |
 
 `data`对象：
 
@@ -2068,7 +2049,6 @@ _请求方式：GET_
 | item_type | str | 该项目的类别 | 文本语言通过参数`lang`指定 |
 | rank_type | str | 3 | |
 | id | str | 似乎前10位数字为接近于抽到该项目的时间的Unix时间戳，后面的数字含义未知 | |
-
 
 <details>
 <summary>查看示例</summary>
@@ -2100,9 +2080,8 @@ _请求方式：GET_
   }
 }
 ```
+
 </details>
-
-
 
 **国际服：**
 
