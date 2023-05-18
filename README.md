@@ -1,16 +1,16 @@
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Kamisato-Ayaka-233/mihoyo-api-collect/main/files/images/logo.png" height="200">
+  <img src="https://raw.githubusercontent.com/UIGF-org/mihoyo-api-collect/main/files/images/logo.png" height="200">
   <br/><br/>
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Kamisato-Ayaka-233/mihoyo-api-collect?style=flat-square">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/UIGF-org/mihoyo-api-collect?style=flat-square">
   <br/>
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/Kamisato-Ayaka-233/mihoyo-api-collect?style=flat-square">
-  <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23555&style=flat-square">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/UIGF-org/mihoyo-api-collect?style=flat-square">
+  <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/UIGF-org/mihoyo-api-collect?color=%23555&style=flat-square">
   <br/>
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23c0c0c0&style=flat-square">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23114514&style=flat-square">
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23aa4499&style=flat-square">
-  <img alt="GitHub forks" src="https://img.shields.io/github/forks/Kamisato-Ayaka-233/mihoyo-api-collect?color=%23456789&style=flat-square">
+  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/UIGF-org/mihoyo-api-collect?color=%23c0c0c0&style=flat-square">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/UIGF-org/mihoyo-api-collect?color=%23114514&style=flat-square">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/UIGF-org/mihoyo-api-collect?color=%23aa4499&style=flat-square">
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/UIGF-org/mihoyo-api-collect?color=%23456789&style=flat-square">
 </p>
 
 <h1 align="center">米哈游API</h1>
@@ -91,7 +91,7 @@
   - [ ] [其它](genshin_impact/other/)
     - [ ] [公告](genshin_impact/other/announcement.md)
 
-### 《崩坏：星穹铁道（Honkai: Star Rail，Star Rail）》
+### 《崩坏：星穹铁道（Honkai: Star Rail，Star Rail，hkrpg）》
 
 《崩坏：星穹铁道》游戏内的API。
 
@@ -117,11 +117,11 @@
 - [Star Rail Warp Export](https://github.com/biuuu/star-rail-warp-export) - 星穹铁道跃迁记录导出工具。
 - [Genshin Wish Export](https://github.com/biuuu/genshin-wish-export/) - 原神祈愿记录导出工具
 - [Genshin Wish Analyzer](https://github.com/voderl/genshin-gacha-analyzer) - 原神祈愿记录分析器
-- [Genshin Kits for Node.js](https://github.com/genshin-kit/genshin-kit-node) - Node.js原神玩家信息查询库。
+- [Genshin Kits for Node.js](https://github.com/genshin-kit/genshin-kit-node) - Node.js原神玩家信息查询库
 - [Genshin Helper](https://github.com/y1ndan/genshinhelper2) - Python米游社API封装库
-- [Yunzai Bot](https://gitee.com/le-niao/Yunzai-Bot) - 原始云崽机器人，QQ群原神信息查询机器人。
-- [Miao Yunzai](https://github.com/yoimiya-kokomi/Miao-Yunzai) - “喵”版云崽机器人，QQ群原神信息和原神角色面板查询机器人。
+- [Yunzai Bot](https://gitee.com/le-niao/Yunzai-Bot) - 原始云崽机器人，QQ群原神信息查询机器人
+- [Miao Yunzai](https://github.com/yoimiya-kokomi/Miao-Yunzai) - “喵”版云崽机器人，QQ群原神信息和原神角色面板查询机器人
 - [Genshin Player Query](https://github.com/Azure99/GenshinPlayerQuery) - 原神玩家信息查询
-- [Snap Hu Tao](https://github.com/DGP-Studio/Snap.Hutao) - 原神工具箱。
-- [Cocogoat](https://github.com/YuehaiTeam/cocogoat) - 原神成就记录与圣遗物管理。
-- [UIGF API](https://github.com/UIGF-org/UIGF-API) -
+- [Snap Hu Tao](https://github.com/DGP-Studio/Snap.Hutao) - 原神工具箱
+- [Cocogoat](https://github.com/YuehaiTeam/cocogoat) - 原神成就记录与圣遗物管理
+- [UIGF API](https://github.com/UIGF-org/UIGF-API) - 原神项目ID与项目名称互相转换API
