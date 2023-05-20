@@ -6,7 +6,7 @@
 
 ---
 
-# 获取首页信息
+## 获取首页信息
 
 _请求方式：GET_
 
@@ -482,7 +482,7 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-| retcode | num | 返回码<br/>1001 未指定类型<br/>1002 未指定唯一游戏 | |
+| retcode | num | 返回码<br/>1001 参数`type`不正确<br/>1002 参数`gids`不正确 | |
 | message | str | 返回消息 | |
 | data | obj | 资讯信息 | |
 
@@ -496,9 +496,8 @@ _请求方式：GET_
 
 `data`对象→`list`数组→对象：
 
-<!-- | 字段 | 类型 | 内容 | 备注 |
+| 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-|  -->
 
 
 <details>
@@ -513,36 +512,38 @@ _请求方式：GET_
       {
         "post": {
           "game_id": 2,
-          "post_id": "35274951",
+          "post_id": "39530410",
           "f_forum_id": 28,
-          "uid": "75276539",
-          "subject": "「星彩漫天」——《原神》烟花卡片分享H5正式上线",
-          "content": "[图片]旅行者，你喜欢收集卡片吗？派蒙发现了一个好玩的东西！ 「星彩漫天」——《原神》烟花卡片分享H5正式上线。 >>点击前往「星彩漫天」网页活动<<〓活动时间〓卡片收集时间：2023年",
+          "uid": "384454482",
+          "subject": "「原神赛事解说主持招募」计划启动",
+          "content": "▌「原神赛事解说主持招募」计划启动亲爱的旅行者，请查收这份招募指南！即日起至5月28日，原神赛事将开启首批解说主持招募报名如果你正在寻找演艺的契机，不如一起开启一段崭新的冒险吧！★ 期待",
           "cover": "",
           "view_type": 1,
-          "created_at": 1675569607,
+          "created_at": 1684555284,
           "images": [
-            "https://upload-bbs.miyoushe.com/upload/2023/02/03/75276539/16038508c15654652a84a93886d9dec2_8099982150962629647.jpg"
+            "https://upload-bbs.miyoushe.com/upload/2023/05/20/384454482/316ebd6113fd3923768a73e4d097a296_7231734090118733998.jpg"
           ],
           "post_status": {
             "is_top": false,
             "is_good": false,
             "is_official": true
           },
-          "topic_ids": [],
+          "topic_ids": [
+            1264
+          ],
           "view_status": 1,
-          "max_floor": 3426,
+          "max_floor": 38,
           "is_original": 0,
           "republish_authorization": 0,
-          "reply_time": "2023-02-05 15:19:16",
+          "reply_time": "2023-05-20 15:40:55",
           "is_deleted": 0,
           "is_interactive": false,
-          "structured_content": "[{\"insert\":\"\\n\"},{\"insert\":{\"image\":\"122952038\"}},{\"insert\":\"旅行者，你喜欢收集卡片吗？派蒙发现了一个好玩的东西！ \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\\n\"},{\"insert\":\"「星彩漫天」——《原神》烟花卡片分享H5正式上线。 \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"\\u003e\\u003e点击前往「\",\"attributes\":{\"link\":\"https://webstatic.mihoyo.com/ys/event/e20230205-firework-xm7wly/index.html?game_biz=hk4e_cn\\u0026mhy_presentation_style=fullscreen\\u0026mhy_auth_required=true\\u0026mhy_hide_status_bar=true\\u0026channel=mys\\u00260205\"}},{\"insert\":\"星彩漫天\",\"attributes\":{\"link\":\"https://webstatic.mihoyo.com/ys/event/e20230205-firework-xm7wly/index.html?game_biz=hk4e_cn\\u0026mhy_presentation_style=fullscreen\\u0026mhy_auth_required=true\\u0026mhy_hide_status_bar=true\\u0026channel=mys\\u00260205\"}},{\"insert\":\"」网页活动\\u003c\\u003c\",\"attributes\":{\"link\":\"https://webstatic.mihoyo.com/ys/event/e20230205-firework-xm7wly/index.html?game_biz=hk4e_cn\\u0026mhy_presentation_style=fullscreen\\u0026mhy_auth_required=true\\u0026mhy_hide_status_bar=true\\u0026channel=mys\\u00260205\"}},{\"insert\":\"\\n\\n\",\"attributes\":{\"align\":\"center\"}},{\"insert\":\"〓活动时间〓\",\"attributes\":{\"bold\":true,\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"卡片收集时间：2023年2月5日12:00:00-2023月2月11日23:59:59\",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"最终抽奖时间：2023年2月13日12:00:00\",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"奖励领取窗口：2023年2月5日12:00:00-2023月2月18日23:59:59\",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\\n\"},{\"insert\":\"〓参与条件〓\",\"attributes\":{\"bold\":true,\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\" 冒险等阶≥10级  \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\\n\"},{\"insert\":\"〓活动简介〓 \",\"attributes\":{\"bold\":true,\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"活动期间，旅行者可以收集和交换烟花卡片，在拥有的烟花卡片种类达到一定条件后即可解锁抽奖功能，参与抽奖赢取实物或游戏内奖励。  \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\\n\"},{\"insert\":\"〓活动玩法说明〓\",\"attributes\":{\"bold\":true,\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"1、活动期间，旅行者可以收集烟花卡片并放入背包，完成每日任务可以获得额外收集次数。 \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"2、旅行者也可以通过烟花交换，将已拥有的卡片与好友换得尚未拥有的烟花卡片。 烟花交换将不会消耗已拥有的烟花卡片。\",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"3、烟花卡片类型共十一张。每次收集可获得随机一张卡片。 \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"4、当旅行者拥有所有烟花卡片时，即可解锁抽奖资格，参与烟花抽奖，赢取更多实物奖励。 \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\\n\"},{\"insert\":\"〓游戏奖励〓 \",\"attributes\":{\"bold\":true,\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"收集全部十一张卡牌后，即可领取原石等游戏奖励。 除参与烟花抽奖时抽取到的奖励之外，所有参与烟花抽奖的旅行者都将得到摩拉、精锻用魔矿等额外游戏奖励。\",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\\n\"},{\"insert\":\"〓活动注意事项〓\",\"attributes\":{\"bold\":true,\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"1、请各位旅行者登录米哈游通行证并绑定《原神》中的游戏角色参与活动，以保证活动奖励的正常发放与领取。 \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"2、本次活动奖励不默认发放，请旅行者及时领取。 \",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"},{\"insert\":\"3、在确认发奖资格并确认领取后，奖励将通过游戏内邮件发放，邮件有效期为30天，请注意查收。\",\"attributes\":{\"color\":\"#000000\"}},{\"insert\":\"\\n\"}]",
+          "structured_content": "[{\"insert\":\"▌「原神赛事解说主持招募」计划启动\\n\\n亲爱的旅行者，请查收这份招募指南！\\n\\n即日起至5月28日，原神赛事将开启首批解说主持招募报名\\n如果你正在寻找演艺的契机，不如一起开启一段崭新的冒险吧！\\n\\n★ 期待看见在舞台上闪耀的大家！\\n\"},{\"insert\":{\"image\":\"136156250\"}},{\"insert\":\"\\n\\n\"}]",
           "structured_content_rows": [],
           "review_id": 0,
           "is_profit": false,
           "is_in_profit": false,
-          "updated_at": 1675581556,
+          "updated_at": 1684568455,
           "deleted_at": 0,
           "pre_pub_status": 0,
           "cate_id": 0,
@@ -551,7 +552,9 @@ _请求方式：GET_
           "meta_content": "",
           "is_missing": false,
           "block_reply_img": 1,
-          "is_showing_missing": false
+          "is_showing_missing": false,
+          "block_latest_reply_time": 0,
+          "selected_comment": 0
         },
         "forum": {
           "id": 28,
@@ -560,24 +563,35 @@ _请求方式：GET_
           "game_id": 2,
           "forum_cate": null
         },
-        "topics": [],
+        "topics": [
+          {
+            "id": 1264,
+            "name": "七圣召唤",
+            "cover": "https://upload-bbs.miyoushe.com/upload/2022/11/25/fbab7b47dce9d09cb1f06557531ac9a1_1617410903526086645.jpg",
+            "is_top": false,
+            "is_good": false,
+            "is_interactive": false,
+            "game_id": 0,
+            "content_type": 2
+          }
+        ],
         "user": {
-          "uid": "75276539",
-          "nickname": "原神",
+          "uid": "384454482",
+          "nickname": "原神赛事",
           "introduce": "",
-          "avatar": "10011",
+          "avatar": "101070",
           "gender": 0,
           "certification": {
             "type": 1,
-            "label": "原神官方账号"
+            "label": "原神赛事官方账号"
           },
           "level_exp": {
-            "level": 16,
-            "exp": 107659
+            "level": 3,
+            "exp": 172
           },
           "is_following": false,
           "is_followed": false,
-          "avatar_url": "https://img-static.mihoyo.com/avatar/avatar10011.png",
+          "avatar_url": "https://bbs-static.miyoushe.com/static/2023/05/12/b85ea3822de881e64920ffdf3d8aed77_1765242819614536153.png",
           "pendant": ""
         },
         "self_operation": {
@@ -585,11 +599,11 @@ _请求方式：GET_
           "is_collected": false
         },
         "stat": {
-          "view_num": 437607,
-          "reply_num": 5298,
-          "like_num": 73584,
-          "bookmark_num": 1380,
-          "forward_num": 654
+          "view_num": 2524,
+          "reply_num": 54,
+          "like_num": 439,
+          "bookmark_num": 7,
+          "forward_num": 5
         },
         "help_sys": {
           "top_up": null,
@@ -599,16 +613,17 @@ _请求方式：GET_
         "cover": null,
         "image_list": [
           {
-            "url": "https://upload-bbs.miyoushe.com/upload/2023/02/03/75276539/16038508c15654652a84a93886d9dec2_8099982150962629647.jpg",
-            "height": 320,
-            "width": 690,
+            "url": "https://upload-bbs.miyoushe.com/upload/2023/05/20/384454482/316ebd6113fd3923768a73e4d097a296_7231734090118733998.jpg",
+            "height": 2817,
+            "width": 1000,
             "format": "jpg",
-            "size": "249835",
+            "size": "1294054",
             "crop": null,
             "is_user_set_cover": false,
-            "image_id": "122952038",
+            "image_id": "136156250",
             "entity_type": "IMG_ENTITY_POST",
-            "entity_id": "35274951"
+            "entity_id": "39530410",
+            "is_deleted": false
           }
         ],
         "is_official_master": false,
@@ -623,12 +638,11 @@ _请求方式：GET_
         "forum_rank_info": null,
         "link_card_list": [],
         "news_meta": {
-          "activity_status": 1,
-          "start_at_sec": "1675569600",
-          "end_at_sec": "1676131140"
+          "activity_status": 0,
+          "start_at_sec": "0",
+          "end_at_sec": "0"
         }
-      },
-      ...
+      }
     ],
     "last_id": 1,
     "is_last": false
@@ -642,17 +656,13 @@ _请求方式：GET_
 
 _请求方式：GET_
 
-鉴权方式：
-头部：`x-rpc-app_version`、`x-rpc-client_type`、`x-rpc-`
-
 `https://bbs-api.miyoushe.com/post/wapi/getPostFull`
 
 **参数：**
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-| gids | num | 游戏ID | |
-| 
+<!-- | gids | num | 游戏ID | | -->
 
 **JSON返回：**
 

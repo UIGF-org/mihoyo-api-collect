@@ -22,7 +22,7 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-| retcode | num | 0 成功 | |
+| retcode | num | 返回码 | |
 | message | str | 返回消息 | |
 | data | obj | 论坛分区数据 | |
 
