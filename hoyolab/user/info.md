@@ -2,7 +2,7 @@
 
 - [用户信息](#用户信息)
   - [获取用户完整信息](#获取用户完整信息)
-  - [获取用户所有文章](#获取用户所有文章)
+  - [获取用户发布的文章](#获取用户发布的文章)
   - [通过Cookie获取用户`authkey`](#通过cookie获取用户authkey)
 
 ---
@@ -311,13 +311,29 @@ _请求方式：GET_
 
 </details>
 
-## 获取用户所有文章
+## 获取用户发布的文章
 
 **国服：**
 
 _请求方式：GET_
 
-``
+网页：`https://bbs-api.miyoushe.com/post/wapi/userPost`
+应用：`https://bbs-api.miyoushe.com/painter/api/user_instant/list`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| size | num | 获取的文章数量 | |
+| uid | num | 米游社用户ID | |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+
 
 ## 通过Cookie获取用户`authkey`
 
