@@ -244,7 +244,7 @@ final = f"{t},{r},{ds}" # 最终结果。
 * `account_mid_v2` - 与`ltmid_v2`相同
 * `account_id_v2` - 米游社UID
 * `ltuid_v2` - 米游社UID
-* `cookie_token_v2`
+* `login_ticket` - 米游社的登录凭证
 * `_MHYUUID`
 * `DEVICEFP`
 * `acw_tc`
