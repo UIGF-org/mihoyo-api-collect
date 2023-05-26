@@ -91,8 +91,8 @@
   - [ ] [其它](genshin_impact/other/)
     - [ ] [公告](genshin_impact/other/announcement.md)
   - [ ] [第三方API](genshin_impact/thirdparty/)
-    - [ ] [历史祈愿UP池](genshin_impact/thirdparty/historical_up_items)
-    - [ ] [项目ID与名称的字典](genshin_impact/thirdparty/dictionary_of_item)
+    - [ ] [历史祈愿UP池](genshin_impact/thirdparty/historical_up_items.md)
+    - [ ] [项目ID与名称的字典](genshin_impact/thirdparty/dictionary_of_item.md)
 
 ### 《崩坏：星穹铁道（Honkai: Star Rail，Star Rail，hkrpg）》
 
