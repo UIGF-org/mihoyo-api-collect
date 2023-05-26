@@ -76,7 +76,7 @@
 
 ### 《原神（Genshin Impact，Genshin，hk4e）》
 
-《原神》游戏内的API。
+关于《原神》的API。
 
 <!-- 《原神》游戏内使用Socket进行通信，数据结构为Protobuf协议，并且已加密。 -->
 
@@ -90,10 +90,13 @@
     - [ ] [基本信息](genshin_impact/user/info.md) -->
   - [ ] [其它](genshin_impact/other/)
     - [ ] [公告](genshin_impact/other/announcement.md)
+  - [ ] [第三方API](genshin_impact/thirdparty/)
+    - [ ] [历史祈愿UP池](genshin_impact/thirdparty/historical_up_items)
+    - [ ] [项目ID与名称的字典](genshin_impact/thirdparty/dictionary_of_item)
 
 ### 《崩坏：星穹铁道（Honkai: Star Rail，Star Rail，hkrpg）》
 
-《崩坏：星穹铁道》游戏内的API。
+关于《崩坏：星穹铁道》的API。
 
 查询玩家信息请查看[米游社](#米游社hoyolabmiyoushe)。
 
