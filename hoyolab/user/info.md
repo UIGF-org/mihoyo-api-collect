@@ -20,6 +20,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | uid | num | 米游社账号ID | |
+| gids | num | 论坛分区ID | 可选，决定`data`对象→ |
 
 **JSON返回：**
 
@@ -54,12 +55,12 @@ _请求方式：GET_
 | avatar | str | 该用户的头像的ID | |
 | gender | num | 该用户设置的性别<br>0 保密<br>1 男<br>2 女 | |
 | certification | obj | 该用户获得的认证的信息 | |
-| level_exps | arr | 该用户在每个论坛分区的等级 | |
+| level_exps | arr | 该用户在每个论坛分区的等级信息 | |
 | achieve | obj | 该用户的粉丝、关注、话题等信息 | |
 | community_info | obj | 该用户在社区中的信息 | |
 | avatar_url | str | 该用户头像的图片URL | |
 | certifications | arr | 该用户得到的认证信息 | |
-| level_exp | null | 待调查 | 似乎总是为空 |
+| level_exp | null | 该用户在参数`gids`对应论坛分区的等级信息 | 若没有传递`gids`参数，则为空对象 |
 | pendant | str | 该用户的头像框图片URL | |
 | is_logoff | bool | 是否已注销 | |
 | ip_region | str | 该用户的IP属地 | |
@@ -71,13 +72,17 @@ _请求方式：GET_
 | type | num | 认证类型<br>0 没有认证<br>1 官方认证<br>2 个人认证 | |
 | label | str | 认证标签 | |
 
-`data`对象→`user_info`对象→`level_exps`数组→对象：
+`data`对象→`user_info`对象→`level_exp`对象：
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | level | num | 在该分区的等级 | |
 | exp | num | 在该分区的经验 | |
 | game_id | num | 该论坛分区的ID | |
+
+`data`对象→`user_info`对象→`level_exps`数组→对象：
+
+与`data`对象→`user_info`对象→`level_exp`对象的结构相同
 
 `data`对象→`user_info`对象→`achieve`对象：
 
@@ -119,7 +124,7 @@ _请求方式：GET_
 | collect | bool | 是否隐藏收藏的文章 | |
 | watermark | bool | 在评论和文章中的图片是否添加水印 | |
 | reply | bool | 是否隐藏回复 | |
-| post_and_instant | bool | 待调查 | |
+| post_and_instant | bool | 是否隐藏发布的文章 | |
 
 `data`对象→`user_info`对象→`community_info`对象→`notify_disable`对象：
 
@@ -138,7 +143,7 @@ _请求方式：GET_
 | enable_history_view | bool | 是否开启历史记录 | |
 | enable_recommend | bool | 是否开启推荐 | |
 | enable_mention | bool | 是否开启@ | |
-| user_center_view | num | 待调查 | |
+| user_center_view | num | 是否开启用户中心 | |
 
 `data`对象→`user_info`对象→`certifications`数组→对象：
 
@@ -168,10 +173,10 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | is_nickname_in_audit | bool | 昵称是否正在审核 | |
-| nickname | str | 空字符串 | |
+| nickname | str | 正在审核的昵称 | 若没有正在审核的昵称，则为空字符串 |
 | is_introduce_in_audit | bool | 简介是否正在审核 | |
-| introduce | str | 空字符串 | |
-| nickname_status | num | 昵称状态<br>0 正常 | |
+| introduce | str | 正在审核的简介 | 若没有正在审核的简介，则为空字符串 |
+| nickname_status | num | 昵称状态<br>0 未知<br>1 正常<br>2 昵称审核中 | |
 
 
 <details>
