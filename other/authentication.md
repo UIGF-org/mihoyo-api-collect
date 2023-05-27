@@ -204,9 +204,7 @@ lettersAndNumbers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 salt = "ZSHlXeQUBis52qD1kEgKt5lUYed4b7Bb"
 
 t = int(time.time())
-r = ""
-for _ in range(6):
-  r += random.choice(lettersAndNumbers)
+r = random.choices(lettersAndNumbers, k=6)
 main = f"salt={salt}&t={t}&r={r}"
 ds = md5(main.encode(encoding='UTF-8')).hexdigest()
 
@@ -219,7 +217,7 @@ final = f"{t},{r},{ds}" # 最终结果。
 
 ## Cookie
 
-一些API（例如文章点赞、签到等）需要登录账号，为Cookie的形式。
+一些API（例如文章点赞、签到等）需要登录账号，则表示为Cookie的形式。
 
 需要验证Cookie的API会进行标注。
 
@@ -227,31 +225,31 @@ final = f"{t},{r},{ds}" # 最终结果。
 
 ### 米游社
 
-网页（`x-rpc-client_type`为`4`）、APP端（`x-rpc-client_type`为`2`）的Cookie形式不同。
+网页（`x-rpc-client_type`为`5`或`4`）、应用端（`x-rpc-client_type`为`2`）的Cookie形式不同。
 
-`x-rpc-client_type`为`5`则与网页的Cookie相同。
+注意：“网页Cookie”和“应用Cookie”只是随意取的名称，不意味着网页Cookie只用在网页端，同样，也不意味着应用Cookie只用在应用端。只是为了分组而已。
 
 **网页：**
 
-以下字段必须有，否则服务器返回`10001`：
+若API需要验证网页Cookie，以下字段必须存在，否则返回`10001`：
 
 * `ltoken_v2`
 * `ltmid_v2`
 
 以下字段可选：
 
-* `cookie_token_v2` - **米游社签到福利（游戏内道具）需要验证该字段**
+* `cookie_token_v2` - 例如米游社签到福利（游戏内道具）需要验证该字段，一段时间内刷新
 * `account_mid_v2` - 与`ltmid_v2`相同
 * `account_id_v2` - 米游社UID
 * `ltuid_v2` - 米游社UID
 * `login_ticket` - 米游社的登录凭证
-* `_MHYUUID`
+<!-- * `_MHYUUID`
 * `DEVICEFP`
-* `acw_tc`
+* `acw_tc` -->
 
-**APP：**
+**应用：**
 
-以下字段必须有：
+若API需要验证应用Cookie，以下字段必须存在：
 
 * `stoken`
 * `mid`
