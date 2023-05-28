@@ -1,16 +1,33 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/UIGF-org/mihoyo-api-collect/main/files/images/logo.png" height="200">
-  <br/><br/>
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/UIGF-org/mihoyo-api-collect?style=flat-square">
-  <br/>
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/UIGF-org/mihoyo-api-collect?style=flat-square">
-  <img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/UIGF-org/mihoyo-api-collect?color=%23555&style=flat-square">
-  <br/>
-  <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/UIGF-org/mihoyo-api-collect?color=%23c0c0c0&style=flat-square">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/UIGF-org/mihoyo-api-collect?color=%23114514&style=flat-square">
-  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/UIGF-org/mihoyo-api-collect?color=%23aa4499&style=flat-square">
-  <img alt="GitHub forks" src="https://img.shields.io/github/forks/UIGF-org/mihoyo-api-collect?color=%23456789&style=flat-square">
+  <br>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect" style="text-decoration: none;">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/UIGF-org/mihoyo-api-collect?style=flat-square">
+  </a>
+  <br>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect/issues" style="text-decoration: none;">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/UIGF-org/mihoyo-api-collect?style=flat-square">
+  </a>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect/discussions" style="text-decoration: none;">
+    <img alt="GitHub discussions" src="https://img.shields.io/github/discussions/UIGF-org/mihoyo-api-collect?color=%23555&style=flat-square">
+  </a>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect/graphs/contributors" style="text-decoration: none;">
+    <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/UIGF-org/mihoyo-api-collect?color=%23c0c0c0&style=flat-square">
+  </a>
+  <br>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect/blob/master/LICENSE" style="text-decoration: none;">
+    <img alt="Github license" src="https://img.shields.io/static/v1?style=flat-square&label=license&message=CC%20BY-NC%204.0&color=blueviolet">
+  </a>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect/commits/main" style="text-decoration: none;">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/UIGF-org/mihoyo-api-collect?color=%23114514&style=flat-square">
+  </a>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect/stargazers" style="text-decoration: none;">
+    <img alt="GitHub repo stars" src="https://img.shields.io/github/stars/UIGF-org/mihoyo-api-collect?color=%23aa4499&style=flat-square">
+  </a>
+  <a href="https://github.com/UIGF-org/mihoyo-api-collect/forks" style="text-decoration: none;">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/UIGF-org/mihoyo-api-collect?color=%23456789&style=flat-square">
+  </a>
 </p>
 
 <h1 align="center">米哈游API</h1>
