@@ -18,7 +18,7 @@ _请求方式：GET_
 | --- | ---- | ---- | ---- |
 | gids | num | 游戏ID | |
 | page | num | 页数 | 若未指定则为第1页 |
-| page_size | num | 每页文章数量<br/>1~50 | 若未指定或超出范围则为每页20篇 |
+| page_size | num | 每页文章数量，范围为1-50 | 若未指定或超出范围则为每页20篇 |
 
 **JSON返回：**
 
@@ -656,13 +656,16 @@ _请求方式：GET_
 
 _请求方式：GET_
 
-`https://bbs-api.miyoushe.com/post/wapi/getPostFull`
+> _需要验证请求头_
+
+网页：`https://bbs-api.miyoushe.com/post/wapi/getPostFull`
+应用：`https://bbs-api.miyoushe.com/post/api/getPostFull`
 
 **参数：**
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-<!-- | gids | num | 游戏ID | | -->
+| post_id | num | 文章ID | |
 
 **JSON返回：**
 
@@ -670,7 +673,7 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-| retcode | num | 返回码<br/>1 未选择游戏 | |
+| retcode | num | 返回码<br>1101 参数`post_id`对应的文章不存在 | |
 | message | str | 返回消息 | |
 | data | obj | 首页信息 | |
 

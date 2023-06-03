@@ -4,6 +4,7 @@
   - [获取首页信息](#genshin-home)
   - [获取角色信息](#genshin-characters)
   - [获取深境螺旋信息](#genshin-spiral-abyss)
+  - [每日便签](#genshin-daily-note)
   - [获取祈愿记录](#genshin-wish)
 - [崩坏：星穹铁道](#崩坏星穹铁道)
   - [获取首页信息](#star-rail-home)
@@ -24,8 +25,12 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
+> 4X`salt`
+> `DS2`
 >
-> _需要验证网页Cookie_
+> _需要验证Cookie_
+> 
+> LToken
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index`
 
@@ -236,8 +241,12 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
+> 4X`salt`
+> `DS2`
 >
-> _需要验证网页Cookie_
+> _需要验证Cookie_
+> 
+> LToken
 
 `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index`
 
@@ -465,8 +474,12 @@ _请求方式：POST_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
+> 4X`salt`
+> `DS2`
 >
-> _需要验证网页Cookie_
+> _需要验证Cookie_
+> 
+> LToken
 
 `未知`
 
@@ -483,8 +496,12 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
+> 4X`salt`
+> `DS2`
 >
-> _需要验证网页Cookie_
+> _需要验证Cookie_
+> 
+> LToken
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/spiralAbyss`
 
@@ -1779,8 +1796,12 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
+> 4X`salt`
+> `DS2`
 >
-> _需要验证网页Cookie_
+> _需要验证Cookie_
+> 
+> LToken
 
 `未知`
 
@@ -1901,8 +1922,12 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
+> 4X`salt`
+> `DS2`
 >
-> _需要验证网页Cookie_
+> _需要验证Cookie_
+> 
+> LToken
 
 `https://api-takumi-record.mihoyo.com/game_record/app/hkrpg/api/index`
 

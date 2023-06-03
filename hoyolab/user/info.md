@@ -3,7 +3,8 @@
 - [用户信息](#用户信息)
   - [获取用户完整信息](#获取用户完整信息)
   - [获取用户发布的文章](#获取用户发布的文章)
-  - [通过Cookie获取用户`authkey`](#通过cookie获取用户authkey)
+  - [通过Cookie获取用户`authkey`A](#通过cookie获取账号authkeya)
+  - [通过Cookie获取用户`authkey`B](#通过cookie获取账号authkeyb)
 
 ---
 
@@ -339,20 +340,19 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 
+## 通过Cookie获取账号`authkey`A
 
-## 通过Cookie获取用户`authkey`
-
-在请求例如获取用户的游戏抽卡记录等API时需要使用到`authkey`。
+<!-- `authkey`A。 -->
 
 **国服：**
 
 _请求方式：POST_
 
-> _需要验证SToken_
+> _需要验证Cookie_
+>
+> SToken
 
-`https://api-takumi.miyoushe.com/binding/api/genAuthKey`
 `https://api-takumi.miyoushe.com/account/auth/api/genAuthKey`
-`https://hk4e-sdk.mihoyo.com/hk4e_cn/combo/granter/login/genAuthKey`
 
 **JSON请求：**
 
@@ -366,7 +366,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码<br>1002 请求体的`game_biz`字段不正确<br>-100 Cookie不正确 | |
+| retcode | num | 返回码<br>1002 请求体的`game_biz`字段不正确 | |
 | message | str | 返回消息 | |
 | data | obj | `authkey`信息 | |
 
@@ -376,7 +376,74 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | sign_type | num | 2 | |
 | authkey_ver | num | 1 | |
-| authkey | str | `authkey` | |
+| authkey | str | `authkey`A | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "sign_type": 2,
+    "authkey_ver": 1,
+    "authkey": "..."
+  }
+}
+```
+
+</details>
+
+**国际服：**
+
+`未知`
+
+## 通过Cookie获取账号`authkey`B
+
+在请求例如获取用户的游戏抽卡记录等API时需要使用到`authkey`B。
+
+**国服：**
+
+_请求方式：POST_
+
+> _需要验证请求头_
+>
+> `x-rpc-client_type`：`2`
+> LK`salt`
+> `DS1`
+>
+> _需要验证Cookie_
+>
+> SToken
+
+`https://api-takumi.miyoushe.com/binding/api/genAuthKey`
+<!--`https://hk4e-sdk.mihoyo.com/hk4e_cn/combo/granter/login/genAuthKey`-->
+
+**JSON请求：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| game_biz | str | 获取的`authkey`B的游戏<br>hk4e_cn 《原神》<br>hkrpg_cn 《崩坏：星穹铁道》<br> | |
+| game_uid | num | 游戏
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码<br>1002 请求体的`game_biz`字段不正确 | |
+| message | str | 返回消息 | |
+| data | obj | `authkey`信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| sign_type | num | 2 | |
+| authkey_ver | num | 1 | |
+| authkey | str | `authkey`B | |
 
 <details>
 <summary>查看示例</summary>

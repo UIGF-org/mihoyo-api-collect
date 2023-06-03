@@ -226,7 +226,7 @@ lettersAndNumbers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 salt = "ZSHlXeQUBis52qD1kEgKt5lUYed4b7Bb"
 
 t = int(time.time())
-r = random.choices(lettersAndNumbers, k=6)
+r = "".join(random.choices(lettersAndNumbers, k=6))
 main = f"salt={salt}&t={t}&r={r}"
 ds = md5(main.encode(encoding='UTF-8')).hexdigest()
 
