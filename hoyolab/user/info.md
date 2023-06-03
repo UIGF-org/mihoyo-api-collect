@@ -20,7 +20,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | uid | num | 米游社账号ID | |
-| gids | num | 论坛分区ID | 可选，决定`data`对象→ |
+| gids | num | 论坛分区ID | 可选，决定`data`对象→`user_info`对象→`level_exp`对象的内容 |
 
 **JSON返回：**
 
@@ -38,7 +38,7 @@ _请求方式：GET_
 | ---- | ---- | ---- | ---- |
 | user_info | obj | 该用户的详细信息 | |
 | follow_relation | obj | 请求Cookie对应用户与该用户的关系 | |
-| auth_relations | obj | 待调查 | 似乎总是都为空对象 |
+| auth_relations | obj | 待调查 | 似乎总为空对象 |
 | is_in_blacklist | bool | 是否被封禁 | |
 | is_has_collection | bool | 是否拥有文章合集 | |
 | is_creator | bool | false | |
@@ -348,9 +348,11 @@ _请求方式：GET_
 
 _请求方式：POST_
 
-> _需要验证应用Cookie_
+> _需要验证SToken_
 
+`https://api-takumi.miyoushe.com/binding/api/genAuthKey`
 `https://api-takumi.miyoushe.com/account/auth/api/genAuthKey`
+`https://hk4e-sdk.mihoyo.com/hk4e_cn/combo/granter/login/genAuthKey`
 
 **JSON请求：**
 
