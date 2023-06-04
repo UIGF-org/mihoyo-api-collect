@@ -66,7 +66,7 @@
 - 请求方式：接口的请求方式，GET、POST或Socket等。HTTP请求方式最好使用大写字母。使用斜体。
 - 请求头验证（按情况标识）：一些接口需要验证请求头的信息，则需要标注“需要验证请求头”，置于引用块中并使用斜体。下一行需要标注请求头的信息，如`x-rpc-client_type`。见[鉴权](/other/authentication.md#请求头)以了解应该标注哪些请求头。若该接口需要验证额外的请求头，也需要标注。若不需要验证请求头，则无需标注。
 - 鉴权（按情况标识）：一些接口需要登录账号，则需要标注“需要验证网页/应用Cookie”，置于引用块中并使用斜体。见[鉴权](/other/authentication.md#cookie)以了解Cookie的内容。若该接口需要验证额外的Cookie，也需要标注。若不需要验证Cookie，则无需标注。
-- 接口网址（URL）：接口的完整URL，使用等宽字体。如果该功能的网页端和应用端API的URL不同，则应全部列出。
+- 接口网址（URL）：接口的完整URL，使用等宽字体。如果该接口的网页端和应用端API的URL不同，或该接口有旧版接口，则应将发现的接口全部列出。
 - 备注（可选）：该接口使用的注意事项。
 
 例子：
@@ -81,8 +81,14 @@ _请求方式：GET_
 > _需要验证请求头_
 > 
 > `x-rpc-client_type`：`5`
-> 
-> _需要验证网页Cookie_
+>
+> 4X`salt`
+>
+> `DS2`
+
+> _需要验证Cookie_
+>
+> LToken
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index`
 

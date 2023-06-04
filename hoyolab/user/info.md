@@ -410,9 +410,11 @@ _请求方式：POST_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`2`
-> LK`salt`
-> `DS1`
 >
+> LK`salt`
+>
+> `DS1`
+
 > _需要验证Cookie_
 >
 > SToken

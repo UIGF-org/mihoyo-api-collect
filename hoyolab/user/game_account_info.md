@@ -4,7 +4,6 @@
   - [获取首页信息](#genshin-home)
   - [获取角色信息](#genshin-characters)
   - [获取深境螺旋信息](#genshin-spiral-abyss)
-  - [每日便签](#genshin-daily-note)
   - [获取祈愿记录](#genshin-wish)
 - [崩坏：星穹铁道](#崩坏星穹铁道)
   - [获取首页信息](#star-rail-home)
@@ -1824,13 +1823,6 @@ _请求方式：GET_
 | end_id | num | 见下文的说明 | |
 | page | num | 页数，从1开始 | 若为负数返回则会是`-502`。若没有此参数，默认为第1页。该参数实际上没有用处，要实现翻页请使用`end_id`参数。见下文。 |
 | gacha_type | num | 祈愿池<br>100 初行者推荐祈愿<br>200 常驻祈愿<br>301 角色活动祈愿<br>302 武器活动祈愿 | |
-<!-- 
-以下参数目前似乎没有任何作用
-init_type
-gacha_id
-sign_type
-auth_appid
- -->
 
 当需要获取超过20个记录时，需要使用到`end_id`参数。
 
