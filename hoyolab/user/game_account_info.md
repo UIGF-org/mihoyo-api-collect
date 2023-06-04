@@ -24,9 +24,11 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
-> 4X`salt`
-> `DS2`
 >
+> 4X`salt`
+>
+> `DS2`
+
 > _需要验证Cookie_
 > 
 > LToken
@@ -240,9 +242,11 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
-> 4X`salt`
-> `DS2`
 >
+> 4X`salt`
+>
+> `DS2`
+
 > _需要验证Cookie_
 > 
 > LToken
@@ -266,7 +270,13 @@ _请求方式：POST_
 >
 > `x-rpc-client_type`：`5`
 >
-> _需要验证网页Cookie_
+> 4X`salt`
+>
+> `DS2`
+
+> _需要验证Cookie_
+> 
+> LToken
 
 `https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/character`
 
@@ -473,9 +483,11 @@ _请求方式：POST_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
-> 4X`salt`
-> `DS2`
 >
+> 4X`salt`
+>
+> `DS2`
+
 > _需要验证Cookie_
 > 
 > LToken
@@ -495,9 +507,11 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
-> 4X`salt`
-> `DS2`
 >
+> 4X`salt`
+>
+> `DS2`
+
 > _需要验证Cookie_
 > 
 > LToken
@@ -1795,9 +1809,11 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
-> 4X`salt`
-> `DS2`
 >
+> 4X`salt`
+>
+> `DS2`
+
 > _需要验证Cookie_
 > 
 > LToken
@@ -1914,9 +1930,11 @@ _请求方式：GET_
 > _需要验证请求头_
 >
 > `x-rpc-client_type`：`5`
-> 4X`salt`
-> `DS2`
 >
+> 4X`salt`
+>
+> `DS2`
+
 > _需要验证Cookie_
 > 
 > LToken
