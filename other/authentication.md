@@ -19,6 +19,11 @@
 
 可选请求头：`x-rpc-device_name`、`x-rpc-device_model`、`x-rpc-sys_version`、`x-rpc-channel`。
 
+**说明：**
+
+“需要验证请求头”意味着这个接口需要传递`Host`、`Referer`、`Origin`、`User-Agent`。此句之后才会标识需要传递的其它请求头。
+
+出现`DS`类型时，需要传递`DS`、`x-rpc-app_version`、`x-rpc-client_type`、`X-Requested-With`。
 
 #### `x-rpc-app_version`
 
@@ -30,7 +35,16 @@
 
 #### `x-rpc-client_type`
 
-有`2`、`4`和`5`这些值。
+有`1`、`2`、`4`和`5`这些值。
+
+_注：以下列表只是说明该请求头的值通常在哪些平台出现，并不是平台一定只使用对应的值。具体的值请查看接口说明的标注_
+
+| 值 | 意义 | 备注 |
+| -- | --- | ---- |
+| 1 | 苹果端APP | 一般不需要使用 |
+| 2 | 安卓端APP | |
+| 4 | 网页端 | |
+| 5 | 其它 | |
 
 根据请求的API不同而变化。
 
@@ -41,7 +55,7 @@
 
 #### `x-rpc-sys_version`
 
-安卓系统大版本版本号，例如Android 13则为`13`。
+安卓系统（或iOS）大版本号，例如Android 13则为`13`。
 
 #### `x-rpc-channel`
 
@@ -85,21 +99,23 @@
 
 在哪个网页发起的请求。
 
-一般情况下，国内版APP为
+一般情况下，国内版APP：
 
-若`x-rpc-client_type`为`5`，则`https://webstatic.mihoyo.com/`
+若`x-rpc-client_type`为`5`，则为`https://webstatic.mihoyo.com`。
 
-若`x-rpc-client_type`为`2`，则`https://app.mihoyo.com`
+若`x-rpc-client_type`为`4`，则为`https://www.miyoushe.com`。
 
-国际版APP为
+若`x-rpc-client_type`为`2`，则为`https://app.mihoyo.com`。
 
-`https://webstatic-sea.hoyolab.com`。
+国际版APP：
+
+若`x-rpc-client_type`为`5`，则为`https://webstatic-sea.hoyolab.com`。
+
+若`x-rpc-client_type`为`4`，则为`https://www.hoyolab.com`。
+
+若`x-rpc-client_type`为`2`，则为`https://www.hoyolab.com`
 
 #### `User-Agent`
-
-大多数`x-rpc-client_type`为`2`和`4`的API不需要设置该请求头。
-
-但尽量避免带有`python`、`curl`等字样。
 
 需要验证请求头的API的用户代理格式为`Mozilla/5.0 (Linux; Android 安卓系统大版本号; 手机型号 Build/TKQ1.220829.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/108.0.5359.128 Mobile Safari/537.36 miHoYoBBS/米游社版本号`。
 
