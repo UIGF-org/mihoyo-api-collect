@@ -1857,7 +1857,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | uid | str | 该玩家的UID | |
-| gacha_type | str | 祈愿池 | 与请求参数中的`gacha_type`参数的值相同 |
+| gacha_type | str | 祈愿池 | 与请求参数中的`gacha_type`参数的值相同（角色活动祈愿-2除外，为`400`） |
 | item_id | str | 似乎总是为空字符串 | |
 | count | str | 1 | |
 | time | str | 该玩家抽到该项目的日期 | |
