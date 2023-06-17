@@ -15,9 +15,9 @@
 
 大多数API需要验证的请求头：`x-rpc-app_version`、`x-rpc-client_type`、`x-rpc-device_id`、`X-Requested-With`、`Origin`、`Referer`、`Host`、`DS`、`User-Agent`。
  
-少数API才需要验证的额外的请求头：`x-rpc-device_fp`、`x-rpc-challenge`。
+少数API才需要验证的额外的请求头：`x-rpc-device_fp`、`x-rpc-challenge`、`x-rpc-app_id`。
 
-可选请求头：`x-rpc-device_name`、`x-rpc-device_model`、`x-rpc-sys_version`、`x-rpc-channel`。
+可选请求头：`x-rpc-device_name`、`x-rpc-device_model`、`x-rpc-sys_version`、`x-rpc-channel`、`x-rpc-game_biz`。
 
 **说明：**
 
@@ -63,7 +63,7 @@ _注：以下列表只是说明该请求头的值通常在哪些平台出现，�
 
 #### `x-rpc-device_name`
 
-手机厂商和手机型号，例如小米11青春版则为`Xiaomi M2101K9C`。
+手机厂商和手机型号，例如`Xiaomi M2101K9C`。
 
 #### `x-rpc-device_model`
 
@@ -72,6 +72,10 @@ _注：以下列表只是说明该请求头的值通常在哪些平台出现，�
 #### `x-rpc-device_fp`
 
 发送POST请求至`https://public-data-api.mihoyo.com/device-fp/api/getFp`以获得。
+
+#### `x-rpc-app_id`
+
+一般为`bll8iq97cem8`。
 
 #### `x-rpc-device_id`
 
@@ -276,6 +280,24 @@ const final = `${t},${r},${ds}` // 最终结果
 
 若API无需登录账号，就不需要设置Cookie。
 
+**API的Cookie标识格式**
+
+像SToken，只有1种字段值，或是像LToken，2种字段值都被兼容，则只标识Cookie名。
+
+```markdown
+> _需要验证Cookie_
+> 
+> SToken
+```
+
+若像Account ID，有多种字段值，将会在其之后标识需要的字段名。若有多个兼容的字段名，使用“、”分隔。
+
+```markdown
+> _需要验证Cookie_
+> 
+> Account ID：`account_id`
+```
+
 ### 米游社
 
 需要哪些Cookie取决于以下因素：
@@ -288,7 +310,7 @@ const final = `${t},${r},${ds}` // 最终结果
 
 即`ltoken_v2`和`ltoken`。
 
-`ltoken_v2`多用于查询用户的游戏账号信息。
+`ltoken_v2`和`ltoken`多用于查询用户的游戏账号信息。
 
 必须与[`ltmid_v2`](#mihoyo-id)一起使用。
 
@@ -300,22 +322,41 @@ const final = `${t},${r},${ds}` // 最终结果
 
 必须与[`mid`](#mihoyo-id)一起使用。
 
-#### Mihoyo ID
+#### MiHoYo ID
 
 分为与[LToken](#ltoken)一起使用的`ltmid_v2`，和与[SToken](#stoken)一起使用的`mid`
 
 `ltmid_v2`和`mid`的值是相同，对应一个账号。
 
+#### Account ID
+
+有`account_id_v2`、`account_id`、`login_uid`、`ltuid`和`stuid`。
+
+UID即米游社UID。这个Cookie不是必须传递的。
+
 #### Login Ticket
 
 即`login_ticket`。
 
-`login_ticket`是米游社的登录凭证，隔一段时间刷新。作用未知。
+`login_ticket`是米游社的登录凭证，可用于获取[SToken](#stoken)和[LToken](#ltoken)。隔一段时间刷新。
+
+通常在[米游社通行证](https://user.mihoyo.com/)中登录获得。
 
 #### Cookie Token
 
-即`cookie_token_v2`。
+分为`cookie_token`和`cookie_token_v2`。
 
-`cookie_token_v2`隔一段时间刷新。作用未知。
+`cookie_token`与`cookie_token_v2`的值不相同。Cookie Token用于签到福利。
 
+#### Game Token
+
+即`game_token`。
+
+`game_token`为游戏登录凭证，通常用于扫码登录后获取其它Token。
+
+#### Hk4e Token
+
+即`e_hk4e_token`。
+
+`e_hk4e_token`为米游社账号的《原神》账号标识，通常可以在《原神》的网页活动中见到。
 

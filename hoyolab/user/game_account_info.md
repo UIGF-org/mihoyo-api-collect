@@ -1833,7 +1833,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | authkey_ver | num | 1 | |
-| authkey | str | 验证密钥，用于标识游戏账号 | 获取方法：<br>1. 游戏内打开一次跃迁记录页面，然后在“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过Cookie获取用户`authkey`](hoyolab/user/info.md#通过cookie获取用户authkey) |
+| authkey | str | 验证密钥，用于标识游戏账号 | 获取方法：<br>1. 游戏内打开一次跃迁记录页面，然后在“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过Cookie获取用户`authkey`B](hoyolab/user/info.md#通过cookie获取用户authkeyb) |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
 | size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
 | end_id | num | 见下文的说明 | |
@@ -2042,7 +2042,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | authkey_ver | num | 1 | |
-| authkey | str | 验证密钥，用于标识游戏账号 | 获取方法：<br>1. 游戏内打开一次跃迁记录页面，然后在“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过Cookie获取用户`authkey`](hoyolab/user/info.md#通过cookie获取用户authkey) |
+| authkey | str | 验证密钥，用于标识游戏账号 | 获取方法：<br>1. 游戏内打开一次跃迁记录页面，然后在“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过Cookie获取用户`authkey`B](hoyolab/user/info.md#通过cookie获取用户authkeyb) |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
 | size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
 | end_id | num | 见下文的说明 | |
