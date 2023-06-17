@@ -346,7 +346,7 @@ UID即米游社UID。这个Cookie不是必须传递的。
 
 分为`cookie_token`和`cookie_token_v2`。
 
-`cookie_token`与`cookie_token_v2`的值不相同。Cookie Token用于签到福利。
+`cookie_token`与`cookie_token_v2`的值不相同。
 
 #### Game Token
 

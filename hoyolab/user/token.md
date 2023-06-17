@@ -258,8 +258,8 @@ _请求方式：GET_
   "retcode": 0,
   "message": "OK",
   "data": {
-    "uid": "317832114",
-    "cookie_token": "O4ljtFwozX0UzHg29PDffnEBQPMYxmzcEJpe5Fgz"
+    "uid": "***",
+    "cookie_token": "***"
   }
 }
 ```
