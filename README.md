@@ -79,7 +79,7 @@
   - [ ] [登录](hoyolab/login)
     - [ ] [密码登录](hoyolab/login/password.md)
     - [ ] [验证码登录](hoyolab/login/sms.md)
-    - [ ] [扫码登录](hoyolab/login/qrcode.md)
+    - [x] [扫码登录](hoyolab/login/qrcode.md)
   - [ ] [论坛](hoyolab/forum)
     - [ ] [基本信息](hoyolab/forum/info.md)
   - [ ] [文章](hoyolab/article)
@@ -88,7 +88,7 @@
     - [ ] [公告](hoyolab/article/announcement.md)
   - [ ] [用户](hoyolab/user)
     - [ ] [用户信息](hoyolab/user/info.md)
-    - [ ] [用户Token](hoyolab/user/token.md)
+    - [x] [用户Token](hoyolab/user/token.md)
     - [ ] [用户游戏信息](hoyolab/user/game_account_info.md)
 
 ---
