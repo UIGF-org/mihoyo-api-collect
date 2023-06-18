@@ -179,7 +179,7 @@ from hashlib import md5
 
 # 将要使用的salt，此为4X salt
 salt = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
-# body和query一般来说不会同时存在。毕竟body只有POST请求才有，query只有GET请求才有
+# body和query一般来说不会同时存在
 # 可以使用json库的dumps函数将对象转为JSON字符串
 # body = json.dumps({"role": "123456789"}, sort_keys=True)
 body = '{"role": "123456789"}'
@@ -200,13 +200,16 @@ final = f"{t},{r},{ds}" # 最终结果
 ```
 
 JavaScript：
-```js
+```javascript
 import md5 from 'md5'
 
 const salt = "xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs"
-
+// body和query一般来说不会同时存在
+// 可以使用内置的JSON.stringify函数将对象或数组转换为JSON字符串
+// const body = JSON.stringify({role: "123456789"})
 const body = '{"role": "123456789"}'
-const query = "server=cn_gf01&role_id=123456789"
+// 需要对URL参数进行排序
+const query = "server=cn_gf01&role_id=123456789".split('&').sort().join('&')
 
 const t = Math.floor(Date.now() / 1000)
 let r = Math.floor(Math.random() * 100001 + 100000)
@@ -215,7 +218,7 @@ if (r == 100000) {
 }
 // const r = Math.floor(Math.random() * 100001 + 100001)
 
-const main = f"salt={salt}&t={t}&r={r}&b={body}&q={query}"
+const main = `salt=${salt}&t=${t}&r=${r}&b=${body}&q=${query}`
 const ds = md5(main)
 
 const final = `${t},${r},${ds}` // 最终结果
@@ -254,7 +257,7 @@ final = f"{t},{r},{ds}" # 最终结果。
 ```
 
 JavaScript：
-```js
+```javascript
 import md5 from 'md5'
 
 const salt = "ZSHlXeQUBis52qD1kEgKt5lUYed4b7Bb"
@@ -262,11 +265,11 @@ const lettersAndNumbers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0
 
 const t = Math.floor(Date.now() / 1000)
 let r = ""
-for (let i;i < 6;i++) {
+for (let i; i < 6; i++) {
   r += lettersAndNumbers[Math.floor(Math.random() * lettersAndNumbers.length)]
 }
 
-const main = f"salt={salt}&t={t}&r={r}"
+const main = `salt=${salt}&t=${t}&r=${r}`
 const ds = md5(main)
 
 const final = `${t},${r},${ds}` // 最终结果
