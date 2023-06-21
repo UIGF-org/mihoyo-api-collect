@@ -398,9 +398,9 @@ _请求方式：POST_
 
 > _需要验证请求头_
 >
-> `x-rpc-client_type`：`2`
+> `x-rpc-client_type`：`5`
 >
-> K2`salt`
+> LK2`salt`
 >
 > `DS1`
 
