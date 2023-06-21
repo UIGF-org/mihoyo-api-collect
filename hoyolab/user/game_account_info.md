@@ -1833,7 +1833,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | authkey_ver | num | 1 | |
-| authkey | str | 验证密钥，用于标识游戏账号 | 获取方法：<br>1. 游戏内打开一次跃迁记录页面，然后在“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过Cookie获取用户`authkey`B](hoyolab/user/info.md#通过cookie获取用户authkeyb) |
+| authkey | str | 用于标识游戏账号的Auth Key B | 获取方法：<br>1. 游戏内打开一次祈愿记录页面，然后在“游戏安装目录/YuanShen_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过SToken获取账号Auth Key B](hoyolab/user/token.md#通过stoken获取账号auth-key-b)使请求体字段`auth_appid`为`webview_gacha` |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
 | size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
 | end_id | num | 见下文的说明 | |
@@ -2042,7 +2042,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | authkey_ver | num | 1 | |
-| authkey | str | 验证密钥，用于标识游戏账号 | 获取方法：<br>1. 游戏内打开一次跃迁记录页面，然后在“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过Cookie获取用户`authkey`B](hoyolab/user/info.md#通过cookie获取用户authkeyb) |
+| authkey | str | 用于标识游戏账号的Auth Key B | 获取方法：<br>1. 游戏内打开一次跃迁记录页面，然后在“游戏安装目录/StarRail_Data/webCaches/Cache/Cache_Data/data_2”，寻找类似“<https://api-takumi.mihoyo.com/common/gacha_record/api/getGachaLog……>”的链接，该参数的值在其中<br>2. [通过SToken获取账号Auth Key B](hoyolab/user/token.md#通过stoken获取账号auth-key-b)使请求体字段`auth_appid`为`webview_gacha` |
 | lang | str | 语言，即返回数据中抽到的项目名称<br>zh-cn zh 简体中文<br>zh-tw 繁体中文<br>en-us en 英语<br>ru-ru ru 俄语<br>ja-jp ja 日语<br>以及其它国际语言代码 | |
 | size | num | 返回数据中的最大数据数量。最小为0，最大为20。若小于0，则返回0个数据；若大于20，则返回最大20个数据 | |
 | end_id | num | 见下文的说明 | |
@@ -2083,16 +2083,16 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | uid | str | 该玩家的UID | |
-| gacha_id | str | 待调查 | |
-| gacha_type | str | 跃迁池 | |
+| gacha_id | str | 该跃迁记录所在的跃迁池的ID | |
+| gacha_type | str | 跃迁池 | 与请求参数中的`gacha_type`参数的值相同 |
 | item_id | str | 该项目的ID | |
 | count | str | 1 | |
 | time | str | 该玩家抽到该项目的日期 | |
 | name | str | 抽到的项目名称 | 文本语言通过参数`lang`指定 |
 | lang | str | 语言 | 与请求参数中的`lang`参数的值相同 |
 | item_type | str | 该项目的类别 | 文本语言通过参数`lang`指定 |
-| rank_type | str | 3 | |
-| id | str | 似乎前10位数字为接近于抽到该项目的时间的Unix时间戳，后面的数字含义未知 | |
+| rank_type | str | 该项目的稀有度 | |
+| id | str | 该跃迁记录的ID，可用于翻页获取跃迁记录 | |
 
 <details>
 <summary>查看示例</summary>

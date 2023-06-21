@@ -7,8 +7,8 @@
   - [通过Game Token获取Cookie Token](#通过game-token获取cookie-token)
   - [通过Cookie Token获取Hk4e Token](#通过cookie-token获取hk4e-token)
 - [Auth Key](#auth-key)
-  - [通过SToken获取用户Auth Key A](#通过stoken获取账号auth-key-a)
-  - [通过SToken获取用户Auth Key B](#通过stoken获取账号auth-key-b)
+  - [通过SToken获取账号Auth Key A](#通过stoken获取账号auth-key-a)
+  - [通过SToken获取账号Auth Key B](#通过stoken获取账号auth-key-b)
 
 ---
 
@@ -277,20 +277,37 @@ _请求方式：POST_
 > 
 > Cookie Token：`cookie_token`
 
-`https://api-takumi.mihoyo.com/auth/api/getCookieAccountInfoByGameToken`
+`https://api-takumi.mihoyo.com/common/badge/v1/login/account`
 
-**参数：**
+**JSON请求：**
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| account_id | num | 对应的米游社账号UID | |
-
+| region | str | 《原神》账号对应的服务器名称 | |
+| uid | str | Cookie对应米游社账号已绑定的《原神》账号的UID | |
+| game_biz | str | hk4e_cn | |
 
 **JSON返回：**
 
 根对象：
 
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码<br>-1002 游戏账号未绑定Cookie对应的账号 | |
+| message | str | 返回消息 | |
+| data | obj | 《原神》账号的基础信息 | |
 
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| game | str | hk4e | |
+| region | str | 《原神》账号对应的服务器的名称 | |
+| game_uid | str | 《原神》账号的UID | |
+| game_biz | str | hk4e_cn | |
+| level | num | 《原神》账号的冒险等级 | |
+| nickname | str | 《原神》账号昵称 | |
+| region_name | str | 《原神》账号对应服务器的称呼 | |
 
 <details>
 <summary>查看示例</summary>
@@ -338,7 +355,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码<br>1002 请求体的`game_biz`字段不正确 | |
+| retcode | num | 返回码<br>1002 请求体中有字段不正确 | |
 | message | str | 返回消息 | |
 | data | obj | Auth Key A | |
 
@@ -383,7 +400,7 @@ _请求方式：POST_
 >
 > `x-rpc-client_type`：`2`
 >
-> LK`salt`
+> K2`salt`
 >
 > `DS1`
 
@@ -398,8 +415,10 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| game_biz | str | 获取的`authkey`B的游戏<br>hk4e_cn 《原神》国服<br>hkrpg_cn 《崩坏：星穹铁道》国服<br> | |
+| game_biz | str | 获取的Auth Key B的游戏<br>hk4e_cn 《原神》国服<br>hkrpg_cn 《崩坏：星穹铁道》国服<br> | |
 | game_uid | num | 用户的游戏UID | |
+| region | str | 用户游戏ID对应的服务器的名称 | |
+| auth_appid | str | 获取的Auth Key B的类型<br>im_ccs 米游社<br>csc 米游社联系客服页面<br>webview_gacha 游戏抽卡记录 | |
 
 **JSON返回：**
 
@@ -407,7 +426,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码<br>1002 请求体的`game_biz`字段不正确 | |
+| retcode | num | 返回码<br>1002 请求体中有字段不正确<br>1016 游戏账号未绑定Cookie对应的账号 | |
 | message | str | 返回消息 | |
 | data | obj | Auth Key B | |
 
