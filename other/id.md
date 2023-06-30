@@ -230,7 +230,7 @@ UIGF收集了角色、物品、武器的ID，[此处](https://uigf.org/zh/API.ht
 | prod_gf_cn | 官服 | 国服 |
 | prod_qd_cn | 渠道服 | 国服 |
 | prod_official_asia | 亚服 | 国际服 |
-| prod_official_euro | 欧服 | 国际服 |
+| prod_official_eur | 欧服 | 国际服 |
 | prod_official_usa | 美服 | 国际服 |
 | prod_official_cht | 港澳台服 | 国际服 |
 
