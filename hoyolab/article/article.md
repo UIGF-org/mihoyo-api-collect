@@ -1,3 +1,5 @@
+
+
 # 论坛文章
 
 - [获取首页信息](#获取首页信息)
@@ -79,12 +81,12 @@ _请求方式：GET_
 | subject | str | 文章标题 | |
 | content | str | 简略的文章内容 | 获取完整内容请使用：[获取完整文章信息](#获取完整文章信息) |
 | cover | str | 封面链接 | |
-| view_type | num | 待调查 | |
+| view_type               | num  | 文章呈现类型<br />1 内容以文字类文章为主<br />2 内容以图片类文章为主<br />5 内容以视频类文章为主 | 文字类文章示例：[【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41059886)<br />图片类文章示例：[「可莉」头像 一起来玩吧~~~~【观测枢】-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41214610)<br />视频类文章示例：[【欢愉一夏主题视频】3.8游园会BGM神还原~(观测枢)-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41175339) |
 | created_at | num | 文章创建的Unix时间戳 | |
 | images | arr | 文章中每张图片的链接 | |
 | post_status | obj | 文章状态数据 | |
 | topic_ids | arr | 文章的话题的ID | |
-| view_status | num | 待调查 | |
+| view_status | num | 待调查 |  |
 | max_floor | num | 待调查 | |
 | is_original | num | 是否是原创文章<br/>1 原创 | |
 | republish_authorization | num | 文章转载授权<br/>2 已开启创作声明，允许规范转载 | |
@@ -224,7 +226,7 @@ _请求方式：GET_
 | forum_id | num | 所属论坛的ID | |
 | forum_name | str | 所属论坛的名称 | |
 | banner | str | 文章封面链接 | |
-| view_type | num | 待调查 | | 
+| view_type  | num  | 文章呈现类型<br />1 内容以文字类文章为主<br />2 内容以图片类文章为主<br />5 内容以视频类文章为主 | 文字类文章示例：[【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41059886)<br />图片类文章示例：[「可莉」头像 一起来玩吧~~~~【观测枢】-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41214610)<br />视频类文章示例：[【欢愉一夏主题视频】3.8游园会BGM神还原~(观测枢)-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41175339) |
 
 
 <details>
@@ -498,6 +500,7 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
+|  |  |  |  |
 
 
 <details>
@@ -675,12 +678,430 @@ _请求方式：GET_
 | --- | ---- | ---- | ---- |
 | retcode | num | 返回码<br>1101 参数`post_id`对应的文章不存在 | |
 | message | str | 返回消息 | |
-| data | obj | 首页信息 | |
+| data | obj | 文章信息 | |
+
+`data`对象→`post`对象：
+
+| 字段               | 类型        | 内容                       | 备注                                |
+| ------------------ | ----------- | -------------------------- | ----------------------------------- |
+| post               | obj         | 文章内容                   |                                     |
+| forum              | obj         | 板块信息                   |                                     |
+| topics             | obj         | 文章的标签                 |                                     |
+| user               | obj         | 发布者的信息               |                                     |
+| stat               | obj         | 文章统计信息               |                                     |
+| help_sys           | null        | 待调查                     |                                     |
+| cover              | null \| obj | 文章封面                   | 若发布者未设置封面，则该项为null    |
+| last_modify_time   | num         | 该文章的上次修改时间       | 时间为unix时间戳，视频类文章可能为0 |
+| vod_list           | arr         | 视频的分片信息             | 非视频类文章的长度为0               |
+| link_card_list     | arr         | 该文章所含的链接卡片的信息 |                                     |
+| help_sys           | null        | 待调查                     |                                     |
+| is_official_master | bool        | 待调查                     |                                     |
+| is_user_master     | bool        | 待调查                     |                                     |
+| hot_reply_exist    | bool        | 待调查                     |                                     |
+| vote_count         | num         | 待调查                     |                                     |
+| recommend_type     | str         | 待调查                     |                                     |
+| collection         | arr         | 合集信息                   |                                     |
+| is_block_on        | bool        | 待调查                     |                                     |
+| forum_rank_info    | null        | 待调查                     |                                     |
+| news_meta          | null        | 待调查                     |                                     |
+
+`data`对象→`post`对象→`post`对象：
+
+| 字段                    | 类型 | 内容                                                         | 备注                                                         |
+| ----------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| game_id                 | num  | 游戏id                                                       |                                                              |
+| post_id                 | str  | 文章id                                                       |                                                              |
+| f_forum_id              | num  | 板块id                                                       |                                                              |
+| uid                     | str  | 发布者的uid                                                  |                                                              |
+| subject                 | str  | 文章标题                                                     |                                                              |
+| content                 | str  | 文章内容                                                     | 内容为html结构                                               |
+| cover                   | str  | 文章封面                                                     | 若发布者未设置封面，则该项为空字符串                         |
+| view_type               | num  | 文章呈现类型<br />1 内容以文字类文章为主<br />2 内容以图片类文章为主<br />5 内容以视频类文章为主 | 文字类文章示例：[【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41059886)<br />图片类文章示例：[「可莉」头像 一起来玩吧~~~~【观测枢】-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41214610)<br />视频类文章示例：[【欢愉一夏主题视频】3.8游园会BGM神还原~(观测枢)-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41175339) |
+| created_at              | num  | 文章发布时间                                                 | 时间为unix时间戳                                             |
+| image                   | arr  | 文章中出现的图片                                             |                                                              |
+| post_status             | obj  | 文章状态                                                     |                                                              |
+| topic_ids               | arr  | 文章所涉及到的标签id                                         |                                                              |
+| view_status             | num  | 待调查                                                       |                                                              |
+| max_floor               | num  | 待调查                                                       |                                                              |
+| is_original             | num  | 是否为原创内容                                               |                                                              |
+| republish_authorization | num  | 待调查                                                       |                                                              |
+| reply_time              | str  | 最后一次的回复时间                                           |                                                              |
+| is_deleted              | num  | 是否被删除                                                   |                                                              |
+| is_interactive          | bool | 是否为互动内容                                               |                                                              |
+| structured_content      | str  | 结构化的内容                                                 | 可使用json解析器对其进行解析                                 |
+| structured_content_rows | arr  | 待调查                                                       |                                                              |
+| review_id               | num  | 待调查                                                       |                                                              |
+| is_profit               | bool | 待调查                                                       |                                                              |
+| is_in_profit            | bool | 待调查                                                       |                                                              |
+| updated_at              | num  | 上次更新时间                                                 | 时间为unix时间戳                                             |
+| deleted_at              | num  | 删除时间                                                     | 时间为unix时间戳                                             |
+| pre_pub_status          | num  | 待调查                                                       |                                                              |
+| cate_id                 | num  | 待调查                                                       |                                                              |
+| profit_post_status      | num  | 待调查                                                       |                                                              |
+| audit_status            | num  | 待调查                                                       |                                                              |
+| meta_content            | str  | 简介信息                                                     | 似乎仅在视频类文章中出现，可使用json解析器对其进行解析       |
+| is_missing              | bool | 待调查                                                       |                                                              |
+| block_reply_img         | num  | 待调查                                                       |                                                              |
+| is_showing_missing      | bool | 待调查                                                       |                                                              |
+| block_latest_reply_time | num  | 待调查                                                       |                                                              |
+| selected_comment        | num  | 待调查                                                       |                                                              |
+
+`data`对象→`post`对象→`structured_content`数组→对象：
+
+| 字段       | 类型       | 内容                     | 备注                                                         |
+| ---------- | ---------- | ------------------------ | ------------------------------------------------------------ |
+| insert     | str \| obj | 要插入的内容             | 该字段可能为字符串也可能为对象；如果为换行符 "\n" ，则代表当前段落结束 |
+| attributes | obj        | 该部分内容需要的额外样式 | 非必须；若不存在该字段，则不需要增加额外的样式               |
+
+`data`对象→`post`对象→`structured_content`数组→对象→`insert`对象：
+
+| 字段      | 类型 | 内容         | 备注                   |
+| --------- | ---- | ------------ | ---------------------- |
+| image     | str  | 图片链接     | 以下均为可能出现的字段 |
+| link_card | obj  | 链接卡片信息 |                        |
+| divider   | str  | 分割线       |                        |
+| lottery   | obj  | 抽奖         |                        |
+
+`data`对象→`post`对象→`structured_content`数组→对象→`attributes`对象：
+
+| 字段   | 类型 | 内容                  | 备注                        |
+| ------ | ---- | --------------------- | --------------------------- |
+| color  | str  | 该处内容所需的RGB颜色 |                             |
+| bold   | bool | 该处内容是否需要加粗  |                             |
+| height | num  | 图片的长              |                             |
+| width  | num  | 图片的宽              |                             |
+| size   | num  | 图片大小              |                             |
+| ext    | str  | 图片格式              |                             |
+| align  | str  | 对齐方式              | 类似于css中的text-align字段 |
+
+`data`对象→`post`对象→`forum`对象：
+
+| 字段       | 类型 | 内容             | 备注 |
+| ---------- | ---- | ---------------- | ---- |
+| id         | num  | 板块id           |      |
+| name       | str  | 板块名称         |      |
+| icon       | str  | 板块图标         |      |
+| game_id    | num  | 板块所属的游戏id |      |
+| forum_cate | null | 待调查           |      |
+
+`data`对象→`post`对象→`topics`列表→对象：
+
+| 字段           | 类型 | 内容     | 备注 |
+| -------------- | ---- | -------- | ---- |
+| id             | num  | 标签id   |      |
+| name           | str  | 标签名   |      |
+| cover          | str  | 标签封面 |      |
+| is_top         | bool | 待调查   |      |
+| is_good        | bool | 待调查   |      |
+| is_interactive | bool | 待调查   |      |
+| game_id        | num  | 待调查   |      |
+| content_type   | num  | 待调查   |      |
+
+`data`对象→`post`对象→`user`对象：
+
+| 字段          | 类型 | 内容             | 备注 |
+| ------------- | ---- | ---------------- | ---- |
+| uid           | str  | 用户uid          |      |
+| nickname      | str  | 用户昵称         |      |
+| introduce     | str  | 用户简介         |      |
+| avatar        | str  | 用户头像id       |      |
+| gender        | num  | 用户性别         |      |
+| certification | obj  | 用户认证信息     |      |
+| level_exp     | obj  | 用户社区经验     |      |
+| is_following  | bool | 是否为正在关注   |      |
+| is_followed   | bool | 是否为曾经关注的 |      |
+| avatar_url    | str  | 用户头像链接     |      |
+| pendant       | str  | 用户头像挂件     |      |
+
+`data`对象→`post`对象→`user`对象→`certification`对象：
+
+| 字段  | 类型 | 内容                                                 | 备注 |
+| ----- | ---- | ---------------------------------------------------- | ---- |
+| type  | num  | 认证类别<br />1 社区或游戏官方<br />2 已认证的创作者 |      |
+| label | str  | 认证具体信息                                         |      |
+
+`data`对象→`post`对象→`user`对象→`level_exp`对象：
+
+| 字段  | 类型 | 内容           | 备注 |
+| ----- | ---- | -------------- | ---- |
+| level | num  | 用户的社区等级 |      |
+| exp   | num  | 用户的社区经验 |      |
+
+`data`对象→`post`对象→`collection`对象：
+
+| 字段                | 类型 | 内容                           | 备注 |
+| ------------------- | ---- | ------------------------------ | ---- |
+| prev_post_id        | str  | 该集合下的上一篇文章的文章id   |      |
+| next_post_id        | str  | 该集合下的下一篇文章的文章id   |      |
+| collection_id       | str  | 集合id                         |      |
+| cur                 | num  | 当前文章在该集合下的指针       |      |
+| total               | num  | 该集合下的所有文章数量         |      |
+| collection_title    | str  | 集合标题                       |      |
+| prev_post_game_id   | num  | 该集合下的上一篇文章的游戏id   |      |
+| next_post_game_id   | num  | 该集合下的下一篇文章的游戏id   |      |
+| prev_post_view_type | num  | 该集合下的上一篇文章的呈现类型 |      |
+| next_post_view_type | num  | 该集合下的下一篇文章的呈现类型 |      |
+
+`data`对象→`post`对象→`link_card_list`数组→对象：
+
+| 字段                   | 类型 | 内容         | 备注 |
+| ---------------------- | ---- | ------------ | ---- |
+| link_type              | num  | 待调查       |      |
+| origin_url             | str  | 卡片跳转链接 |      |
+| landing_url            | str  | 卡片跳转链接 |      |
+| cover                  | str  | 卡片封面链接 |      |
+| title                  | str  | 卡片标题     |      |
+| origin_user_avatar     | str  | 待调查       |      |
+| origin_user_nickname   | str  | 待调查       |      |
+| card_id                | str  | 卡片id       |      |
+| card_status            | num  | 卡片状态     |      |
+| market_price           | str  | 待调查       |      |
+| price                  | str  | 待调查       |      |
+| button_text            | str  | 待调查       |      |
+| landing_url_type       | num  | 待调查       |      |
+| card_meta              | null | 待调查       |      |
+| origin_user_avatar_url | str  | 待调查       |      |
 
 
 <details>
 <summary>查看示例</summary>
 
 ```json
+{
+  "data": {
+    "post": {
+      "post": {
+        "game_id": 2,
+        "post_id": "41059886",
+        "f_forum_id": 43,
+        "uid": "8625030",
+        "subject": "【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！",
+        "content": "<p>UID：100068298</p><p>万叶：更顺滑的扩体系</p><p>烟绯：平稳输出的重击角色</p><p>坎蒂丝：攻守兼备的水系第三</p><div class=\"ql-image\"><div class=\"ql-image-box\"><img src=\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/db192e0f21f2719c13c69bc85175f282_5699736559184340260.jpg\"></div></div><div class=\"ql-image\"><div class=\"ql-image-box\"><img src=\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/f8db66f0beb54e3423d3d8e6cacfd7e4_2535685064569067888.jpg\"></div></div><div class=\"ql-image\"><div class=\"ql-image-box\"><img src=\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/40b282ea11d5b7ac5c037b3af6016dc2_7874735248209588968.jpg\"></div></div><p><br></p><p class=\"ql-align-center\">想查看更多七圣相关内容</p><p class=\"ql-align-center\">不妨点击下方链接！（原神观测枢里啥都有！贼好看！233333）</p><p class=\"ql-align-center\"><br></p><div class=\"ql-link-card\"><a href=\"https://bbs.mihoyo.com/ys/strategy/summon?bbs_presentation_style=no_header\" target=\"_blank\" class=\"mhy-link-card card-normal\"><div class=\"card-cover\" style=\"background-image: url(&#34;https://img-static.mihoyo.com/card/bbs_entity_normal.png&#34;);\"></div> <div class=\"card-info\"><div class=\"card-title\">旅行者创作平台-观测枢-原神wiki旅行者创作平台-观测枢-原神wiki</div> </div></a></div><p class=\"ql-align-center\"><br></p><div class=\"ql-image ql-align-center\"><div class=\"ql-image-box\"><img src=\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/925d88ae002ac40aca17affb5eae12b8_8695567098614745990.jpeg\"></div></div>",
+        "cover": "",
+        "view_type": 1,
+        "created_at": 1688792222,
+        "images": [
+          "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/db192e0f21f2719c13c69bc85175f282_5699736559184340260.jpg",
+          "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/f8db66f0beb54e3423d3d8e6cacfd7e4_2535685064569067888.jpg",
+          "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/40b282ea11d5b7ac5c037b3af6016dc2_7874735248209588968.jpg",
+          "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/925d88ae002ac40aca17affb5eae12b8_8695567098614745990.jpeg"
+        ],
+        "post_status": {
+          "is_top": false,
+          "is_good": false,
+          "is_official": false
+        },
+        "topic_ids": [
+          818,
+          947,
+          1264,
+          1442
+        ],
+        "view_status": 1,
+        "max_floor": 5,
+        "is_original": 1,
+        "republish_authorization": 2,
+        "reply_time": "2023-07-13 16:04:27",
+        "is_deleted": 0,
+        "is_interactive": false,
+        "structured_content": "[{\"insert\":\"UID：100068298\\n万叶：更顺滑的扩体系\\n烟绯：平稳输出的重击角色\\n坎蒂丝：攻守兼备的水系第三\\n\"},{\"insert\":{\"image\":\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/db192e0f21f2719c13c69bc85175f282_5699736559184340260.jpg\"},\"attributes\":{\"height\":10187,\"width\":3401,\"size\":8673621,\"ext\":\"jpg\"}},{\"insert\":{\"image\":\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/f8db66f0beb54e3423d3d8e6cacfd7e4_2535685064569067888.jpg\"},\"attributes\":{\"height\":10187,\"width\":3401,\"size\":7970675,\"ext\":\"jpg\"}},{\"insert\":{\"image\":\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/40b282ea11d5b7ac5c037b3af6016dc2_7874735248209588968.jpg\"},\"attributes\":{\"height\":10187,\"width\":3401,\"size\":8702329,\"ext\":\"jpg\"}},{\"insert\":\"\\n想查看更多七圣相关内容\"},{\"insert\":\"\\n\",\"attributes\":{\"align\":\"center\"}},{\"insert\":\"不妨点击下方链接！（原神观测枢里啥都有！贼好看！233333）\"},{\"insert\":\"\\n\\n\",\"attributes\":{\"align\":\"center\"}},{\"insert\":{\"link_card\":{\"link_type\":1,\"origin_url\":\"https://bbs.mihoyo.com/ys/strategy/summon?bbs_presentation_style=no_header\",\"landing_url\":\"https://bbs.mihoyo.com/ys/strategy/summon?bbs_presentation_style=no_header\",\"cover\":\"https://img-static.mihoyo.com/card/bbs_entity_normal.png\",\"title\":\"旅行者创作平台-观测枢-原神wiki旅行者创作平台-观测枢-原神wiki\",\"card_id\":\"1619262852990324736\",\"card_status\":1,\"landing_url_type\":1}}},{\"insert\":\"\\n\",\"attributes\":{\"align\":\"center\"}},{\"insert\":{\"image\":\"https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/925d88ae002ac40aca17affb5eae12b8_8695567098614745990.jpeg\"},\"attributes\":{\"align\":\"center\",\"height\":270,\"width\":1080,\"size\":41161,\"ext\":\"jpg\"}},{\"insert\":\"\\n\"}]",
+        "structured_content_rows": [],
+        "review_id": 0,
+        "is_profit": false,
+        "is_in_profit": true,
+        "updated_at": 1689235467,
+        "deleted_at": 0,
+        "pre_pub_status": 0,
+        "cate_id": 0,
+        "profit_post_status": -2,
+        "audit_status": 0,
+        "meta_content": "",
+        "is_missing": false,
+        "block_reply_img": 1,
+        "is_showing_missing": false,
+        "block_latest_reply_time": 0,
+        "selected_comment": 2
+      },
+      "forum": {
+        "id": 43,
+        "name": "攻略",
+        "icon": "https://upload-bbs.mihoyo.com/upload/2020/09/14/ce666cea7c971b04e4b4a6fe0a9ebfd0.png",
+        "game_id": 2,
+        "forum_cate": null
+      },
+      "topics": [
+        {
+          "id": 818,
+          "name": "萌新冒险手册",
+          "cover": "https://upload-bbs.mihoyo.com/upload/2021/10/19/f71efba1fba54f7f0f9ecf97646007fb_4823359932407618155.png",
+          "is_top": false,
+          "is_good": false,
+          "is_interactive": false,
+          "game_id": 0,
+          "content_type": 2
+        },
+        {
+          "id": 947,
+          "name": "原神观测枢",
+          "cover": "https://upload-bbs.mihoyo.com/upload/2022/02/14/8efc5670a3dd0467bf7fb1866bd5d203_2630690909080422615.png",
+          "is_top": false,
+          "is_good": false,
+          "is_interactive": false,
+          "game_id": 0,
+          "content_type": 2
+        },
+        {
+          "id": 1264,
+          "name": "七圣召唤",
+          "cover": "https://upload-bbs.miyoushe.com/upload/2022/11/25/fbab7b47dce9d09cb1f06557531ac9a1_1617410903526086645.jpg",
+          "is_top": false,
+          "is_good": false,
+          "is_interactive": false,
+          "game_id": 0,
+          "content_type": 2
+        },
+        {
+          "id": 1442,
+          "name": "原神3.8攻略征集",
+          "cover": "https://bbs-static.miyoushe.com/static/2023/07/05/cd54aef8d8f13f8fe50e5969287afd23_1358935079530174555.jpg",
+          "is_top": false,
+          "is_good": false,
+          "is_interactive": false,
+          "game_id": 0,
+          "content_type": 3
+        }
+      ],
+      "user": {
+        "uid": "8625030",
+        "nickname": "疲惫不堪的嘤酱",
+        "introduce": "观测枢不知名编辑，《萌新手册》群：641333155",
+        "avatar": "100291",
+        "gender": 0,
+        "certification": {
+          "type": 2,
+          "label": "观测者、游戏领域作者、攻略作者"
+        },
+        "level_exp": {
+          "level": 16,
+          "exp": 75725
+        },
+        "is_following": false,
+        "is_followed": false,
+        "avatar_url": "https://img-static.mihoyo.com/communityweb/upload/15032157c9308b6caf01ad3df6ee8ea8.png",
+        "pendant": "https://upload-bbs.mihoyo.com/upload/2020/08/14/e1c20ea595bf737350b54fc28ba8114f_7790722755343149315.png"
+      },
+      "self_operation": {
+        "attitude": 0,
+        "is_collected": false
+      },
+      "stat": {
+        "view_num": 441,
+        "reply_num": 7,
+        "like_num": 97,
+        "bookmark_num": 1,
+        "forward_num": 1
+      },
+      "help_sys": null,
+      "cover": null,
+      "image_list": [
+        {
+          "url": "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/db192e0f21f2719c13c69bc85175f282_5699736559184340260.jpg",
+          "height": 10187,
+          "width": 3401,
+          "format": "jpg",
+          "size": "8673621",
+          "crop": null,
+          "is_user_set_cover": false,
+          "image_id": "141465208",
+          "entity_type": "IMG_ENTITY_POST",
+          "entity_id": "41059886",
+          "is_deleted": false
+        },
+        {
+          "url": "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/f8db66f0beb54e3423d3d8e6cacfd7e4_2535685064569067888.jpg",
+          "height": 10187,
+          "width": 3401,
+          "format": "jpg",
+          "size": "7970675",
+          "crop": null,
+          "is_user_set_cover": false,
+          "image_id": "141464931",
+          "entity_type": "IMG_ENTITY_POST",
+          "entity_id": "41059886",
+          "is_deleted": false
+        },
+        {
+          "url": "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/40b282ea11d5b7ac5c037b3af6016dc2_7874735248209588968.jpg",
+          "height": 10187,
+          "width": 3401,
+          "format": "jpg",
+          "size": "8702329",
+          "crop": null,
+          "is_user_set_cover": false,
+          "image_id": "141464962",
+          "entity_type": "IMG_ENTITY_POST",
+          "entity_id": "41059886",
+          "is_deleted": false
+        },
+        {
+          "url": "https://upload-bbs.miyoushe.com/upload/2023/07/08/8625030/925d88ae002ac40aca17affb5eae12b8_8695567098614745990.jpeg",
+          "height": 270,
+          "width": 1080,
+          "format": "jpg",
+          "size": "41161",
+          "crop": null,
+          "is_user_set_cover": false,
+          "image_id": "141465005",
+          "entity_type": "IMG_ENTITY_POST",
+          "entity_id": "41059886",
+          "is_deleted": false
+        }
+      ],
+      "is_official_master": false,
+      "is_user_master": false,
+      "hot_reply_exist": false,
+      "vote_count": 0,
+      "last_modify_time": 1688792279,
+      "recommend_type": "",
+      "collection": {
+        "prev_post_id": "39655694",
+        "next_post_id": "0",
+        "collection_id": "1609609",
+        "cur": 9,
+        "total": 9,
+        "collection_title": "七圣召唤",
+        "prev_post_game_id": 2,
+        "next_post_game_id": 0,
+        "prev_post_view_type": 1,
+        "next_post_view_type": 0
+      },
+      "vod_list": [],
+      "is_block_on": false,
+      "forum_rank_info": null,
+      "link_card_list": [
+        {
+          "link_type": 1,
+          "origin_url": "https://bbs.mihoyo.com/ys/strategy/summon?bbs_presentation_style=no_header",
+          "landing_url": "https://bbs.mihoyo.com/ys/strategy/summon?bbs_presentation_style=no_header",
+          "cover": "https://img-static.mihoyo.com/card/bbs_entity_normal.png",
+          "title": "旅行者创作平台-观测枢-原神wiki旅行者创作平台-观测枢-原神wiki",
+          "origin_user_avatar": "",
+          "origin_user_nickname": "",
+          "card_id": "1619262852990324736",
+          "card_status": 1,
+          "market_price": "",
+          "price": "",
+          "button_text": "",
+          "landing_url_type": 1,
+          "card_meta": null,
+          "origin_user_avatar_url": ""
+        }
+      ],
+      "news_meta": null
+    }
+  },
+  "message": "OK",
+  "retcode": 0
+}
 ```
 </details>
