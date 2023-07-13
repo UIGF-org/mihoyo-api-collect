@@ -226,7 +226,7 @@ _请求方式：GET_
 | forum_id | num | 所属论坛的ID | |
 | forum_name | str | 所属论坛的名称 | |
 | banner | str | 文章封面链接 | |
-| view_status | num  | 待调查         |      |
+| view_type  | num  | 文章呈现类型<br />1 内容以文字类文章为主<br />2 内容以图片类文章为主<br />5 内容以视频类文章为主 | 文字类文章示例：[【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41059886)<br />图片类文章示例：[「可莉」头像 一起来玩吧~~~~【观测枢】-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41214610)<br />视频类文章示例：[【欢愉一夏主题视频】3.8游园会BGM神还原~(观测枢)-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41175339) |
 
 
 <details>
@@ -739,12 +739,40 @@ _请求方式：GET_
 | cate_id                 | num  | 待调查                                                       |                                                              |
 | profit_post_status      | num  | 待调查                                                       |                                                              |
 | audit_status            | num  | 待调查                                                       |                                                              |
-| meta_content            | str  | 待调查                                                       |                                                              |
+| meta_content            | str  | 简介信息                                                     | 似乎仅在视频类文章中出现，可使用json解析器对其进行解析       |
 | is_missing              | bool | 待调查                                                       |                                                              |
 | block_reply_img         | num  | 待调查                                                       |                                                              |
 | is_showing_missing      | bool | 待调查                                                       |                                                              |
 | block_latest_reply_time | num  | 待调查                                                       |                                                              |
 | selected_comment        | num  | 待调查                                                       |                                                              |
+
+`data`对象→`post`对象→`structured_content`数组→对象：
+
+| 字段       | 类型       | 内容                     | 备注                                                         |
+| ---------- | ---------- | ------------------------ | ------------------------------------------------------------ |
+| insert     | str \| obj | 要插入的内容             | 该字段可能为字符串也可能为对象；如果为换行符 "\n" ，则代表当前段落结束 |
+| attributes | obj        | 该部分内容需要的额外样式 | 非必须；若不存在该字段，则不需要增加额外的样式               |
+
+`data`对象→`post`对象→`structured_content`数组→对象→`insert`对象：
+
+| 字段      | 类型 | 内容         | 备注                   |
+| --------- | ---- | ------------ | ---------------------- |
+| image     | str  | 图片链接     | 以下均为可能出现的字段 |
+| link_card | obj  | 链接卡片信息 |                        |
+| divider   | str  | 分割线       |                        |
+| lottery   | obj  | 抽奖         |                        |
+
+`data`对象→`post`对象→`structured_content`数组→对象→`attributes`对象：
+
+| 字段   | 类型 | 内容                  | 备注                        |
+| ------ | ---- | --------------------- | --------------------------- |
+| color  | str  | 该处内容所需的RGB颜色 |                             |
+| bold   | bool | 该处内容是否需要加粗  |                             |
+| height | num  | 图片的长              |                             |
+| width  | num  | 图片的宽              |                             |
+| size   | num  | 图片大小              |                             |
+| ext    | str  | 图片格式              |                             |
+| align  | str  | 对齐方式              | 类似于css中的text-align字段 |
 
 `data`对象→`post`对象→`forum`对象：
 
@@ -787,10 +815,10 @@ _请求方式：GET_
 
 `data`对象→`post`对象→`user`对象→`certification`对象：
 
-| 字段  | 类型 | 内容         | 备注                                   |
-| ----- | ---- | ------------ | -------------------------------------- |
-| type  | num  | 认证类别     | 1 社区或游戏官方<br />2 已认证的创作者 |
-| label | str  | 认证具体信息 |                                        |
+| 字段  | 类型 | 内容                                                 | 备注 |
+| ----- | ---- | ---------------------------------------------------- | ---- |
+| type  | num  | 认证类别<br />1 社区或游戏官方<br />2 已认证的创作者 |      |
+| label | str  | 认证具体信息                                         |      |
 
 `data`对象→`post`对象→`user`对象→`level_exp`对象：
 
@@ -814,7 +842,7 @@ _请求方式：GET_
 | prev_post_view_type | num  | 该集合下的上一篇文章的呈现类型 |      |
 | next_post_view_type | num  | 该集合下的下一篇文章的呈现类型 |      |
 
-`data`对象→`post`对象→`link_card_list`列表→对象：
+`data`对象→`post`对象→`link_card_list`数组→对象：
 
 | 字段                   | 类型 | 内容         | 备注 |
 | ---------------------- | ---- | ------------ | ---- |
