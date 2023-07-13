@@ -692,15 +692,15 @@ _请求方式：GET_
 | help_sys           | null        | 待调查                     |                                     |
 | cover              | null \| obj | 文章封面                   | 若发布者未设置封面，则该项为null    |
 | last_modify_time   | num         | 该文章的上次修改时间       | 时间为unix时间戳，视频类文章可能为0 |
-| vod_list           | list        | 视频的分片信息             | 非视频类文章的长度为0               |
-| link_card_list     | list        | 该文章所含的链接卡片的信息 |                                     |
+| vod_list           | arr         | 视频的分片信息             | 非视频类文章的长度为0               |
+| link_card_list     | arr         | 该文章所含的链接卡片的信息 |                                     |
 | help_sys           | null        | 待调查                     |                                     |
 | is_official_master | bool        | 待调查                     |                                     |
 | is_user_master     | bool        | 待调查                     |                                     |
 | hot_reply_exist    | bool        | 待调查                     |                                     |
 | vote_count         | num         | 待调查                     |                                     |
 | recommend_type     | str         | 待调查                     |                                     |
-| collection         | list        | 合集信息                   |                                     |
+| collection         | arr         | 合集信息                   |                                     |
 | is_block_on        | bool        | 待调查                     |                                     |
 | forum_rank_info    | null        | 待调查                     |                                     |
 | news_meta          | null        | 待调查                     |                                     |
@@ -718,9 +718,9 @@ _请求方式：GET_
 | cover                   | str  | 文章封面                                                     | 若发布者未设置封面，则该项为空字符串                         |
 | view_type               | num  | 文章呈现类型<br />1 内容以文字类文章为主<br />2 内容以图片类文章为主<br />5 内容以视频类文章为主 | 文字类文章示例：[【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41059886)<br />图片类文章示例：[「可莉」头像 一起来玩吧~~~~【观测枢】-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41214610)<br />视频类文章示例：[【欢愉一夏主题视频】3.8游园会BGM神还原~(观测枢)-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41175339) |
 | created_at              | num  | 文章发布时间                                                 | 时间为unix时间戳                                             |
-| image                   | list | 文章中出现的图片                                             |                                                              |
+| image                   | arr  | 文章中出现的图片                                             |                                                              |
 | post_status             | obj  | 文章状态                                                     |                                                              |
-| topic_ids               | list | 文章所涉及到的标签id                                         |                                                              |
+| topic_ids               | arr  | 文章所涉及到的标签id                                         |                                                              |
 | view_status             | num  | 待调查                                                       |                                                              |
 | max_floor               | num  | 待调查                                                       |                                                              |
 | is_original             | num  | 是否为原创内容                                               |                                                              |
@@ -729,7 +729,7 @@ _请求方式：GET_
 | is_deleted              | num  | 是否被删除                                                   |                                                              |
 | is_interactive          | bool | 是否为互动内容                                               |                                                              |
 | structured_content      | str  | 结构化的内容                                                 | 可使用json解析器对其进行解析                                 |
-| structured_content_rows | list | 待调查                                                       |                                                              |
+| structured_content_rows | arr  | 待调查                                                       |                                                              |
 | review_id               | num  | 待调查                                                       |                                                              |
 | is_profit               | bool | 待调查                                                       |                                                              |
 | is_in_profit            | bool | 待调查                                                       |                                                              |
@@ -794,10 +794,10 @@ _请求方式：GET_
 
 `data`对象→`post`对象→`user`对象→`level_exp`对象：
 
-| 字段  | 类型 | 内容         | 备注 |
-| ----- | ---- | ------------ | ---- |
-| level | num  | 用户社区等级 |      |
-| exp   | num  | 用户社区经验 |      |
+| 字段  | 类型 | 内容           | 备注 |
+| ----- | ---- | -------------- | ---- |
+| level | num  | 用户的社区等级 |      |
+| exp   | num  | 用户的社区经验 |      |
 
 `data`对象→`post`对象→`collection`对象：
 
