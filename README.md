@@ -134,6 +134,12 @@
 
 ---
 
+## 贡献
+
+[![contributors](https://opencollective.com/mihoyo-api-collect/contributors.svg?width=860&button=false)](https://github.com/UIGF-org/mihoyo-api-collect/graphs/contributors)
+
+---
+
 ## 相关项目
 
 - [Star Rail Warp Export](https://github.com/biuuu/star-rail-warp-export) - 星穹铁道跃迁记录导出工具。
