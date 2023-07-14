@@ -740,7 +740,7 @@ _请求方式：GET_
 | cate_id                 | num  | 待调查                                                       |                                                              |
 | profit_post_status      | num  | 待调查                                                       |                                                              |
 | audit_status            | num  | 待调查                                                       |                                                              |
-| meta_content            | str  | 待调查                                                       |                                                              |
+| meta_content            | str  | 视频简介信息                                                 | 仅在视频类文章中出现，可使用json解析器对其进行解析           |
 | is_missing              | bool | 待调查                                                       |                                                              |
 | block_reply_img         | num  | 待调查                                                       |                                                              |
 | is_showing_missing      | bool | 待调查                                                       |                                                              |
