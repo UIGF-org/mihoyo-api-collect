@@ -5,6 +5,7 @@
 - [获取首页信息](#获取首页信息)
 - [获取官方资讯](#获取官方资讯)
 - [获取完整文章信息](#获取完整文章信息)
+- [获取文章评论信息](#获取文章评论信息)
 
 ---
 
@@ -739,40 +740,12 @@ _请求方式：GET_
 | cate_id                 | num  | 待调查                                                       |                                                              |
 | profit_post_status      | num  | 待调查                                                       |                                                              |
 | audit_status            | num  | 待调查                                                       |                                                              |
-| meta_content            | str  | 简介信息                                                     | 似乎仅在视频类文章中出现，可使用json解析器对其进行解析       |
+| meta_content            | str  | 待调查                                                       |                                                              |
 | is_missing              | bool | 待调查                                                       |                                                              |
 | block_reply_img         | num  | 待调查                                                       |                                                              |
 | is_showing_missing      | bool | 待调查                                                       |                                                              |
 | block_latest_reply_time | num  | 待调查                                                       |                                                              |
 | selected_comment        | num  | 待调查                                                       |                                                              |
-
-`data`对象→`post`对象→`structured_content`数组→对象：
-
-| 字段       | 类型       | 内容                     | 备注                                                         |
-| ---------- | ---------- | ------------------------ | ------------------------------------------------------------ |
-| insert     | str \| obj | 要插入的内容             | 该字段可能为字符串也可能为对象；如果为换行符 "\n" ，则代表当前段落结束 |
-| attributes | obj        | 该部分内容需要的额外样式 | 非必须；若不存在该字段，则不需要增加额外的样式               |
-
-`data`对象→`post`对象→`structured_content`数组→对象→`insert`对象：
-
-| 字段      | 类型 | 内容         | 备注                   |
-| --------- | ---- | ------------ | ---------------------- |
-| image     | str  | 图片链接     | 以下均为可能出现的字段 |
-| link_card | obj  | 链接卡片信息 |                        |
-| divider   | str  | 分割线       |                        |
-| lottery   | obj  | 抽奖         |                        |
-
-`data`对象→`post`对象→`structured_content`数组→对象→`attributes`对象：
-
-| 字段   | 类型 | 内容                  | 备注                        |
-| ------ | ---- | --------------------- | --------------------------- |
-| color  | str  | 该处内容所需的RGB颜色 |                             |
-| bold   | bool | 该处内容是否需要加粗  |                             |
-| height | num  | 图片的长              |                             |
-| width  | num  | 图片的宽              |                             |
-| size   | num  | 图片大小              |                             |
-| ext    | str  | 图片格式              |                             |
-| align  | str  | 对齐方式              | 类似于css中的text-align字段 |
 
 `data`对象→`post`对象→`forum`对象：
 
@@ -815,10 +788,10 @@ _请求方式：GET_
 
 `data`对象→`post`对象→`user`对象→`certification`对象：
 
-| 字段  | 类型 | 内容                                                 | 备注 |
-| ----- | ---- | ---------------------------------------------------- | ---- |
-| type  | num  | 认证类别<br />1 社区或游戏官方<br />2 已认证的创作者 |      |
-| label | str  | 认证具体信息                                         |      |
+| 字段  | 类型 | 内容                                                         | 备注 |
+| ----- | ---- | ------------------------------------------------------------ | ---- |
+| type  | num  | 认证类别<br />1 社区或游戏官方<br />2 已认证的创作者<br />0 未认证的用户 |      |
+| label | str  | 认证具体信息                                                 |      |
 
 `data`对象→`post`对象→`user`对象→`level_exp`对象：
 
@@ -1104,4 +1077,476 @@ _请求方式：GET_
   "retcode": 0
 }
 ```
+</details>
+
+## 获取文章评论信息
+
+_请求方式：GET_
+
+`https://bbs-api.miyoushe.com/post/wapi/getPostReplies`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| gids | num | 游戏id |  |
+| is_hot | bool | 是否以热度排序 |  |
+| post_id | num | 文章id |  |
+| size | num | 请求的最大评论数量(0-20) |  |
+| last_id | num | 从last_id处向下获取评论 | 若不传入该字段，则默认从评论第1条开始获取 |
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| retcode | num | 返回码<br>1101 参数`post_id`对应的文章不存在 | |
+| message | str | 返回消息 | |
+| data | obj | 评论信息 | |
+
+`data`对象：
+
+| 字段           | 类型 | 内容                                 | 备注 |
+| -------------- | ---- | ------------------------------------ | ---- |
+| list           | arr  | 用户评论列表                         |      |
+| last_id        | num  | 当次请求下的最后一条的评论id         |      |
+| is_last        | bool | 当次请求是否含有该文章中最后一条评论 |      |
+| pin_reply_id   | num  | 置顶评论的id                         |      |
+| post_owner_uid | num  | 文章作者uid                          |      |
+
+`data`对象→`list`数组→对象   或   `data`对象→`list`数组→对象→`sub_replies`对象：
+
+| 字段            | 类型        | 内容               | 备注                              |
+| --------------- | ----------- | ------------------ | --------------------------------- |
+| images          | arr         | 评论中的图片对象   |                                   |
+| is_lz           | bool        | 是否为楼主         |                                   |
+| master_status   | obj         | 待调查             |                                   |
+| r_post          | null        | 待调查             |                                   |
+| r_reply         | null        | 待调查             |                                   |
+| r_user          | null \| obj | 被回复的用户信息   | 当评论为子评论时为obj，否则为null |
+| reply           | obj         | 回复信息           |                                   |
+| self_operation  | obj         | 待调查             |                                   |
+| stat            | obj         | 评论统计信息       |                                   |
+| sub_replies     | arr         | 该评论下的评论信息 |                                   |
+| sub_reply_count | num         | 该评论下有多少评论 |                                   |
+| user            | obj         | 发表评论的用户信息 |                                   |
+
+`data`对象→`list`数组→对象→`images`数组→对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`images`数组→对象：
+
+| 字段        | 类型 | 内容        | 备注 |
+| ----------- | ---- | ----------- | ---- |
+| entity_id   | str  | 实体id      |      |
+| entity_type | str  | 实体类型    |      |
+| format      | str  | 图片格式    |      |
+| height      | num  | 图片高度    |      |
+| image_id    | str  | 图片id      |      |
+| is_deleted  | bool | 是否被删除  |      |
+| url         | str  | 图片url链接 |      |
+| width       | num  | 图片宽度    |      |
+
+`data`对象→`list`数组→对象→`reply`对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`reply`对象：
+
+| 字段                    | 类型 | 内容                | 备注                         |
+| ----------------------- | ---- | ------------------- | ---------------------------- |
+| content                 | str  | 评论内容            |                              |
+| created_at              | num  | 发布日期            |                              |
+| delete_src              | num  | 待调查              |                              |
+| deleted_at              | num  | 待调查              |                              |
+| f_forum_id              | num  | 文章板块id          |                              |
+| f_reply_id              | str  | 待调查              |                              |
+| floor_id                | num  | 评论所在的楼层数    |                              |
+| game_id                 | num  | 游戏id              |                              |
+| has_block_word          | bool | 是否存在敏感词      |                              |
+| is_deleted              | num  | 是否被删除          |                              |
+| is_showing_missing      | bool | 是否显示已丢失      |                              |
+| is_top                  | bool | 是否置顶            |                              |
+| overt_status            | num  | 待调查              |                              |
+| post_id                 | str  | 文章id              |                              |
+| r_uid                   | str  | 待调查              |                              |
+| reply_id                | str  | 评论id              |                              |
+| selected_comment_time   | num  | 待调查              |                              |
+| struct_content          | str  | 结构化的评论内容    | 可使用json解析器对其进行解析 |
+| structured_content_rows | arr  | 待调查              |                              |
+| uid                     | str  | 发表评论的用户的uid |                              |
+| updated_at              | num  | 上次更新时间        |                              |
+
+`data`对象→`list`数组→对象→`stat`对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`stat`对象：
+
+| 字段        | 类型 | 内容       | 备注        |
+| ----------- | ---- | ---------- | ----------- |
+| dislike_num | num  | 点踩数量   |             |
+| like_num    | num  | 点赞数量   |             |
+| reply_num   | num  | 评论数量   | 此处一般为0 |
+| sub_num     | num  | 子评论数量 |             |
+
+`data`对象→`list`数组→`user`对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`user`对象：
+
+| 字段          | 类型 | 内容         | 备注 |
+| ------------- | ---- | ------------ | ---- |
+| uid           | str  | 用户uid      |      |
+| nickname      | str  | 用户昵称     |      |
+| introduce     | str  | 用户简介     |      |
+| avatar        | str  | 用户头像id   |      |
+| gender        | num  | 用户性别     |      |
+| certification | obj  | 用户认证信息 |      |
+| level_exp     | obj  | 用户社区经验 |      |
+| ip_region     | str  | ip属地       |      |
+| avatar_url    | str  | 用户头像链接 |      |
+| pendant       | str  | 用户头像挂件 |      |
+
+`data`对象→`list`数组→`user`对象→`certification`对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`user`对象→`certification`对象：
+
+| 字段  | 类型 | 内容                                                         | 备注 |
+| ----- | ---- | ------------------------------------------------------------ | ---- |
+| type  | num  | 认证类别<br />1 社区或游戏官方<br />2 已认证的创作者<br />0 未认证的用户 |      |
+| label | str  | 认证具体信息                                                 |      |
+
+`data`对象→`list`数组→`user`对象→`level_exp`对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`user`对象→`level_exp`对象：
+
+| 字段  | 类型 | 内容           | 备注 |
+| ----- | ---- | -------------- | ---- |
+| level | num  | 用户的社区等级 |      |
+| exp   | num  | 用户的社区经验 |      |
+
+
+
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "list": [
+            {
+                "reply": {
+                    "game_id": 2,
+                    "post_id": "41200597",
+                    "reply_id": "1679067950588375040",
+                    "uid": "296742597",
+                    "r_uid": "0",
+                    "content": "差3个月才满18<img src=\"https://upload-bbs.miyoushe.com/upload/2023/07/12/296742597/74dc09c514c0dbca30db01d93cd607af_1723221593250820730.jpg\">",
+                    "f_forum_id": 28,
+                    "f_reply_id": "0",
+                    "floor_id": 38,
+                    "is_deleted": 0,
+                    "delete_src": 0,
+                    "created_at": 1689155969,
+                    "updated_at": 1689156176,
+                    "deleted_at": 2288912640,
+                    "struct_content": "[{\"insert\":\"差3个月才满18\\r\\n\"},{\"insert\":{\"image\":\"https://upload-bbs.miyoushe.com/upload/2023/07/12/296742597/74dc09c514c0dbca30db01d93cd607af_1723221593250820730.jpg\"},\"attributes\":{\"height\":117,\"width\":177}},{\"insert\":\"\\r\\n\"}]",
+                    "structured_content_rows": [],
+                    "is_top": false,
+                    "has_block_word": false,
+                    "overt_status": 0,
+                    "is_showing_missing": false,
+                    "selected_comment_time": 0
+                },
+                "user": {
+                    "uid": "296742597",
+                    "nickname": "神也佑我海林",
+                    "introduce": "",
+                    "avatar": "100067",
+                    "gender": 0,
+                    "certification": {
+                        "type": 0,
+                        "label": ""
+                    },
+                    "level_exp": {
+                        "level": 8,
+                        "exp": 7595
+                    },
+                    "avatar_url": "https://img-static.mihoyo.com/communityweb/upload/044c17a8bd344093a3582f375eb7b004.png",
+                    "pendant": "https://bbs-static.miyoushe.com/static/2023/04/14/6d6898ebadd83bf82437daef6ac6dbf2_3802189920345130211.png",
+                    "ip_region": "广东"
+                },
+                "stat": {
+                    "reply_num": 0,
+                    "like_num": 276,
+                    "sub_num": 16,
+                    "dislike_num": 2
+                },
+                "self_operation": {
+                    "attitude": 0,
+                    "reply_vote_attitude": 0
+                },
+                "master_status": {
+                    "is_official_master": false,
+                    "is_user_master": false
+                },
+                "images": [
+                    {
+                        "url": "https://upload-bbs.miyoushe.com/upload/2023/07/12/296742597/74dc09c514c0dbca30db01d93cd607af_1723221593250820730.jpg",
+                        "height": 117,
+                        "width": 177,
+                        "format": "jpg",
+                        "size": "19078",
+                        "image_id": "141984157",
+                        "entity_type": "IMG_ENTITY_REPLY",
+                        "entity_id": "1679067950588375040",
+                        "is_deleted": false
+                    }
+                ],
+                "sub_replies": [
+                    {
+                        "reply": {
+                            "game_id": 2,
+                            "post_id": "41200597",
+                            "reply_id": "1679073695420944384",
+                            "uid": "313554431",
+                            "r_uid": "296742597",
+                            "content": "同_(偶像姬-沮丧)",
+                            "f_forum_id": 28,
+                            "f_reply_id": "1679067950588375040",
+                            "floor_id": 38,
+                            "is_deleted": 0,
+                            "delete_src": 0,
+                            "created_at": 1689157339,
+                            "updated_at": 1689157339,
+                            "deleted_at": 2288912640,
+                            "struct_content": "[{\"insert\":\"同_(偶像姬-沮丧)\"}]",
+                            "structured_content_rows": [],
+                            "is_top": false,
+                            "has_block_word": false,
+                            "overt_status": 0,
+                            "is_showing_missing": false,
+                            "selected_comment_time": 0
+                        },
+                        "user": {
+                            "uid": "313554431",
+                            "nickname": "illiyan",
+                            "introduce": "",
+                            "avatar": "100430",
+                            "gender": 0,
+                            "certification": {
+                                "type": 0,
+                                "label": ""
+                            },
+                            "level_exp": {
+                                "level": 5,
+                                "exp": 1261
+                            },
+                            "avatar_url": "https://img-static.mihoyo.com/communityweb/upload/c9d11674eac7631d2210a1ba20799958.png",
+                            "pendant": "https://upload-bbs.mihoyo.com/upload/2022/09/28/876e62fb1fdfba3267c90fe364a5ae4e_1594369066719402876.png",
+                            "ip_region": "河北"
+                        },
+                        "stat": {
+                            "reply_num": 0,
+                            "like_num": 9,
+                            "sub_num": 0,
+                            "dislike_num": 0
+                        },
+                        "self_operation": {
+                            "attitude": 0,
+                            "reply_vote_attitude": 0
+                        },
+                        "master_status": {
+                            "is_official_master": false,
+                            "is_user_master": false
+                        },
+                        "images": [],
+                        "sub_replies": [],
+                        "is_lz": false,
+                        "sub_reply_count": 0,
+                        "r_user": {
+                            "uid": "296742597",
+                            "nickname": "神也佑我海林",
+                            "introduce": "",
+                            "avatar": "100067",
+                            "gender": 0,
+                            "certification": {
+                                "type": 0,
+                                "label": ""
+                            },
+                            "level_exp": {
+                                "level": 8,
+                                "exp": 7595
+                            },
+                            "avatar_url": "https://img-static.mihoyo.com/communityweb/upload/044c17a8bd344093a3582f375eb7b004.png",
+                            "pendant": "https://bbs-static.miyoushe.com/static/2023/04/14/6d6898ebadd83bf82437daef6ac6dbf2_3802189920345130211.png",
+                            "ip_region": ""
+                        },
+                        "r_reply": null,
+                        "r_post": null
+                    },
+                    {
+                        "reply": {
+                            "game_id": 2,
+                            "post_id": "41200597",
+                            "reply_id": "1679133739880165376",
+                            "uid": "319980026",
+                            "r_uid": "296742597",
+                            "content": "hhh我到啦，超，胜冠之试从没打过（默默上号）",
+                            "f_forum_id": 28,
+                            "f_reply_id": "1679067950588375040",
+                            "floor_id": 38,
+                            "is_deleted": 0,
+                            "delete_src": 0,
+                            "created_at": 1689171655,
+                            "updated_at": 1689171655,
+                            "deleted_at": 2288912640,
+                            "struct_content": "[{\"insert\":\"hhh我到啦，超，胜冠之试从没打过（默默上号）\"}]",
+                            "structured_content_rows": [],
+                            "is_top": false,
+                            "has_block_word": false,
+                            "overt_status": 0,
+                            "is_showing_missing": false,
+                            "selected_comment_time": 0
+                        },
+                        "user": {
+                            "uid": "319980026",
+                            "nickname": "夏小雪哦",
+                            "introduce": "",
+                            "avatar": "40025",
+                            "gender": 0,
+                            "certification": {
+                                "type": 0,
+                                "label": ""
+                            },
+                            "level_exp": {
+                                "level": 6,
+                                "exp": 2758
+                            },
+                            "avatar_url": "https://img-static.mihoyo.com/communityweb/avatar/avatar40025.png",
+                            "pendant": "",
+                            "ip_region": "山东"
+                        },
+                        "stat": {
+                            "reply_num": 0,
+                            "like_num": 15,
+                            "sub_num": 0,
+                            "dislike_num": 0
+                        },
+                        "self_operation": {
+                            "attitude": 0,
+                            "reply_vote_attitude": 0
+                        },
+                        "master_status": {
+                            "is_official_master": false,
+                            "is_user_master": false
+                        },
+                        "images": [],
+                        "sub_replies": [],
+                        "is_lz": false,
+                        "sub_reply_count": 0,
+                        "r_user": {
+                            "uid": "296742597",
+                            "nickname": "神也佑我海林",
+                            "introduce": "",
+                            "avatar": "100067",
+                            "gender": 0,
+                            "certification": {
+                                "type": 0,
+                                "label": ""
+                            },
+                            "level_exp": {
+                                "level": 8,
+                                "exp": 7595
+                            },
+                            "avatar_url": "https://img-static.mihoyo.com/communityweb/upload/044c17a8bd344093a3582f375eb7b004.png",
+                            "pendant": "https://bbs-static.miyoushe.com/static/2023/04/14/6d6898ebadd83bf82437daef6ac6dbf2_3802189920345130211.png",
+                            "ip_region": ""
+                        },
+                        "r_reply": null,
+                        "r_post": null
+                    },
+                    {
+                        "reply": {
+                            "game_id": 2,
+                            "post_id": "41200597",
+                            "reply_id": "1679296093050736640",
+                            "uid": "331730845",
+                            "r_uid": "296742597",
+                            "content": "我就差40多天",
+                            "f_forum_id": 28,
+                            "f_reply_id": "1679067950588375040",
+                            "floor_id": 38,
+                            "is_deleted": 0,
+                            "delete_src": 0,
+                            "created_at": 1689210363,
+                            "updated_at": 1689210363,
+                            "deleted_at": 2288912640,
+                            "struct_content": "[{\"insert\":\"我就差40多天\"}]",
+                            "structured_content_rows": [],
+                            "is_top": false,
+                            "has_block_word": false,
+                            "overt_status": 0,
+                            "is_showing_missing": false,
+                            "selected_comment_time": 0
+                        },
+                        "user": {
+                            "uid": "331730845",
+                            "nickname": "203890721",
+                            "introduce": "",
+                            "avatar": "100858",
+                            "gender": 0,
+                            "certification": {
+                                "type": 0,
+                                "label": ""
+                            },
+                            "level_exp": {
+                                "level": 4,
+                                "exp": 538
+                            },
+                            "avatar_url": "https://upload-bbs.miyoushe.com/upload/2022/12/07/e84c8493bf9cd6b102eece6ec5ebd82e_2931682514717279175.png",
+                            "pendant": "",
+                            "ip_region": "吉林"
+                        },
+                        "stat": {
+                            "reply_num": 0,
+                            "like_num": 8,
+                            "sub_num": 0,
+                            "dislike_num": 0
+                        },
+                        "self_operation": {
+                            "attitude": 0,
+                            "reply_vote_attitude": 0
+                        },
+                        "master_status": {
+                            "is_official_master": false,
+                            "is_user_master": false
+                        },
+                        "images": [],
+                        "sub_replies": [],
+                        "is_lz": false,
+                        "sub_reply_count": 0,
+                        "r_user": {
+                            "uid": "296742597",
+                            "nickname": "神也佑我海林",
+                            "introduce": "",
+                            "avatar": "100067",
+                            "gender": 0,
+                            "certification": {
+                                "type": 0,
+                                "label": ""
+                            },
+                            "level_exp": {
+                                "level": 8,
+                                "exp": 7595
+                            },
+                            "avatar_url": "https://img-static.mihoyo.com/communityweb/upload/044c17a8bd344093a3582f375eb7b004.png",
+                            "pendant": "https://bbs-static.miyoushe.com/static/2023/04/14/6d6898ebadd83bf82437daef6ac6dbf2_3802189920345130211.png",
+                            "ip_region": ""
+                        },
+                        "r_reply": null,
+                        "r_post": null
+                    }
+                ],
+                "is_lz": false,
+                "sub_reply_count": 16,
+                "r_user": null,
+                "r_reply": null,
+                "r_post": null
+            }
+        ],
+        "last_id": "1",
+        "is_last": false,
+        "post_owner_uid": "384454482",
+        "pin_reply_id": "0"
+    }
+}
+```
+
 </details>
