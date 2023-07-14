@@ -1147,8 +1147,8 @@ _请求方式：GET_
 
 | 字段                    | 类型 | 内容                | 备注                         |
 | ----------------------- | ---- | ------------------- | ---------------------------- |
-| content                 | str  | 评论内容            |                              |
-| created_at              | num  | 发布日期            |                              |
+| content                 | str  | 评论内容            | 内容为html结构               |
+| created_at              | num  | 发布时间            | 时间为unix时间戳             |
 | delete_src              | num  | 待调查              |                              |
 | deleted_at              | num  | 待调查              |                              |
 | f_forum_id              | num  | 文章板块id          |                              |
@@ -1167,7 +1167,7 @@ _请求方式：GET_
 | struct_content          | str  | 结构化的评论内容    | 可使用json解析器对其进行解析 |
 | structured_content_rows | arr  | 待调查              |                              |
 | uid                     | str  | 发表评论的用户的uid |                              |
-| updated_at              | num  | 上次更新时间        |                              |
+| updated_at              | num  | 上次更新时间        | 时间为unix时间戳             |
 
 `data`对象→`list`数组→对象→`stat`对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`stat`对象：
 
