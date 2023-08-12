@@ -4,7 +4,7 @@
   - [操作步骤](#sms-step)
   - [申请人机验证任务](#申请人机验证任务)
   - [发送短信验证码](#发送短信验证码)
-  - [获取login_ticket](#获取login_ticket)
+  - [获取 Login Ticket](#获取login-ticket)
 
 ---
 
@@ -15,9 +15,9 @@
 1. [申请人机验证任务](#申请人机验证任务)，获取 `gt`，`mmt_key` 等任务数据
 2. 使用任务数据完成人机验证，得到 `geetest_v4_data` 验证结果数据（参考：https://docs.geetest.com/gt4/apirefer/api/web ）
 3. 使用验证结果数据 [发出短信验证码](#发送短信验证码)
-4. 使用收到的短信验证码 [获取 `login_ticket`](#获取login_ticket)
-5. 通过 `login_ticket` 进一步获取其余Cookies字段（参考 [用户Token](/hoyolab/user/token.md)）
-9. 将以上步骤获取到的Cookies字段进行组合，即可用于其他需要登录的API。
+4. 使用收到的短信验证码 [获取 Login Ticket](#获取login-ticket)
+5. 通过 Login Ticket 进一步获取其余Cookie字段（参考 [用户Token](/hoyolab/user/token.md)）
+9. 将以上步骤获取到的Cookie字段进行组合，即可用于其他需要登录的API。
 
 ### 申请人机验证任务
 
@@ -181,7 +181,7 @@ _请求方式：POST_
 
 </details>
 
-### 获取login_ticket
+### 获取Login Ticket
 
 _请求方式：POST_
 
@@ -229,11 +229,11 @@ _请求方式：POST_
 | safe_area_code | str | 绑定手机的区号 | 如 `"+86"` |
 | safe_level | num | 安全级别 | 高 对应 `3` |
 | safe_mobile | str | 绑定手机 | 将会打码显示 |
-| weblogin_token | str | 即Cookie中的 `login_ticket` 字段 | 该字段也将出现在响应Cookie中 |
+| weblogin_token | str | 即Cookie中的 Login Ticket 字段 | 该字段也将出现在响应Cookie中 |
 
 **备注：**
 
-- 可直接从响应Cookie中获取 `login_ticket`
+- 可直接从响应Cookie中获取 Login Ticket
 
 <details>
 <summary>查看示例</summary>
