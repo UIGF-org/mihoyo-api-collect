@@ -1,7 +1,7 @@
 # 米游社密码登录
 
 - [密码登录](#密码登录)
-  - [操作步骤](#sms-step)
+  - [操作步骤](#pwd-step)
   - [申请人机验证任务](#申请人机验证任务)
   - [获取 Login Ticket](#获取login-ticket)
 
@@ -9,7 +9,7 @@
 
 ## 密码登录
 
-<h3 id="sms-step">操作步骤</h3>
+<h3 id="pwd-step">操作步骤</h3>
 
 1. [申请人机验证任务](#申请人机验证任务)，获取 `gt`，`mmt_key` 等任务数据
 2. 使用任务数据完成人机验证，得到 `geetest_v4_data` 验证结果数据（参考：https://docs.geetest.com/gt4/apirefer/api/web ）
@@ -122,8 +122,8 @@ _请求方式：POST_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | account | str | 要登录的账户 | |
-| password | str | 密码（使用RSA + Base64加密） | 见下 |
-| is_crypto | bool | 是否被加密                   | 应该填true，否则无法通过 |
+| password | str | 密码 | 要么使用RSA + Base64加密，要么不加密，公钥和示例代码见下     |
+| is_crypto | bool | 是否被加密                   | 如果加密了密码填true，否则为false |
 | source | str | 登录操作来源 | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的是 `user.mihoyo.com` |
 | t | num | 当前的秒级时间戳 | |
 
