@@ -58,7 +58,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | mmt_key | str | 验证任务 | 当 `mmt_data` 对象仅包含该字段时，说明不需要进行人机验证，可直接使用该值发送短信验证码 |
-| gt | obj | 验证ID | 验证ID，即极验文档中的`captchaId`，极验后台申请得到 |
+| gt | obj | 验证ID | 验证ID，即 [极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) 中的`captchaId`，极验后台申请得到 |
 | new_captcha | num | 宕机情况下使用 | 一般为 `1` |
 | risk_type | str | 结合风控融合，指定验证形式 | 例如 `"slide"`，拖动滑块完成拼图 |
 | success | num | 是否成功 | |
@@ -125,7 +125,7 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | action_type | num | 操作类型 | 登录使用 `"login"`；注册使用 `"regist"` |
 | mmt_key | str | 验证任务，与 [申请人机验证任务](#申请人机验证任务) 中的 `mmt_key` 相同 | |
-| geetest_v4_data | obj | 验证结果数据 | 关于客户端部署人机验证界面等可参考 [极验文档](https://docs.geetest.com/gt4/deploy/client/web) |
+| geetest_v4_data | obj | 验证结果数据 | 即 [极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#getValidate) 中 `getValidate()` 返回的对象<br>具体内容：[请求参数](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) |
 | mobile | str | 目标手机号 | |
 | t | num | 当前的秒级时间戳 | |
 
