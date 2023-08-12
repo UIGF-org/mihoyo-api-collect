@@ -12,8 +12,7 @@
 <h3 id="pwd-step">操作步骤</h3>
 
 1. [申请人机验证任务](#申请人机验证任务)，获取 `gt`，`mmt_key` 等任务数据
-2. 使用任务数据完成人机验证，得到 `geetest_v4_data` 验证结果数据（参考：https://docs.geetest.com/gt4/apirefer/api/web ）
-4. 使用账号密码 [获取 Login Ticket](#获取login-ticket)
+2. 使用账号密码 [获取 Login Ticket](#获取login-ticket)
 
 ### 申请人机验证任务
 
@@ -67,7 +66,6 @@ _请求方式：GET_
 - 一般来说，密码登录基本上都不会被要求人机验证（但是谁知道呢）
 - 通常首次申请验证任务返回的 `mmt_data` 对象只会包含 `mmt_key`，不会返回 `gt` 等其他字段，这说明不需要进行人机验证，可直接使用 `mmt_key` 字段值进行登录（也可通过 `mmt_type` 判断）
 - JSON返回数据的 `mmt_data` 对象中一些字段说明参考自 [极验官方文档](https://docs.geetest.com/gt4/apirefer/api/web)
-- 在2023年5月左右[米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha)从极验GT3升级至GT4，目前 [短信验证码发送](#发送短信验证码) 接口不再支持GT3验证结果，因此文档不包含GT3验证结果的使用方法
 
 <details>
 <summary>查看示例</summary>
@@ -125,7 +123,7 @@ _请求方式：POST_
 | account | str | 要登录的账户 | |
 | password | str | 密码 | 要么使用RSA + Base64加密，要么不加密，公钥和示例代码见下     |
 | is_crypto | bool | 是否被加密                   | 如果加密了密码填true，否则为false |
-| source | str | 登录操作来源 | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的是 `user.mihoyo.com` |
+| source | str | 登录操作来源 | 可参考 [米哈游通行证密码登录页](https://user.mihoyo.com/#/login/password) 使用的是 `user.mihoyo.com` |
 | t | num | 当前的秒级时间戳 | |
 
 注：
