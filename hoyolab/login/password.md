@@ -198,8 +198,6 @@ def rsa_encrypt(message):
 
 <details>
 <summary>查看示例</summary>
-
-- 请求：`https://webapi.account.mihoyo.com/Api/create_mobile_captcha?mobile=18199998888&mobile_captcha=834265&source=user.mihoyo.com&t=1691827148574`
 - 返回：
   ```json
   {
@@ -218,7 +216,7 @@ def rsa_encrypt(message):
             "safe_area_code": "+86",
             "safe_level": 3,
             "safe_mobile": "181****8888",
-            "weblogin_token": "QDDFDSOykvnoXXXXXihEghhWDssd2efsdSDryCq"
+            "weblogin_token": "QDDgghjghHydhdxyduf875UIDYDYq"
         },
         "msg": "成功",
         "status": 1
