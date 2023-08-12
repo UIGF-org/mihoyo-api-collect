@@ -30,7 +30,7 @@ _请求方式：GET_
 | scene_type | num | 暂不知道具体含义，可直接使用值 `1` | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的值为 `1` |
 | now | num | 当前的秒级时间戳 | |
 | reason | str | 调用API的网页链接 | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的是 `user.mihoyo.com%2523%252Flogin%252Fcaptcha`（已进行URL编码）|
-| action_type | str | 登陆方式 | 短信验证码登录为 `login_by_mobile_captcha` |
+| action_type | str | 登陆方式<br>`login_by_mobile_captcha` 短信验证码登录 | |
 
 **JSON返回：**
 
@@ -46,10 +46,10 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | mmt_data | obj | 极验验证任务数据 | |
-| mmt_type | num | 验证任务类型 | `1` - 需要进行人机验证<br>`0` - 无需进行人机验证 |
+| mmt_type | num | 验证任务类型<br>`1` 需要进行人机验证<br>`0` 无需进行人机验证 | |
 | msg | str | 返回消息 | |
 | scene_type | num | 与URL请求参数中的 `scene_type` 相同 | |
-| status | num | 返回码 | 返回码为 `1` 说明执行成功 |
+| status | num | 返回码<br>`1` 成功 | |
 
 `data`对象→`mmt_data`对象：
 
@@ -58,13 +58,13 @@ _请求方式：GET_
 | mmt_key | str | 验证任务 | 当 `mmt_data` 对象仅包含该字段时，说明不需要进行人机验证，可直接使用该值发送短信验证码 |
 | gt | obj | 验证ID | 验证ID，即 [极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) 中的`captchaId`，极验后台申请得到 |
 | new_captcha | num | 宕机情况下使用 | 一般为 `1` |
-| risk_type | str | 结合风控融合，指定验证形式 | 例如 `"slide"`，拖动滑块完成拼图 |
-| success | num | 是否成功 | |
+| risk_type | str | 结合风控融合，指定验证形式<br>`slide` 拖动滑块完成拼图 | |
+| success | num | 是否成功<br>`1` 成功 | |
 | use_v4 | bool | 是否使用极验第四代适应性验证 | 极验官网：https://www.geetest.com/adaptive-captcha |
 
 **备注：**
 
-- 通常首次申请验证任务只会返回 `mmt_key`，不会返回 `gt` 等其他字段，这说明不需要进行人机验证，可直接使用 `mmt_key` 字段值调用短信验证码发送API
+- 通常首次申请验证任务返回的 `mmt_data` 对象只会包含 `mmt_key`，不会返回 `gt` 等其他字段，这说明不需要进行人机验证，可直接使用 `mmt_key` 字段值调用短信验证码发送API（也可通过 `mmt_type` 判断）
 - JSON返回数据的 `mmt_data` 对象中一些字段说明参考自 [极验官方文档](https://docs.geetest.com/gt4/apirefer/api/web)
 - 在2023年5月左右[米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha)从极验GT3升级至GT4，目前 [短信验证码发送](#发送短信验证码) 接口不再支持GT3验证结果，因此文档不包含GT3验证结果的使用方法
 
@@ -121,7 +121,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| action_type | num | 操作类型 | 登录使用 `"login"`；注册使用 `"regist"` |
+| action_type | num | 操作类型<br>`login` 登录<br>`regist` 注册 | |
 | mmt_key | str | 验证任务，与 [申请人机验证任务](#申请人机验证任务) 中的 `mmt_key` 相同 | |
 | geetest_v4_data | obj | 验证结果数据 | 即 [极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#getValidate) 中 `getValidate()` 返回的对象<br>具体内容：[请求参数](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) |
 | mobile | str | 目标手机号 | |
@@ -153,7 +153,7 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | info | str | 返回消息（通常为英文） | |
 | msg | str | 返回消息 | |
-| status | num | 返回码 | `1` - 执行成功<br>`-213` - 发送验证码过于频繁<br>`-302` - 图形验证码失败（可能是`geetest_v4_data`不正确） |
+| status | num | 返回码<br>`1` 成功<br>`-213` 发送验证码过于频繁<br>`-302` 图形验证码失败（可能是`geetest_v4_data`不正确） | |
 
 **备注：**
 
@@ -191,7 +191,7 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | mobile | str | 目标手机号 | |
 | mobile_captcha | str | 短信验证码 | |
-| source | str | 登录操作来源 | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的是 `"user.mihoyo.com"` |
+| source | str | 登录操作来源 | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的是 `user.mihoyo.com` |
 | t | num | 当前的秒级时间戳 | |
 
 **JSON返回：**
@@ -209,23 +209,23 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | account_info | obj | 账号信息 | |
 | msg | str | 返回消息 | |
-| status | num | 返回码 | 返回码为 `1` 说明执行成功 |
+| status | num | 返回码<br>`1` 成功 | |
 
 `data`对象→`account_info`对象：
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | account_id | num | 通行证ID | |
-| area_code | str | 手机号区号 | 如 `"+86"` |
+| area_code | str | 手机号区号 | 如 `+86` |
 | create_time | num | 注册日期 | 格式为秒级时间戳 |
 | email | str | 邮箱 | 将会打码显示 |
 | identity_code | str | 身份证号 | 将会打码显示 |
-| is_adult | num | 用户是否为成人 | 是 对应 `1` |
-| is_email_verify | num | 是否已验证邮箱 | 是 对应 `1` |
+| is_adult | num | 用户是否为成人<br>`1` 是 | |
+| is_email_verify | num | 是否已验证邮箱<br>`1` 是 | |
 | mobile | str | 手机号 | 将会打码显示 |
 | real_name | str | 真实姓名 | 将会打码显示 |
-| safe_area_code | str | 绑定手机的区号 | 如 `"+86"` |
-| safe_level | num | 安全级别 | 高 对应 `3` |
+| safe_area_code | str | 绑定手机的区号 | 如 `+86` |
+| safe_level | num | 安全级别 | 已知该值为 `3` 时，米游社通行证页面中显示为 “高” |
 | safe_mobile | str | 绑定手机 | 将会打码显示 |
 | weblogin_token | str | 即Cookie中的 Login Ticket 字段 | 该字段也将出现在响应Cookie中 |
 
