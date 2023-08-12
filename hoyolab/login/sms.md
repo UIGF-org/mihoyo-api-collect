@@ -16,7 +16,7 @@
 2. 使用任务数据完成人机验证，得到 `geetest_v4_data` 验证结果数据（参考：https://docs.geetest.com/gt4/apirefer/api/web ）
 3. 使用验证结果数据 [发出短信验证码](#发送短信验证码)
 4. 使用收到的短信验证码 [获取 `login_ticket`](#获取login_ticket)
-5. 通过 `login_ticket` 进一步获取其余Cookies字段（参考 [用户Token](mihoyo-api-collect/blob/main/hoyolab/user/token.md)）
+5. 通过 `login_ticket` 进一步获取其余Cookies字段（参考 [用户Token](/hoyolab/user/token.md)）
 9. 将以上步骤获取到的Cookies字段进行组合，即可用于其他需要登录的API。
 
 ### 申请人机验证任务
