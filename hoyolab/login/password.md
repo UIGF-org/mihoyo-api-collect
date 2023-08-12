@@ -120,6 +120,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
+| mmt_key | str | 验证任务 | |
 | account | str | 要登录的账户 | |
 | password | str | 密码 | 要么使用RSA + Base64加密，要么不加密，公钥和示例代码见下     |
 | is_crypto | bool | 是否被加密                   | 如果加密了密码填true，否则为false |
