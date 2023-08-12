@@ -129,6 +129,17 @@ _请求方式：POST_
 | mobile | str | 目标手机号 | |
 | t | num | 当前的秒级时间戳 | |
 
+`geetest_v4_data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| lot_number | str | 验证流水号 | |
+| captcha_output | str | 验证输出信息 | |
+| pass_token | str | 验证通过标识 | |
+| gen_time | str | 验证通过时间戳 | |
+| captcha_id | str | 验证 ID | |
+| sign_token | str | 验证签名 | |
+
 **JSON返回：**
 
 根对象：
