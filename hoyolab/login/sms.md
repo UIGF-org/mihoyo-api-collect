@@ -16,8 +16,6 @@
 2. 使用任务数据完成人机验证，得到 `geetest_v4_data` 验证结果数据（参考：https://docs.geetest.com/gt4/apirefer/api/web ）
 3. 使用验证结果数据 [发出短信验证码](#发送短信验证码)
 4. 使用收到的短信验证码 [获取 Login Ticket](#获取login-ticket)
-5. 通过 Login Ticket 进一步获取其余Cookie字段（参考 [用户Token](/hoyolab/user/token.md)）
-9. 将以上步骤获取到的Cookie字段进行组合，即可用于其他需要登录的API。
 
 ### 申请人机验证任务
 
@@ -25,7 +23,7 @@ _请求方式：GET_
 
 `https://webapi.account.mihoyo.com/Api/create_mmt`
 
-**URL请求：**
+**参数：**
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
@@ -40,7 +38,7 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| code | num | HTTP状态码 | |
+| code | num | 返回码 | |
 | data | obj | 返回数据 | |
 
 `data`对象：
@@ -119,7 +117,7 @@ _请求方式：POST_
 
 `https://webapi.account.mihoyo.com/Api/create_mobile_captcha`
 
-**URL请求：**
+**参数：**
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
@@ -146,7 +144,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| code | num | HTTP状态码 | |
+| code | num | 返回码 | |
 | data | obj | 返回数据 | |
 
 `data`对象：
@@ -160,7 +158,7 @@ _请求方式：POST_
 **备注：**
 
 - 通常首次 [申请验证任务](#申请人机验证任务) 只会返回 `mmt_key`，不会返回 `gt` 等其他字段，这说明不需要进行人机验证，可只传入 `mmt_key` 参数，不传入 `geetest_v4_data`
-- 需要注意请求参数为URL参数，且 `geetest_v4_data` 应为JSON格式，并进行URL编码。如果其他步骤正常执行，但仍然发送失败，可尝试将 `geetest_v4_data` 中的单引号 `'` 改为双引号 `"`
+- 需要注意请求参数为URL参数，且 `geetest_v4_data` 应为JSON格式，并进行URL编码
 - 关于客户端部署人机验证界面等可参考 [极验文档](https://docs.geetest.com/gt4/deploy/client/web)
 - 在2023年5月左右[米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha)从极验GT3升级至GT4，目前该接口不再支持GT3验证结果，因此文档不包含GT3验证结果的使用方法
 
@@ -187,7 +185,7 @@ _请求方式：POST_
 
 `https://webapi.account.mihoyo.com/Api/login_by_mobilecaptcha`
 
-**URL请求：**
+**参数：**
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
@@ -202,7 +200,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| code | num | HTTP状态码 | |
+| code | num | 返回码 | |
 | data | obj | 返回数据 | |
 
 `data`对象：
