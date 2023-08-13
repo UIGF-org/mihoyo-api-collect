@@ -29,7 +29,7 @@ _请求方式：GET_
 | reason | str | 调用API的网页链接 | 可参考 [米哈游通行证密码登录页](https://user.mihoyo.com/#/login/password) 使用的是 `user.mihoyo.com%2523%252Flogin%252Fpassword`（已进行URL编码） |
 | action_type | str | 登陆方式<br>`login_by_password` 密码登录 | |
 | t | num | 当前的秒级时间戳 | |
-| account | str | 要登录的账户 | |
+| account | str | 手机号或邮箱 | |
 
 **JSON返回：**
 
@@ -122,20 +122,14 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | mmt_key | str | 验证任务 | |
 | account | str | 要登录的账户 | |
-| password | str | 密码 | 要么使用RSA + Base64加密，要么不加密，公钥和示例代码见下     |
-| is_crypto | bool | 是否被加密                   | 如果加密了密码填true，否则为false |
+| password | str | 密码（使用RSA + Base64加密或不加密） |      |
+| is_crypto | bool | 密码是否被加密 |  |
 | source | str | 登录操作来源 | 可参考 [米哈游通行证密码登录页](https://user.mihoyo.com/#/login/password) 使用的是 `user.mihoyo.com` |
 | t | num | 当前的秒级时间戳 | |
 
 注：
 
-需要的RSA公钥：
-
-```
------BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDvekdPMHN3AYhm/vktJT+YJr7\ncI5DcsNKqdsx5DZX0gDuWFuIjzdwButrIYPNmRJ1G8ybDIF7oDW2eEpm5sMbL9zs\n9ExXCdvqrn51qELbqj0XxtMTIpaCHFSI50PfPpTFV9Xt/hmyVwokoOXFlAEgCn+Q\nCgGs52bFoYMtyi+xEQIDAQAB
------END PUBLIC KEY-----
-```
+若需加密密码，需要使用的RSA公钥[参见该提议](https://github.com/UIGF-org/mihoyo-api-collect/issues/1)。
 
 加密的示例代码如下（Python，需要安装pycryptodome库）
 
@@ -145,7 +139,10 @@ from Crypto.Cipher import PKCS1_v1_5 as Cipher_pkcs1_v1_5
 import base64
 
 public_key = '''-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDvekdPMHN3AYhm/vktJT+YJr7\ncI5DcsNKqdsx5DZX0gDuWFuIjzdwButrIYPNmRJ1G8ybDIF7oDW2eEpm5sMbL9zs\n9ExXCdvqrn51qELbqj0XxtMTIpaCHFSI50PfPpTFV9Xt/hmyVwokoOXFlAEgCn+Q\nCgGs52bFoYMtyi+xEQIDAQAB
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDvekdPMHN3AYhm/vktJT+YJr7
+cI5DcsNKqdsx5DZX0gDuWFuIjzdwButrIYPNmRJ1G8ybDIF7oDW2eEpm5sMbL9zs
+9ExXCdvqrn51qELbqj0XxtMTIpaCHFSI50PfPpTFV9Xt/hmyVwokoOXFlAEgCn+Q
+CgGs52bFoYMtyi+xEQIDAQAB
 -----END PUBLIC KEY-----'''
 
 def rsa_encrypt(message):
@@ -177,28 +174,28 @@ def rsa_encrypt(message):
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| account_id | num | 通行证ID | |
-| area_code | str | 手机号区号 | 如 `+86` |
-| create_time | num | 注册日期 | 格式为秒级时间戳 |
-| email | str | 邮箱 | 将会打码显示 |
-| identity_code | str | 身份证号 | 将会打码显示 |
+| account_id | num | 米游社账号ID | |
+| area_code | str | 绑定手机的国家区号             | 如 `+86` |
+| create_time | num | 账号注册时间的Unix时间戳 | 该值的中间部分将以星号隐藏 |
+| email | str | 邮箱 | 该值的中间部分将以星号隐藏 |
+| identity_code | str | 身份证号 |  |
 | is_adult | num | 用户是否为成人<br>`1` 是 | |
 | is_email_verify | num | 是否已验证邮箱<br>`1` 是 | |
-| mobile | str | 手机号 | 将会打码显示 |
-| real_name | str | 真实姓名 | 将会打码显示 |
-| safe_area_code | str | 绑定手机的区号 | 如 `+86` |
-| safe_level | num | 安全级别 | 已知该值为 `3` 时，米游社通行证页面中显示为 “高” |
-| safe_mobile | str | 绑定手机 | 将会打码显示 |
+| mobile | str | 手机号 | 该值的中间部分将以星号隐藏 |
+| real_name | str | 真实姓名 | 该值的中间部分将以星号隐藏   |
+| safe_area_code | str | 绑定手机的国家区号 | 如 `+86` |
+| safe_level | num | 安全级别 | 该账号的安全级别<br/>3 高    |
+| safe_mobile | str | 绑定手机 | 该值的中间部分将以星号隐藏 |
 | weblogin_token | str | 即Cookie中的 Login Ticket 字段 | 该字段也将出现在响应Cookie中 |
 
 **备注：**
 
-- 可直接从响应Cookie中获取 Login Ticket
+可直接从响应Cookie中获取 Login Ticket
 
 <details>
 <summary>查看示例</summary>
 - 返回：
-  
+
   ```json
   {
     "code": 200,
