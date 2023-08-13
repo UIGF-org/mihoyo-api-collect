@@ -77,7 +77,7 @@
 
 - [ ] [米游社](hoyolab)
   - [ ] [登录](hoyolab/login)
-    - [ ] [密码登录](hoyolab/login/password.md)
+    - [x] [密码登录](hoyolab/login/password.md)
     - [x] [验证码登录](hoyolab/login/sms.md)
     - [x] [扫码登录](hoyolab/login/qrcode.md)
   - [ ] [论坛](hoyolab/forum)
