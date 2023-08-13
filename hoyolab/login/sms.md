@@ -216,17 +216,17 @@ _请求方式：POST_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | account_id | num | 通行证ID | |
-| area_code | str | 手机号区号 | 如 `+86` |
-| create_time | num | 注册日期 | 格式为秒级时间戳 |
-| email | str | 邮箱 | 将会打码显示 |
-| identity_code | str | 身份证号 | 将会打码显示 |
+| area_code | str | 绑定手机的国家区号 | 如 `+86` |
+| create_time | num | 账号注册时间的Unix时间戳 | |
+| email | str | 邮箱 | 该值的中间部分将以星号隐藏 |
+| identity_code | str | 身份证号 | 该值的中间部分将以星号隐藏 |
 | is_adult | num | 用户是否为成人<br>`1` 是 | |
 | is_email_verify | num | 是否已验证邮箱<br>`1` 是 | |
-| mobile | str | 手机号 | 将会打码显示 |
-| real_name | str | 真实姓名 | 将会打码显示 |
-| safe_area_code | str | 绑定手机的区号 | 如 `+86` |
-| safe_level | num | 安全级别 | 已知该值为 `3` 时，米游社通行证页面中显示为 “高” |
-| safe_mobile | str | 绑定手机 | 将会打码显示 |
+| mobile | str | 手机号 | 该值的中间部分将以星号隐藏 |
+| real_name | str | 真实姓名 | 该值的中间部分将以星号隐藏 |
+| safe_area_code | str | 绑定手机的国家区号 | 如 `+86` |
+| safe_level | num | 安全级别<br>`3` 高 | |
+| safe_mobile | str | 绑定手机 | 该值的中间部分将以星号隐藏 |
 | weblogin_token | str | 即Cookie中的 Login Ticket 字段 | 该字段也将出现在响应Cookie中 |
 
 **备注：**
