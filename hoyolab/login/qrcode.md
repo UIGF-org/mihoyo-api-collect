@@ -27,7 +27,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| app_id | str | 登录的应用标识符<br>1 《崩坏3》<br>2 《未定事件簿》<br>4 《原神》<br>5 平台应用<br>7 《崩坏学园2》<br>8 《崩坏：星穹铁道》<br>9 云游戏<br>10 3NNN<br>11 PJSH<br>12 《绝区零》<br>13 HYG | 没有用处，但是必须传递此参数 |
+| app_id | str | 登录的应用标识符<br>1 《崩坏3》<br>2 《未定事件簿》<br>4 《原神》<br>5 平台应用<br>7 《崩坏学园2》<br>8 《崩坏：星穹铁道》<br>9 云游戏<br>10 3NNN<br>11 PJSH<br>12 《绝区零》<br>13 HYG | 任何值都没有区别，但是必须传递此参数 |
 | device | str | 设备ID | |
 
 **JSON返回：**
@@ -44,7 +44,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| url | str | 二维码指向的URL | |
+| url | str | 二维码指向的URL | 使用了Unicode转义 |
 
 <details>
 <summary>查看示例</summary>
@@ -77,7 +77,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| app_id | str | 登录的应用标识符，与生成二维码时传递的值必须相同 | |
+| app_id | str | 登录的应用标识符 | 与生成二维码时传递的值相同 |
 | device | str | 设备ID | 与生成二维码时传递的值相同 |
 | ticket | str | 生成二维码时从返回的URL的参数中，`ticket`字段的值 | |
 
@@ -103,8 +103,8 @@ _请求方式：POST_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | proto | str | 当前的数据类型<br>Raw 无数据<br>Account 已确认 | |
-| raw | str | 确认登录之前为空字符串，之后则为米游社UID和Game Token，其中的`token`字段即为账号的Game Token | |
-| ext | str | | |
+| raw | str | 确认登录之前为空字符串，之后则为米游社账号ID和Game Token（为JSON格式），其中的`token`字段即为账号的Game Token | |
+| ext | str | 空字符串 | |
 
 <details>
 <summary>查看示例</summary>
