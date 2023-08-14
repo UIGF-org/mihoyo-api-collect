@@ -56,7 +56,7 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | mmt_key | str | 验证任务 | 当 `mmt_data` 对象仅包含该字段时，说明不需要进行人机验证，可直接使用该值发送短信验证码 |
-| gt | obj | 验证ID | 验证ID，即 [极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) 中的`captchaId`，极验后台申请得到 |
+| gt | str | 验证ID | 验证ID，即 [极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) 中的`captchaId`，极验后台申请得到 |
 | new_captcha | num | 宕机情况下使用 | 一般为 `1` |
 | risk_type | str | 结合风控融合，指定验证形式<br>`slide` 拖动滑块完成拼图 | |
 | success | num | 是否成功<br>`1` 成功 | |
@@ -153,7 +153,7 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | info | str | 返回消息（通常为英文） | |
 | msg | str | 返回消息 | |
-| status | num | 返回码<br>`1` 成功<br>`-213` 发送验证码过于频繁<br>`-302` 图形验证码失败（可能是`geetest_v4_data`不正确） | |
+| status | num | 返回码<br>`1` 成功<br>`-103` 手机号格式不正确<br>`-213` 发送验证码过于频繁<br>`-217` 手机号未注册<br>`-302` 图形验证码失败（可能是`geetest_v4_data`不正确） | |
 
 **备注：**
 
@@ -216,17 +216,17 @@ _请求方式：POST_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | account_id | num | 通行证ID | |
-| area_code | str | 手机号区号 | 如 `+86` |
-| create_time | num | 注册日期 | 格式为秒级时间戳 |
-| email | str | 邮箱 | 将会打码显示 |
-| identity_code | str | 身份证号 | 将会打码显示 |
+| area_code | str | 绑定手机的国家区号 | 如 `+86` |
+| create_time | num | 账号注册时间的Unix时间戳 | |
+| email | str | 邮箱 | 该值的中间部分将以星号隐藏 |
+| identity_code | str | 身份证号 | 该值的中间部分将以星号隐藏 |
 | is_adult | num | 用户是否为成人<br>`1` 是 | |
 | is_email_verify | num | 是否已验证邮箱<br>`1` 是 | |
-| mobile | str | 手机号 | 将会打码显示 |
-| real_name | str | 真实姓名 | 将会打码显示 |
-| safe_area_code | str | 绑定手机的区号 | 如 `+86` |
-| safe_level | num | 安全级别 | 已知该值为 `3` 时，米游社通行证页面中显示为 “高” |
-| safe_mobile | str | 绑定手机 | 将会打码显示 |
+| mobile | str | 手机号 | 该值的中间部分将以星号隐藏 |
+| real_name | str | 真实姓名 | 该值的中间部分将以星号隐藏 |
+| safe_area_code | str | 绑定手机的国家区号 | 如 `+86` |
+| safe_level | num | 安全级别<br>`3` 高 | |
+| safe_mobile | str | 绑定手机 | 该值的中间部分将以星号隐藏 |
 | weblogin_token | str | 即Cookie中的 Login Ticket 字段 | 该字段也将出现在响应Cookie中 |
 
 **备注：**
