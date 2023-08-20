@@ -2142,7 +2142,7 @@ _请求方式：GET_
 
 > _需要验证Cookie_
 > 
-> cookie_token
+> Cookie Token：`cookie_token`
 
 `https://api-takumi.mihoyo.com/event/srledger/month_info`
 
@@ -2168,13 +2168,13 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| data_month | str | 数据对应的日期 | 格式 `YYYYMM` |
+| data_month | str | 数据对应的月份 | 格式 `YYYYMM` |
 | data_text | obj | 未知 | |
 | day_data | obj | 当日数据 | |
 | login_flag | bool | 登陆标识 | |
-| month | str | 当前月份 | 格式 `YYYYMM` |
+| month | str | 查询时的月份 | 格式 `YYYYMM` |
 | month_data | obj | 月历数据 | |
-| optional_month | arr | 可查询数据的时间 | 列表中为字符串，时间格式 `YYYYMM` |
+| optional_month | arr | 可查询数据的月份 | 列表中为字符串，时间格式 `YYYYMM` |
 | region | str | 服务器名称 | |
 | start_month | str | 账号注册月份 | 格式 `YYYYMM` |
 | uid | num | 星穹铁道UID | |
@@ -2193,9 +2193,9 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | current_hcoin | num | 当日星穹数量 | |
-| current_rails_pass | num | 当日车票数量 | |
+| current_rails_pass | num | 当日星轨通票与星轨专票数量 | |
 | last_hcoin | num | 前日星穹数量 | |
-| last_rails_pass | num | 前日车票数量 | |
+| last_rails_pass | num | 前日星轨通票与星轨专票数量 | |
 
 
 `data`对象→`month_data`对象：
@@ -2203,12 +2203,12 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | current_hcoin | num | 当月星穹数量 | |
-| current_rails_pass | num | 当月车票数量 | |
+| current_rails_pass | num | 当月星轨通票与星轨专票数量 | |
 | group_by | arr | 星穹数据来源详情 | |
-| hcoin_rate | num | 星穹数量增长率 | |
+| hcoin_rate | num | 星琼数量较上月的增长率 | |
 | last_hcoin | num | 上月星穹数量 | |
-| last_rails_pass | num | 上月车票数量 | |
-| rails_rate | num | 车票数量增长率 | |
+| last_rails_pass | num | 上月星轨通票与星轨专票数量 | |
+| rails_rate | num | 星轨通票与星轨专票数量较上月的增长率 | |
 
 
 `month_data`对象→`group_by`数组→对象：
