@@ -205,4 +205,5 @@
 | md5 | str | 文件md5 | |
 
 `data`对象→`game`对象→`deprecated_files`数组→对象：
+<br>
 同：`data`对象→`game`对象→`deprecated_packages`数组→对象：
