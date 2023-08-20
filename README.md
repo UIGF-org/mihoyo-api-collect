@@ -91,6 +91,7 @@
     - [x] [用户Token](hoyolab/user/token.md)
     - [ ] [用户游戏信息](hoyolab/user/game_account_info.md)
 
+
 ---
 
 ### 《原神（Genshin Impact，Genshin，hk4e）》
@@ -131,7 +132,10 @@
 《崩坏3》游戏内的API。
 
 -->
-
+### 游戏启动器（Game launcher）
+- [ ] [启动器](launcher)
+  - [ ] [原神](launcher/ys.md)
+  - [ ] [崩铁](launcher/sr.md) 
 ---
 
 ## 贡献
