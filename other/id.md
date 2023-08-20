@@ -38,8 +38,9 @@
 
 | ID | 启动器 | key |
 | ------ | ---- | --- |
-| 33 | 崩坏：星穹铁道 | 6KcVuOkbcqjJomjZ |
-| 18 | 原神 | eYd89JmJ |
+| 33 | 崩坏：星穹铁道（官服） | 6KcVuOkbcqjJomjZ |
+| 18 | 原神(官服) | eYd89JmJ |
+| 17 | 原神(B服) | KAtdSsoQ |
 
 ## 论坛ID
 
