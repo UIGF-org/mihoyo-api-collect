@@ -68,7 +68,7 @@
 - [x] [绕过检测与鉴权](other/authentication.md)
 - [ ] [错误码](other/error_code.md)
 - [ ] [各种ID对照表](other/id.md)
-
+- [ ] [启动器API](other/launcher.md)
 ---
 
 ### 米游社（HoYoLab，MiYouShe）
@@ -132,10 +132,6 @@
 《崩坏3》游戏内的API。
 
 -->
-### 游戏启动器（Game launcher）
-- [ ] [启动器](launcher)
-  - [ ] [原神](launcher/ys.md)
-  - [ ] [崩铁](launcher/sr.md) 
 ---
 
 ## 贡献
