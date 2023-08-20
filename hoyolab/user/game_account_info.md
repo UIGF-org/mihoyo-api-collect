@@ -10,6 +10,7 @@
   - [获取角色信息](#star-rail-characters)
   - [获取忘却之庭信息](#star-rail-forgotten-hall)
   - [获取跃迁记录](#star-rail-warp)
+  - [获取开拓月历](#star-rail-month-info)
 
 ---
 
@@ -2130,3 +2131,180 @@ _请求方式：GET_
 **国际服：**
 
 `未知`
+
+
+<h3 id="star-rail-month-info">获取开拓月历</h3>
+
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+> 
+> cookie_token
+
+`https://api-takumi.mihoyo.com/event/srledger/month_info`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 星穹铁道UID | |
+| region | str | 服务器名称 | |
+| month | str | 抽卡月份 | 指定查询月份，为空时查询当月数据，只能查询最近3个月数据，格式 `YYYYMM` |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 玩家信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| data_month | str | 数据对应的日期 | 格式 `YYYYMM` |
+| data_text | obj | 未知 | |
+| day_data | obj | 当日数据 | |
+| login_flag | bool | 登陆标识 | |
+| month | str | 当前月份 | 格式 `YYYYMM` |
+| month_data | obj | 月历数据 | |
+| optional_month | arr | 可查询数据的时间 | 列表中为字符串，时间格式 `YYYYMM` |
+| region | str | 服务器名称 | |
+| start_month | str | 账号注册月份 | 格式 `YYYYMM` |
+| uid | num | 星穹铁道UID | |
+| version | num | 游戏版本 | 此字段内容待确认 |
+
+`data`对象→`data_text`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| key | str | 未知 | |
+| mi18n_key | num | 未知 | |
+| type | str | 未知 | |
+
+`data`对象→`day_data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| current_hcoin | num | 当日星穹数量 | |
+| current_rails_pass | num | 当日车票数量 | |
+| last_hcoin | num | 前日星穹数量 | |
+| last_rails_pass | num | 前日车票数量 | |
+
+
+`data`对象→`month_data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| current_hcoin | num | 当月星穹数量 | |
+| current_rails_pass | num | 当月车票数量 | |
+| group_by | arr | 星穹数据来源详情 | |
+| hcoin_rate | num | 星穹数量增长率 | |
+| last_hcoin | num | 上月星穹数量 | |
+| last_rails_pass | num | 上月车票数量 | |
+| rails_rate | num | 车票数量增长率 | |
+
+
+`month_data`对象→`group_by`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action | str | 星穹来源 | |
+| action_name | str | 星穹来源名称 | |
+| num | num | 星穹数量 | |
+| percent | num | 从该来源获取的星穹数量占总数的比例 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "uid": "123456789",
+        "region": "prod_gf_cn",
+        "login_flag": true,
+        "optional_month": [
+            "202308",
+            "202307",
+            "202306"
+        ],
+        "month": "202308",
+        "data_month": "202308",
+        "month_data": {
+            "current_hcoin": 3245,
+            "current_rails_pass": 17,
+            "last_hcoin": 8916,
+            "last_rails_pass": 35,
+            "hcoin_rate": -63,
+            "rails_rate": -51,
+            "group_by": [
+                {
+                    "action": "daily_reward",
+                    "num": 2025,
+                    "percent": 62,
+                    "action_name": "每日活跃"
+                },
+                {
+                    "action": "adventure_reward",
+                    "num": 375,
+                    "percent": 11,
+                    "action_name": "冒险奖励"
+                },
+                {
+                    "action": "mail_reward",
+                    "num": 340,
+                    "percent": 10,
+                    "action_name": "邮件奖励"
+                },
+                {
+                    "action": "event_reward",
+                    "num": 220,
+                    "percent": 6,
+                    "action_name": "活动奖励"
+                },
+                {
+                    "action": "space_reward",
+                    "num": 225,
+                    "percent": 6,
+                    "action_name": "模拟宇宙奖励"
+                },
+                {
+                    "action": "other",
+                    "num": 0,
+                    "percent": 4,
+                    "action_name": "其他"
+                },
+                {
+                    "action": "abyss_reward",
+                    "num": 60,
+                    "percent": 1,
+                    "action_name": "忘却之庭奖励"
+                }
+            ]
+        },
+        "day_data": {
+            "current_hcoin": 0,
+            "current_rails_pass": 0,
+            "last_hcoin": 515,
+            "last_rails_pass": 0
+        },
+        "version": "1.2",
+        "start_month": "202304",
+        "data_text": {
+            "type": "TextDay",
+            "key": "102_000",
+            "mi18n_key": "2"
+        }
+    }
+}
+```
+
+</details>
