@@ -1,8 +1,10 @@
 # 启动器api
 ### 获取显示内容
-原神：`https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/content`
+原神国服：`https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/content`
 <br>
-崩坏:星穹铁道：`https://api-launcher.mihoyo.com/hkrpg_cn/mdk/launcher/api/content`
+原神国际服：`https://hk4e-launcher-static.hoyoverse.com/hk4e_global/mdk/launcher/api/content`
+<br>
+崩坏:星穹铁道国服：`https://api-launcher.mihoyo.com/hkrpg_cn/mdk/launcher/api/content`
 
 **参数：**
 
@@ -98,9 +100,10 @@
 
 ### 获取游戏下载链接
 
-原神：`https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/resource`
+原神国服：`https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/resource`
 <br>
-崩坏：星穹铁道：`https://api-launcher.mihoyo.com/hkrpg_cn/mdk/launcher/api/resource`
+原神国际服：`https://hk4e-launcher-static.hoyoverse.com/hk4e_global/mdk/launcher/api/resource`
+崩坏：星穹铁道国服：`https://api-launcher.mihoyo.com/hkrpg_cn/mdk/launcher/api/resource`
 
 
 **参数：**
