@@ -8,10 +8,10 @@
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| key | str | 启动器key | |
+| key | str | 启动器Key | |
 | language | str | 语言 | 默认zh-cn |
 | filter_adv | bool | 是否为简略信息 | 默认fasle |
-| launcher_id | num | 启动器id | |
+| launcher_id | num | 启动器ID | |
 
 **JSON返回：**
 根对象：
@@ -20,7 +20,7 @@
 | ---- | ---- | ---- | ---- |
 | retcode | num | 返回码 | |
 | message | str | 返回消息 | |
-| data | obj | 玩家信息 | |
+| data | obj | 返回数据 | |
 
 `data`对象：
 
@@ -66,8 +66,8 @@
 | qr_img | str | 二维码图片 | |
 | qr_desc | str | 二维码描述 | |
 | img_hover | str | 鼠标悬停图片 | |
-| other_links | list | 未知 | 一般为空 |
-| links | list | 链接列表 | 可能为空 |
+| other_links | arr | 未知 | 一般为空 |
+| links | arr | 链接列表 | 可能为空 |
 | icon_link | str | 未知 | 一般为空 |
 
 `data`对象→`post`数组→对象：
@@ -88,9 +88,6 @@
 | name | str | 群名称 | |
 | code | str | 群链接 | |
 | qq_id | str | 未知 | |
-
-`data`对象→`more`对象：
-都说了未知了。
  
 `data`对象→`links`对象：
 
@@ -114,6 +111,7 @@
 | launcher_id | num | 启动器id | |
 
 **JSON返回：**
+
 根对象：
 
 | 字段 | 类型 | 内容 | 备注 |
@@ -180,7 +178,7 @@
 
 `data`对象→`game`对象→`diffs`数组→`voice_packs`数组→对象：
 
-同`data`对象→`game`对象→`latest`对象→`voice_packs`数组→对象
+与`data`对象→`game`对象→`deprecated_packages`数组→对象中的结构相同
 
 `data`对象→`plugin`对象：
 | 字段 | 类型 | 内容 | 备注 |
