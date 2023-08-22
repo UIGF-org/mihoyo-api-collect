@@ -1,4 +1,5 @@
 
+
 # ID对照表
 
 - [游戏ID](#游戏id)
@@ -12,6 +13,7 @@
   - [绝区零](#forum-zenless-zone-zero)
   - [子分区](#forum-sub-area)
   - [视频分区](#forum-video-area)
+- [启动器ID以及key](#启动器ID以及key)
 - [原神](#原神)
   - [服务器名称](#genshin-server-region)
   - [角色ID](#genshin-characters)
@@ -33,6 +35,14 @@
 | 6 | 崩坏：星穹铁道 | |
 | 8 | 绝区零 | |
 
+## 启动器ID以及key
+
+| ID | 启动器 | key | 备注 |
+| ------ | ---- | --- | --- |
+| 33 | 崩坏：星穹铁道（官服） | 6KcVuOkbcqjJomjZ | |
+| 18 | 原神(官服) | eYd89JmJ | |
+| 17 | 原神(B服) | KAtdSsoQ | |
+| 10 | 原神(国际服) | gcStgarh | |
 
 ## 论坛ID
 
