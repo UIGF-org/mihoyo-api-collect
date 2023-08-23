@@ -13,7 +13,8 @@
   - [绝区零](#forum-zenless-zone-zero)
   - [子分区](#forum-sub-area)
   - [视频分区](#forum-video-area)
-- [启动器ID以及key](#启动器ID以及key)
+- [文章类型](#文章类型)
+- [启动器ID与Key](#启动器ID与key)
 - [原神](#原神)
   - [服务器名称](#genshin-server-region)
   - [角色ID](#genshin-characters)
@@ -35,14 +36,14 @@
 | 6 | 崩坏：星穹铁道 | |
 | 8 | 绝区零 | |
 
-## 启动器ID以及key
+## 启动器ID与Key
 
-| ID | 启动器 | key | 备注 |
-| ------ | ---- | --- | --- |
-| 33 | 崩坏：星穹铁道（官服） | 6KcVuOkbcqjJomjZ | |
-| 18 | 原神(官服) | eYd89JmJ | |
-| 17 | 原神(B服) | KAtdSsoQ | |
-| 10 | 原神(国际服) | gcStgarh | |
+| ID | Key | 游戏 | 服务器 | 备注 |
+| -- | --- | ---- | ----- | ---- |
+| 17 | KAtdSsoQ | 原神 | 哔哩哔哩服 | |
+| 18 | eYd89JmJ | 原神 | 官服 | |
+| 10 | gcStgarh | 原神 | 国际服 | |
+| 33 | 6KcVuOkbcqjJomjZ | 崩坏：星穹铁道 | 国服 | |
 
 ## 论坛ID
 
@@ -146,6 +147,13 @@
 | 14 | 录屏·演示 | |
 | 15 | 生活记录 | |
 
+## 文章类型
+
+| 名称 | 类型 | 备注 |
+| --- | ---- | ---- |
+| POST_TYPE_INFO | 以文本为主的文章 | |
+| POST_TYPE_ANNOUNCE | 公告文章 | |
+| POST_TYPE_ACTIVITY | 活动公告文章 | |
 
 ## 原神
 
@@ -162,9 +170,9 @@
 
 <h3 id="genshin-characters">角色ID</h3>
 
-UIGF收集了角色、物品、武器的ID，[此处](https://uigf.org/zh/API.html)即为他们的API使用指南。
+UIGF API收集了角色、物品、武器的ID，[此文档](genshin_impact/thirdparty/dictionary_of_item.md)列出了一些API；[此处](https://uigf.org/zh/API.html)即为UIGF API的使用指南。
 
-| ID | 角色 | 元素 | 国家 |
+<!-- | ID | 角色 | 元素 | 国家 |
 | -- | ---- | --- | ---- |
 | 10000002 | 神里绫华 | 冰 | 稻妻 |
 | 10000003 | 琴 | 风 | 蒙德 |
@@ -229,7 +237,7 @@ UIGF收集了角色、物品、武器的ID，[此处](https://uigf.org/zh/API.ht
 | 10000075 | 流浪者 | 风 | |
 | 10000076 | 珐露珊 | 风 | 须弥 |
 | 10000077 | 瑶瑶 | 草 | 璃月 |
-| 10000078 | 艾尔海森 | 草 | 须弥 |
+| 10000078 | 艾尔海森 | 草 | 须弥 | -->
 
 ## 崩坏：星穹铁道
 

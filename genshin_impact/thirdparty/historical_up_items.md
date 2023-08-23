@@ -1,10 +1,10 @@
 # 历史祈愿UP池
 
-- [Caughtwind API](#caughtwind-api)
+- [Caughtwind API](#caughtwind-api已弃用)
 
 ---
 
-## Caughtwind API
+## Caughtwind API（已弃用）
 
 _请求方式：GET_
 

@@ -227,7 +227,7 @@ _请求方式：GET_
 | forum_id | num | 所属论坛的ID | |
 | forum_name | str | 所属论坛的名称 | |
 | banner | str | 文章封面链接 | |
-| view_type  | num  | 文章呈现类型<br />1 内容以文字类文章为主<br />2 内容以图片类文章为主<br />5 内容以视频类文章为主 | 文字类文章示例：[【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41059886)<br />图片类文章示例：[「可莉」头像 一起来玩吧~~~~【观测枢】-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41214610)<br />视频类文章示例：[【欢愉一夏主题视频】3.8游园会BGM神还原~(观测枢)-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41175339) |
+| view_type  | num  | 文章呈现类型<br>1 内容以文字文章为主<br />2 内容以图片文章为主<br>5 内容以视频文章为主 | 文字类文章示例：[【V3.8攻略·七圣召唤】万叶、烟绯、坎蒂丝新卡一图流解读！-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41059886)<br>图片类文章示例：[「可莉」头像 一起来玩吧~~~~【观测枢】-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41214610)<br>视频类文章示例：[【欢愉一夏主题视频】3.8游园会BGM神还原~(观测枢)-原神社区-米游社 (miyoushe.com)](https://www.miyoushe.com/ys/article/41175339) |
 
 
 <details>
@@ -683,8 +683,8 @@ _请求方式：GET_
 
 `data`对象→`post`对象：
 
-| 字段               | 类型        | 内容                       | 备注                                |
-| ------------------ | ----------- | -------------------------- | ----------------------------------- |
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
 | post               | obj         | 文章内容                   |                                     |
 | forum              | obj         | 板块信息                   |                                     |
 | topics             | obj         | 文章的标签                 |                                     |
@@ -802,14 +802,14 @@ _请求方式：GET_
 
 `data`对象→`post`对象→`collection`对象：
 
-| 字段                | 类型 | 内容                           | 备注 |
-| ------------------- | ---- | ------------------------------ | ---- |
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | --- | ---- | --- |
 | prev_post_id        | str  | 该集合下的上一篇文章的文章id   |      |
 | next_post_id        | str  | 该集合下的下一篇文章的文章id   |      |
-| collection_id       | str  | 集合id                         |      |
+| collection_id       | str  | 集合id                       |      |
 | cur                 | num  | 当前文章在该集合下的指针       |      |
 | total               | num  | 该集合下的所有文章数量         |      |
-| collection_title    | str  | 集合标题                       |      |
+| collection_title    | str  | 集合标题 |      |
 | prev_post_game_id   | num  | 该集合下的上一篇文章的游戏id   |      |
 | next_post_game_id   | num  | 该集合下的下一篇文章的游戏id   |      |
 | prev_post_view_type | num  | 该集合下的上一篇文章的呈现类型 |      |
@@ -1198,18 +1198,14 @@ _请求方式：GET_
 | 字段  | 类型 | 内容                                                         | 备注 |
 | ----- | ---- | ------------------------------------------------------------ | ---- |
 | type  | num  | 认证类别<br />1 社区或游戏官方<br />2 已认证的创作者<br />0 未认证的用户 |      |
-| label | str  | 认证具体信息                                                 |      |
+| label | str  | 认证具体信息 | |
 
 `data`对象→`list`数组→`user`对象→`level_exp`对象   或   `data`对象→`list`数组→对象→`sub_replies`对象→`user`对象→`level_exp`对象：
 
-| 字段  | 类型 | 内容           | 备注 |
-| ----- | ---- | -------------- | ---- |
-| level | num  | 用户的社区等级 |      |
-| exp   | num  | 用户的社区经验 |      |
-
-
-
-
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | --- | --- | ----- |
+| level | num | 用户的社区等级 | |
+| exp | num | 用户的社区经验 | |
 
 <details>
 <summary>查看示例</summary>
