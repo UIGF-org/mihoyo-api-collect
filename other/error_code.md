@@ -36,7 +36,7 @@
 | -100 | 登录失效，请重新登录<br>-100 | Cookie失效或不正确 |
 | 1000 | 参数错误 | 传递的参数缺失或错误 |
 
-# `/api-launcher.mihoyo.com`
+# `api-launcher.mihoyo.com`
 
 | 错误码 | 消息 | 原因 |
 | ----- | ---- | ---- |
