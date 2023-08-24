@@ -81,6 +81,20 @@ _注：以下列表只是说明该请求头的值通常在哪些平台出现，�
 
 设备ID，由使用的设备决定。
 
+安卓上一般为一串由`ANDROID_ID`生成的`UUID`，Kotlin 中可以这样获取（Java 同理）
+```Kotlin
+import android.content.Context
+import android.provider.Settings
+import java.util.UUID
+
+@SuppressLint("HardwareIds")
+fun getDeviceId(context: Context): String {
+    val androidId = Settings.Secure.getString(context.contentResolver, Settings.System.ANDROID_ID)
+    val uuid = UUID.nameUUIDFromBytes(androidId.toByteArray())
+    return uuid.toString()
+}
+```
+
 #### `X-Requested-With`
 
 国内版APP为`com.mihoyo.hyperion`。

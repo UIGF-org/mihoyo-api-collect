@@ -1,8 +1,9 @@
 # 游戏启动器信息
 
-- [获取推荐内容](#获取推荐内容)
-- [获取游戏资源文件信息](#获取游戏资源文件信息)
-
+- [游戏启动器信息](#游戏启动器信息)
+  - [获取推荐内容](#获取推荐内容)
+  - [获取游戏资源文件信息](#获取游戏资源文件信息)
+  - [获取用户协议](#获取用户协议)
 ---
 
 ## 获取推荐内容
@@ -21,8 +22,8 @@ _请求方式：GET_
 | ---- | ---- | ---- | ---- |
 | key | str | 启动器Key | |
 | launcher_id | num | 启动器ID | |
-| language | str | 返回文本语言的国家代码 | |
-| filter_adv | bool | 是否不获取背景图信息 | 留空则返回所有信息，即`false` |
+| language | str | 返回文本语言的国家代码 | 国服仅支持中文（zh-cn） |
+| filter_adv | bool | 是否不获取资讯信息 | 留空则返回所有信息，即`false` |
 
 **JSON返回：**
 
@@ -429,4 +430,55 @@ _请求方式：GET_
   }
 }
 ```
+</details>
+
+## 获取用户协议
+
+_请求方式：GET_
+
+《原神》国服：`https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/protocol`
+
+《原神》国际服：`https://hk4e-launcher-static.hoyoverse.com/hk4e_global/mdk/launcher/api/protocol`
+
+《崩坏：星穹铁道》国服：`https://api-launcher.mihoyo.com/hkrpg_cn/mdk/launcher/api/protocol`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| key | str | 启动器Key | |
+| launcher_id | num | 启动器ID | |
+| language | str | 返回文本语言的国家代码 | 国服仅支持中文（zh-cn） |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 用户协议以及用户协议版本 | 若请求参数中的`language`为不支持的语言，则所有数据均为空与空数组 |
+
+`data`对象：
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| protocol | str | 用户协议 | 为HTML |
+| title | str | 用户协议标题 | |
+| agreement_version | str | 用户协议版本 | 一般为当前游戏版本 |
+
+<details>
+<summary>查看示例</summary>
+```json
+{
+    "retcode": 0,
+    "message": "OK",
+    "data": {
+        "protocol": "<p style=\"white-space: pre-wrap;\"><span style=\"color:rgba(0,0,0,1)\">Effective Date: July 5, 2023</span></p>\n\n<p style=\"white-space: pre-wrap; min-height: 1.5em; text-align: justify;\"><span style=\"color:rgba(0,0,0,1)\"> </span></p>\n\n<p style=\"white-space: pre-wrap; text-align: justify;\"><span style=\"color:rgba(0,0,0,1)\">PLEASE READ THESE TERMS OF SERVICE CAREFULLY, INCLUDING OUR PRIVACY POLICY.</span></p>\n\n<p style=\"white-space: pre-wrap; text-align: justify;\"><span style=\"color:rgba(0,0,0,1)\">This Terms of Service (&#34;Agreement&#34;) is a legally binding agreement between COGNOSPHERE PTE. LTD. (&#34;COGNOSPHERE,&#34; &#34;we,&#34; &#34;our,&#34; or &#34;us&#34;) and you (&#34;you&#34; or &#34;User&#34;). This Agreement governs your use of or access to COGNOSPHERE Game(s), our online website, any game-specific site, software systems, customer support, social media, community channels and/or any other online services provided by COGNOSPHERE and by any of our authorized third party (collectively the &#34;COGNOSPHERE ...",
+        "title": "Terms of Service",
+        "agreement_version": "4.0"
+    }
+}
+```
+
 </details>

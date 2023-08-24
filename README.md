@@ -68,7 +68,7 @@
 - [x] [绕过检测与鉴权](other/authentication.md)
 - [ ] [错误码](other/error_code.md)
 - [ ] [各种ID对照表](other/id.md)
-- [x] [游戏启动器信息](other/launcher.md)
+- [ ] [游戏启动器信息](other/launcher.md)
 ---
 
 ### 米游社（HoYoLab，MiYouShe）
