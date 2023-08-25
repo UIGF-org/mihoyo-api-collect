@@ -665,6 +665,7 @@ _请求方式：GET_
 > _需要验证请求头_
 
 网页：`https://bbs-api.miyoushe.com/post/wapi/getPostFull`
+
 应用：`https://bbs-api.miyoushe.com/post/api/getPostFull`
 
 **参数：**

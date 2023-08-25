@@ -1,7 +1,33 @@
 # 鉴权
 
 - [请求头](#请求头)
+  - [米游社](#hoyolab_header)
+    - [`x-rpc-app_version`](#x-rpc-app_version)
+    - [`x-rpc-client_type`](#x-rpc-client_type)
+    - [`x-rpc-sys_version`](#x-rpc-sys_version)
+    - [`x-rpc-channel`](#x-rpc-channel)
+    - [`x-rpc-device_name`](#x-rpc-device_name)
+    - [`x-rpc-device_model`](#x-rpc-device_model)
+    - [`x-rpc-device_fp`](#x-rpc-device_fp)
+    - [`x-rpc-app_id`](#x-rpc-app_id)
+    - [`x-rpc-verify_key`](#x-rpc-verify_key)
+    - [`x-rpc-device_id`](#x-rpc-device_id)
+    - [`X-Requested-With`](#x-requested-with)
+    - [`Origin`](#origin)
+    - [`Host`](#host)
+    - [`Referer`](#referer)
+    - [`User-Agent`](#user-agent)
+    - [`DS`](#ds)
 - [Cookie](#cookie)
+  - [米游社](#hoyolab_cookie)
+    - [LToken](#ltoken)
+    - [SToken](#stoken)
+    - [MiHoYo ID](#mihoyo-id)
+    - [Account ID](#account-id)
+    - [Login Ticket](#login-ticket)
+    - [Cookie Token](#cookie-token)
+    - [Game Token](#game-token)
+    - [Hk4e Token](#hk4e-token)
 
 ---
 
@@ -11,7 +37,7 @@
 
 ## 请求头
 
-### 米游社
+<h3 id="hoyolab_header">米游社</h3>
 
 大多数API需要验证的请求头：`x-rpc-app_version`、`x-rpc-client_type`、`x-rpc-device_id`、`X-Requested-With`、`Origin`、`Referer`、`Host`、`DS`、`User-Agent`。
  
@@ -75,14 +101,19 @@ _注：以下列表只是说明该请求头的值通常在哪些平台出现，�
 
 #### `x-rpc-app_id`
 
-一般为`bll8iq97cem8`。
+为应用ID，具体值需查看请求头标识与[ID对照表](other/id.md#应用id)。
+
+#### `x-rpc-verify_key`
+
+一般为应用ID，具体值需查看请求头标识与[ID对照表](other/id.md#应用id)。
 
 #### `x-rpc-device_id`
 
 设备ID，由使用的设备决定。
 
-安卓上一般为一串由`ANDROID_ID`生成的`UUID`，Kotlin 中可以这样获取（Java 同理）
-```Kotlin
+在安卓设备上，一般为一串由`ANDROID_ID`生成的`UUID`，Kotlin （Java同理）中可以这样获取：
+
+```kotlin
 import android.content.Context
 import android.provider.Settings
 import java.util.UUID
@@ -166,7 +197,7 @@ fun getDeviceId(context: Context): String {
 请在[这里](https://github.com/Kamisato-Ayaka-233/mihoyo-api-collect/issues/1)获取`salt`。
 
 
-###### 中国版APP：
+###### 中国版APP
 
 `DS`有多个生成算法，分别为`DS1`和`DS2`。
 
@@ -307,15 +338,15 @@ const final = `${t},${r},${ds}` // 最终结果
 > SToken
 ```
 
-若像Account ID，有多种字段值，将会在其之后标识需要的字段名。若有多个兼容的字段名，使用“、”分隔。
+若像Account ID，有多种字段值，将会在其之后标识需要的字段名。若有多个兼容的字段或有多个值相同的字段，使用“、”分隔。
 
 ```markdown
 > _需要验证Cookie_
 > 
-> Account ID：`account_id`
+> Account ID：`account_id`、`account_id_v2`
 ```
 
-### 米游社
+<h3 id="hoyolab_cookie">米游社</h3>
 
 需要哪些Cookie取决于以下因素：
 
