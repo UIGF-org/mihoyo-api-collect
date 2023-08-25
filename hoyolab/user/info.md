@@ -324,6 +324,7 @@ _请求方式：GET_
 _请求方式：GET_
 
 网页：`https://bbs-api.miyoushe.com/post/wapi/userPost`
+
 应用：`https://bbs-api.miyoushe.com/painter/api/user_instant/list`
 
 **参数：**

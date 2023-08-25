@@ -59,7 +59,7 @@ _请求方式：GET_
 | post_order | str | 默认排序类型<br/>reply 最新回复 | |
 | src_type | num | 待调查 | |
 | icon | str | 分区图标 | |
-| header_image | str | 分区头图 | APP端头部部分 |
+| header_image | str | 分区头图URL | APP端头部部分 |
 | hot_score | num | 待调查 | |
 | icon_pure | str | 分区图标 | |
 | des | str | 描述 | |

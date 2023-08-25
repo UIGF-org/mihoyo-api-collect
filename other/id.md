@@ -17,12 +17,15 @@
 - [文章类型](#文章类型)
 - [实体类型](#实体类型)
 - [启动器ID与Key](#启动器ID与key)
+- [游戏标识符](#游戏标识符)
 - [原神](#原神)
   - [服务器名称](#genshin-server-region)
   - [角色ID](#genshin-characters)
 - [崩坏：星穹铁道](#崩坏星穹铁道)
   - [服务器名称](#star-rail-server-region)
   - [角色ID](#star-rail-characters)
+- [崩坏3](#崩坏3)
+  - [服务器名称](#honkai-3-server-region)
 
 ---
 
@@ -174,6 +177,16 @@
 | 10 | gcStgarh | 原神 | 国际服 | |
 | 33 | 6KcVuOkbcqjJomjZ | 崩坏：星穹铁道 | 国服 | |
 
+## 游戏标识符
+
+一般被称为`game_biz`。
+
+| 标识符 | 游戏 | 服务器 | 备注 |
+| ----- | ---- | ----- | ---- |
+| hk4e_cn | 原神 | 国服 | |
+| hkrpg_cn | 崩坏：星穹铁道 | 国服 | |
+| bh3_cn | 崩坏3 | 国服 | |
+
 ## 原神
 
 <h3 id="genshin-server-region">服务器名称</h3>
@@ -291,3 +304,10 @@ UIGF API收集了角色、物品、武器的ID，[此文档](genshin_impact/thir
 | 8002 | 开拓者 | | | 星穹列车 |
 | 1013 | 黑塔 | 智识 | 冰 | 空间站「黑塔」 |
 
+## 崩坏3
+
+<h3 id="honkai-3-server-region">服务器名称</h3>
+
+| 名称 | 服务器 | 类别 |
+| --- | ------ | ---- |
+| pc01 | 全平台（桌面）服 | 国服 |

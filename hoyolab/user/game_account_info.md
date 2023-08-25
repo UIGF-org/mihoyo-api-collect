@@ -1,5 +1,8 @@
 # 游戏账号信息
 
+- [获取游戏记录卡片信息](#获取游戏记录卡片信息)
+- [通过LToken获取绑定游戏账号的基本信息](#通过ltoken获取绑定游戏账号的基本信息)
+- [通过SToken获取绑定游戏账号的基本信息](#通过stoken获取绑定游戏账号的基本信息)
 - [原神](#原神)
   - [获取首页信息](#genshin-home)
   - [获取角色信息](#genshin-characters)
@@ -13,6 +16,303 @@
   - [获取开拓月历](#star-rail-month-info)
 
 ---
+
+## 获取游戏记录卡片信息
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+>
+> `x-rpc-client_type`：`2`
+> 
+> K2`salt`
+>
+> `DS1`
+
+> _需要验证Cookie_
+> 
+> SToken
+
+`https://api-takumi-record.mihoyo.com/game_record/card/api/getGameRecordCard`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | str | 想要获取游戏记录卡片信息的米游社账号ID | |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 该米游社账号的所有游戏记录卡片信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| list | arr | 所有游戏记录卡片信息 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| has_role | bool | 该账号是否已绑定该游戏的任何账号 | |
+| game_id | num | 该游戏记录对应的游戏ID | |
+| game_role_id | str | 该游戏记录展示的游戏账号ID | |
+| nickname | str | 该游戏账号的昵称 | |
+| region | str | 该游戏账号所属服务器的名称 | |
+| level | num | 该游戏账号的等级 | 例如原神的冒险等级 |
+| background_image | str | 该游戏记录卡片背景图片的URL | |
+| is_public | bool | 该账号是否公开该游戏记录 | |
+| data | arr | 该游戏记录的一些简略信息 | |
+| region_name | str | 该游戏账号所属服务器的称呼 | |
+| url | str | 该游戏记录卡片将跳转页面的URL | |
+| data_switches | arr | 待调查 | |
+| h5_data_switches | arr | 待调查 | |
+| background_color | str | 该卡片背景颜色的16进制颜色值 | |
+
+`data`对象→`list`数组→对象→`data`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| name | str | 该记录项的名称 | |
+| type | num | 待调查 | |
+| value | str | 该记录项的数据 | |
+
+`data`对象→`list`数组→对象→`data_switches`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| switch_id | str | 待调查 | |
+| is_public | bool | 待调查 | |
+| switch_name | str | 待调查 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "list": [
+      {
+        "has_role": true,
+        "game_id": 2,
+        "game_role_id": "222681079",
+        "nickname": "※青衫入雨※",
+        "region": "cn_gf01",
+        "level": 59,
+        "background_image": "https://upload-bbs.mihoyo.com/upload/2020/09/22/0762ab7cc42ac5a760bb4d1ea87b2c42_1236712390449986860.png",
+        "is_public": true,
+        "data": [
+          {
+            "name": "活跃天数",
+            "type": 1,
+            "value": "524"
+          },
+          {
+            "name": "获得角色数",
+            "type": 1,
+            "value": "53"
+          },
+          {
+            "name": "成就达成数",
+            "type": 1,
+            "value": "795"
+          },
+          {
+            "name": "深境螺旋",
+            "type": 1,
+            "value": "8-3"
+          }
+        ],
+        "region_name": "天空岛",
+        "url": "https://webstatic.mihoyo.com/app/community-game-records/?bbs_presentation_style=fullscreen&bbs_auth_required=true&v=101&gid=2&user_id=317832114",
+        "data_switches": [
+          {
+            "switch_id": 1,
+            "is_public": true,
+            "switch_name": "个人主页卡片"
+          },
+          {
+            "switch_id": 2,
+            "is_public": true,
+            "switch_name": "角色详情数据"
+          }
+        ],
+        "h5_data_switches": [],
+        "background_color": "D3BC8E"
+      },
+      ...
+    ]
+  }
+}
+```
+</details>
+
+## 通过LToken获取绑定游戏账号的基本信息
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+>
+> `x-rpc-client_type`：`5`
+> 
+> 4X`salt`
+>
+> `DS2`
+
+> _需要验证Cookie_
+> 
+> LToken
+
+`https://api-takumi.mihoyo.com/binding/api/getUserGameRolesByCookie`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| game_biz | str | 游戏标识符 | 若该值为空，将返回所有绑定游戏账号的信息 |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | Cookie对应米游社账号绑定的游戏账号信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| list | arr | 游戏账号基本信息 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| game_biz | str | 该游戏账号所属游戏的标识符 | |
+| region | str | 该游戏账号所在服务器的名称 | |
+| game_uid | str | 该游戏账号的UID | |
+| nickname | str | 该游戏账号的昵称 | |
+| level | num | 该游戏账号的等级 | |
+| is_chosen | bool | 是否已收藏该游戏账号 | |
+| region_name | str | 该游戏账号所在服务器的称呼 | |
+| is_official | bool | 该游戏账号所在服务器是否为官方服务器 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "list": [
+      {
+        "game_biz": "hk4e_cn",
+        "region": "cn_qd01",
+        "game_uid": "524923864",
+        "nickname": "༽墨ᐒ染ᐓ月༼",
+        "level": 22,
+        "is_chosen": false,
+        "region_name": "世界树",
+        "is_official": false
+      },
+      ...
+    ]
+  }
+}
+```
+</details>
+
+## 通过SToken获取绑定游戏账号的基本信息
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+>
+> `x-rpc-client_type`：`2`
+> 
+> K2`salt`
+>
+> `DS1`
+
+> _需要验证Cookie_
+> 
+> SToken
+
+`https://api-takumi.miyoushe.com/binding/api/getUserGameRolesByStoken`
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | Cookie对应米游社账号绑定的游戏账号信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| list | arr | 游戏账号基本信息 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| game_biz | str | 该游戏账号所属游戏的标识符 | |
+| region | str | 该游戏账号所在服务器的名称 | |
+| game_uid | str | 该游戏账号的UID | |
+| nickname | str | 该游戏账号的昵称 | |
+| level | num | 该游戏账号的等级 | |
+| is_chosen | bool | 是否已收藏该游戏账号 | |
+| region_name | str | 该游戏账号所在服务器的称呼 | |
+| is_official | bool | 该游戏账号所在服务器是否为官方服务器 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "list": [
+      {
+        "game_biz": "hk4e_cn",
+        "region": "cn_qd01",
+        "game_uid": "524923864",
+        "nickname": "༽墨ᐒ染ᐓ月༼",
+        "level": 22,
+        "is_chosen": false,
+        "region_name": "世界树",
+        "is_official": false
+      },
+      ...
+    ]
+  }
+}
+```
+</details>
 
 ## 原神
 
