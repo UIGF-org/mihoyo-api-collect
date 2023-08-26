@@ -3,8 +3,10 @@
 - [获取游戏记录卡片信息](#获取游戏记录卡片信息)
 - [通过LToken获取绑定游戏账号的基本信息](#通过ltoken获取绑定游戏账号的基本信息)
 - [通过SToken获取绑定游戏账号的基本信息](#通过stoken获取绑定游戏账号的基本信息)
+- [通过Action Ticket获取绑定游戏账号的基本信息](#通过action-ticket获取绑定游戏账号的基本信息)
 - [原神](#原神)
   - [获取首页信息](#genshin-home)
+  - [获取游戏账号基本信息](#genshin-role-basics)
   - [获取角色信息](#genshin-characters)
   - [获取深境螺旋信息](#genshin-spiral-abyss)
   - [获取祈愿记录](#genshin-wish)
@@ -314,9 +316,79 @@ _请求方式：GET_
 ```
 </details>
 
+## 通过Action Ticket获取绑定游戏账号的基本信息
+
+**国服：**
+
+_请求方式：GET_
+
+`https://api-takumi.miyoushe.com/binding/api/getUserGameRoles`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_ticket | str | 用于获取绑定游戏账号信息的有效Action Ticket | |
+| game_biz | str | 游戏标识符 | 若该值为空，将返回所有绑定游戏账号的信息 |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | Cookie对应米游社账号绑定的游戏账号信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| list | arr | 游戏账号基本信息 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| game_biz | str | 该游戏账号所属游戏的标识符 | |
+| region | str | 该游戏账号所在服务器的名称 | |
+| game_uid | str | 该游戏账号的UID | |
+| nickname | str | 该游戏账号的昵称 | |
+| level | num | 该游戏账号的等级 | |
+| is_chosen | bool | 是否已收藏该游戏账号 | |
+| region_name | str | 该游戏账号所在服务器的称呼 | |
+| is_official | bool | 该游戏账号所在服务器是否为官方服务器 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "list": [
+      {
+        "game_biz": "hk4e_cn",
+        "region": "cn_qd01",
+        "game_uid": "524923864",
+        "nickname": "༽墨ᐒ染ᐓ月༼",
+        "level": 22,
+        "is_chosen": false,
+        "region_name": "世界树",
+        "is_official": false
+      },
+      ...
+    ]
+  }
+}
+```
+</details>
+
 ## 原神
 
-<h3 id="genshin-home">获取玩家首页信息</h3>
+<h3 id="genshin-home">获取首页信息</h3>
 
 **国服：**
 
@@ -561,7 +633,72 @@ _请求方式：GET_
 | role_id | num | 原神UID | |
 | server | str | 服务器名称 | |
 
-<h3 id="genshin-characters">获取玩家角色信息</h3>
+<h3 id="genshin-role-basics">获取游戏账号基本信息</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+>
+> `x-rpc-client_type`：`5`
+>
+> 4X`salt`
+>
+> `DS2`
+
+> _需要验证Cookie_
+> 
+> LToken
+
+`https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/roleBasicInfo`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| server | str | 服务器名称 | |
+| role_id | num | 原神UID | |
+
+**JSON返回**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 该游戏账号的基本信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| AvatarUrl | str | 空字符串 | |
+| nickname | str | 该游戏账号的昵称 | |
+| region | str | 该游戏账号所属服务器的名称 | |
+| level | num | 该游戏账号的冒险等级 | |
+| card_play_level | num | 待调查 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "AvatarUrl": "",
+    "nickname": "※青衫入雨※",
+    "region": "cn_gf01",
+    "level": 59,
+    "card_play_level": 0
+  }
+}
+```
+</details>
+
+<h3 id="genshin-characters">获取角色信息</h3>
 
 **国服：**
 
@@ -799,7 +936,7 @@ _请求方式：POST_
 
 **JSON返回**
 
-<h3 id="genshin-spiral-abyss">获取玩家深境螺旋信息</h3>
+<h3 id="genshin-spiral-abyss">获取深境螺旋信息</h3>
 
 **国服：**
 

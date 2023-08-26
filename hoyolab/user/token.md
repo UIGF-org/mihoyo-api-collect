@@ -6,6 +6,8 @@
   - [通过Game Token获取SToken](#通过game-token获取stoken)
   - [通过Game Token获取Cookie Token](#通过game-token获取cookie-token)
   - [通过Cookie Token获取Hk4e Token](#通过cookie-token获取hk4e-token)
+- [Action Ticket](#action-ticket)
+  - [通过SToken获取Action Ticket](#通过stoken获取action-ticket)
 - [Auth Key](#auth-key)
   - [通过SToken获取账号Auth Key A](#通过stoken获取账号auth-key-a)
   - [通过SToken获取账号Auth Key B](#通过stoken获取账号auth-key-b)
@@ -177,18 +179,18 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| aid | str | 米游社UID | |
+| aid | str | 米游社账号UID | |
 | mid | str | 米游社MiHoYo ID | |
 | account_name | str | 空字符串 | |
 | email | str | 被隐藏的账号的绑定邮箱 | |
 | is_email_verify | num | 绑定邮箱是否通过验证 | |
-| area_code | str | 账号绑定手机的区号 | |
+| area_code | str | 账号绑定手机的国家号码 | |
 | mobile | str | 被隐藏的账号的绑定手机 | |
-| safe_area_code | str | 账号安全手机的区号 | 历史遗留字段，现在安全手机的功能已经被移除了 |
+| safe_area_code | str | 账号安全手机的国家号码 | 历史遗留字段，现在安全手机的功能已经被移除了 |
 | safe_mobile | str | 被隐藏的账号安全手机 | 历史遗留字段，现在安全手机的功能已经被移除了 |
 | realname | str | 被隐藏的账号实名认证姓名 | |
 | identity_code | str | 被隐藏的账号实名认证身份证号 | |
-| rebind_area_code | str | 账号的换绑手机号的区号 | |
+| rebind_area_code | str | 账号的换绑手机号的国家号码 | |
 | rebind_mobile | str | 被隐藏的账号的换绑手机号 | |
 | rebind_mobile_time | str | 0 | |
 | links | arr | 待调查 | |
@@ -328,6 +330,121 @@ _请求方式：POST_
 }
 ```
 </details>
+
+## Action Ticket
+
+### 通过SToken获取Action Ticket
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> SToken
+
+`https://api-takumi.mihoyo.com/auth/api/getActionTicketBySToken`
+
+**JSON请求：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_type | str | 获取Action Ticket的用途<br>game_role 获取绑定游戏账号信息 | |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 对应用途的Action Ticket与部分账号个人信息 | 个人信息已隐藏 |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| ticket | str | Action Ticket | |
+| is_verified | bool | 待调查 | |
+| account_info | obj | 部分个人信息 | 个人信息已隐藏 |
+
+`data`对象→`account_info`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| is_realname | bool | 待调查 | |
+| mobile | str | 绑定手机的手机号 | |
+| safe_mobile | str | 安全手机的手机号 | 历史遗留字段，现在安全手机的功能已经被移除了 |
+| safe_area_code | str | 安全手机的国家号码 | 历史遗留字段，现在安全手机的功能已经被移除了 |
+| account_id | str | Cookie对应米游社账号的ID | |
+| account_name | str | 空字符串 | |
+| email | str | 被隐藏的绑定邮箱 | |
+| is_email_verify | bool | 绑定邮箱是否已通过验证 | |
+| area_code | str | 绑定手机的国家号码 | |
+| real_name | str | 被隐藏的实名认证中的姓名 | |
+| identify_code | str | 被隐藏的实名认证中的身份证号 | |
+| create_time | str | 该米游社账号创建时间的Unix时间戳 | |
+| create_ip | str | 待调查 | |
+| change_pwd_time | sr | 待调查 | |
+| nickname | str | 空字符串 | |
+| user_icon_id | num | 待调查 | |
+| safe_level | num | 该账号的安全等级<br>3 高 | |
+| black_endtime | str | 待调查 | |
+| black_note | str | 待调查 | |
+| gender | num | 性别 | |
+| real_stat | num | 待调查 | |
+| apple_name | str | 待调查 | |
+| sony_name | str | 待调查 | |
+| tap_name | str | 待调查 | |
+| reactivate_ticket | str | 待调查 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "ticket": "***",
+    "is_verified": false,
+    "account_info": {
+      "is_realname": false,
+      "mobile": "***********",
+      "safe_mobile": "",
+      "account_id": "317832114",
+      "account_name": "",
+      "email": "262****725@qq.com",
+      "is_email_verify": true,
+      "area_code": "+86",
+      "safe_area_code": "",
+      "real_name": "***",
+      "identity_code": "******************",
+      "create_time": "1646740732",
+      "create_ip": "",
+      "change_pwd_time": "0",
+      "nickname": "",
+      "user_icon_id": 0,
+      "safe_level": 3,
+      "black_endtime": "0",
+      "black_note": "",
+      "gender": 0,
+      "real_stat": 0,
+      "apple_name": "",
+      "sony_name": "",
+      "tap_name": "",
+      "reactivate_ticket": ""
+    }
+  }
+}
+```
+
+</details>
+
+**国际服：**
+
+`未知`
 
 ## Auth Key
 

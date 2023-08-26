@@ -26,6 +26,8 @@
     - [Account ID](#account-id)
     - [Login Ticket](#login-ticket)
     - [Cookie Token](#cookie-token)
+    - [Action Ticket](#action-ticket)
+    - [Auth Key](#auth-key)
     - [Game Token](#game-token)
     - [Hk4e Token](#hk4e-token)
 
@@ -358,9 +360,13 @@ const final = `${t},${r},${ds}` // 最终结果
 
 即`ltoken_v2`和`ltoken`。
 
-`ltoken_v2`和`ltoken`多用于查询用户的游戏账号信息。
+`ltoken_v2`和`ltoken`并不总是使用相同的值，多用于查询用户的游戏账号信息。
 
-必须与[`ltmid_v2`](#mihoyo-id)一起使用。
+`ltoken_v2`必须与[`ltmid_v2`](#mihoyo-id)一起使用，`ltoken`必须与[`ltuid`](#account-id)一起使用。
+
+`ltoken_v2`的开头通常带有“v2_”字样，且长度较长；`ltoken`的长度则较短。
+
+在修改米游社账号的密码后将会发生变化。
 
 #### SToken
 
@@ -370,6 +376,8 @@ const final = `${t},${r},${ds}` // 最终结果
 
 必须与[`mid`](#mihoyo-id)一起使用。
 
+在修改米游社账号的密码后将会发生变化。
+
 #### MiHoYo ID
 
 分为与[LToken](#ltoken)一起使用的`ltmid_v2`，和与[SToken](#stoken)一起使用的`mid`
@@ -378,7 +386,7 @@ const final = `${t},${r},${ds}` // 最终结果
 
 #### Account ID
 
-有`account_id_v2`、`account_id`、`login_uid`、`ltuid`和`stuid`。
+有`account_id_v2`、`account_id`、`login_uid`、`ltuid`、`ltuid_v2`和`stuid`。
 
 UID即米游社UID。这个Cookie不是必须传递的。
 
@@ -386,9 +394,11 @@ UID即米游社UID。这个Cookie不是必须传递的。
 
 即`login_ticket`。
 
-`login_ticket`是米游社的登录凭证，可用于获取[SToken](#stoken)和[LToken](#ltoken)。隔一段时间刷新。
+`login_ticket`是米游社的登录凭证，可用于获取[SToken](#stoken)和[LToken](#ltoken)。
 
 通常在[米游社通行证](https://user.mihoyo.com/)中登录获得。
+
+有效期为30分钟。
 
 #### Cookie Token
 
@@ -396,11 +406,23 @@ UID即米游社UID。这个Cookie不是必须传递的。
 
 `cookie_token`与`cookie_token_v2`的值不相同。
 
+#### Action Ticket
+
+Action Ticket通常不在Cookie中使用，而是作为URL参数或请求体的一部分传递，类似于凭证。
+
+Action Ticket通常用于米游社内的部分网页操作。
+
+#### Auth Key
+
+Auth Key通常不在Cookie中使用，而是作为URL参数或请求体的一部分传递，类似于凭证。
+
+Auth Key通常用于米游社的联系客服页面。
+
 #### Game Token
 
 即`game_token`。
 
-`game_token`为游戏登录凭证，通常用于扫码登录后获取其它Token。
+`game_token`为游戏登录凭证，通常用于获取其它Token。
 
 #### Hk4e Token
 

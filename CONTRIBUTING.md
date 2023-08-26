@@ -102,6 +102,7 @@ _请求方式：GET_
 _请求方式：GET_
 
 网页：`https://bbs-api.miyoushe.com/post/wapi/userPost`
+
 应用：`https://bbs-api.miyoushe.com/painter/api/user_instant/list`
 
 ```
@@ -119,6 +120,7 @@ _请求方式：GET_
 - `str`：字符串。
 - `arr`：数组。
 - `obj`：对象（字典、集合）。
+- `null`：空（一般不使用）。
 
 需要使用下面的格式：
 
@@ -194,8 +196,6 @@ _请求方式：GET_
 - 备注
 
 数据类型应使用JSON数据类型英文缩写。
-
-
 
 具体可查看例子：
 
