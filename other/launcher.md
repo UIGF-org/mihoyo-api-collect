@@ -14,7 +14,15 @@ _请求方式：GET_
 
 《原神》国际服：`https://hk4e-launcher-static.hoyoverse.com/hk4e_global/mdk/launcher/api/content`
 
+《原神》国际服：`https://sdk-os-static.mihoyo.com/hk4e_global/mdk/launcher/api/content`
+
 《崩坏：星穹铁道》国服：`https://api-launcher.mihoyo.com/hkrpg_cn/mdk/launcher/api/content`
+
+《崩坏：星穹铁道》国际服：`https://hkrpg-launcher-static.hoyoverse.com/hkrpg_global/mdk/launcher/api/content`
+
+《崩坏3》国服：`https://bh3-launcher-static.mihoyo.com/bh3_cn/mdk/launcher/api/content`
+
+《崩坏3》国际服：`https://sdk-os-static.mihoyo.com/bh3_global/mdk/launcher/api/content`
 
 **参数：**
 
@@ -212,7 +220,15 @@ _请求方式：GET_
 
 《原神》国际服：`https://hk4e-launcher-static.hoyoverse.com/hk4e_global/mdk/launcher/api/resource`
 
+《原神》国际服：`https://sdk-os-static.mihoyo.com/hk4e_global/mdk/launcher/api/resource`
+
 《崩坏：星穹铁道》国服：`https://api-launcher.mihoyo.com/hkrpg_cn/mdk/launcher/api/resource`
+
+《崩坏：星穹铁道》国际服：`https://hkrpg-launcher-static.hoyoverse.com/hkrpg_global/mdk/launcher/api/resource`
+
+《崩坏3》国服：`https://bh3-launcher-static.mihoyo.com/bh3_cn/mdk/launcher/api/resource`
+
+《崩坏3》国际服：`https://sdk-os-static.mihoyo.com/bh3_global/mdk/launcher/api/resource`
 
 
 **参数：**
@@ -240,7 +256,7 @@ _请求方式：GET_
 | plugin              | obj | 游戏运行库信息            |    |
 | web_url             | str | 启动器下载页面URL         |    |
 | force_update        |     | 待调查                |    |
-| pre_download_game   |     | 待调查                |
+| pre_download_game   |     | 预下载资源信息 |
 | sdk                 |     | 待调查                |
 | deprecated_packages | arr | 已弃用游戏资源文件的文件名与MD5值 |    |
 | deprecated_files    | arr | 已弃用游戏文件的文件名与MD5值   |    |
@@ -320,6 +336,10 @@ _请求方式：GET_
 | version | str | 该文件的版本      | 总是为空字符串 |
 | size    | str | 文件大小        |         |
 | entry   | str | 运行库安装程序的文件名 | 可能为空字符串 |
+
+`data`对象→`pre_download_game`对象：
+
+与`data`对象→`game`对象的结构相同
 
 `data`对象→`game`对象→`deprecated_packages`数组→对象：
 
