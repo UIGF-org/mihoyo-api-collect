@@ -1025,17 +1025,17 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-| gids | num | 游戏id | |
-| is_hot | bool | 是否以热度排序 | |
-| post_id | num | 文章id | |
-| size | num | 请求的最大评论数量(0-20) | |
-| last_id | num | 从last_id处向下获取评论 | 若不传入该字段，则默认从评论第1条开始获取 |
+| is_hot | bool | 是否以热度排序 | 若未指定参数`order_type`，则必须传递此参数为true |
+| order_type | num | 排序方式<br>1 最早（发布时间升序）<br>2 最新（发布时间倒序） | 若参数`is_hot`非true，则必须传递此参数 |
+| post_id | num | 将要获取评论的文章的ID | |
+| size | num | 请求的最大评论数量 | 范围为0-20 |
+| last_id | num | 从该评论ID处向下获取评论 | 若不传入该字段，则默认从评论第1条开始获取 |
 
 根对象：
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
-| retcode | num | 返回码<br>1101 参数`post_id`对应的文章不存在 | |
+| retcode | num | 返回码<br>-1 参数`post_id`对应的文章不存在 | |
 | message | str | 返回消息 | |
 | data | obj | 评论信息 | |
 
