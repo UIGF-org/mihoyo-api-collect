@@ -79,7 +79,7 @@
   - [ ] [登录](hoyolab/login)
     - [x] [密码登录](hoyolab/login/password.md)
     - [x] [验证码登录](hoyolab/login/sms.md)
-    - [x] [扫码登录](hoyolab/login/qrcode.md)
+    - [x] [扫码获取GameToken](hoyolab/login/qrcode_hk4e.md)
   - [ ] [论坛](hoyolab/forum)
     - [ ] [基本信息](hoyolab/forum/info.md)
   - [ ] [文章](hoyolab/article)
