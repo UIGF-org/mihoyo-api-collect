@@ -58,7 +58,7 @@ _请求方式：GET_
 | forum | obj | 所属分区信息 | |
 | topics | arr | 文章话题信息 | |
 | user | obj | 文章发布者信息 | |
-| self_operation | | 待调查 | |
+| self_operation | null | 原为文章操作信息，但此处总是为空 | |
 | stat | obj | 文章数据 | 均为0<br/>请使用：[获取完整文章信息](#获取完整文章信息) |
 | cover | obj | 文章封面信息 | |
 | image_list | arr | 文章中每张图片的信息 | |
@@ -71,7 +71,7 @@ _请求方式：GET_
 | collection | obj | 所属合集信息 | 为null<br/>请使用：[获取完整文章信息](#获取完整文章信息) |
 | vod_list | 文章中每个视频的信息 | |
 
-`data`对象→`recommended_posts`数组→对象→`post对象`：
+`data`对象→`recommended_posts`数组→对象→`post`对象：
 
 | 字段 | 类型 | 内容 | 备注 |
 | --- | ---- | ---- | ---- |
@@ -686,6 +686,12 @@ _请求方式：GET_
 | message | str | 返回消息 | |
 | data | obj | 文章信息 | |
 
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| post | obj | 文章信息 | |
+
 `data`对象→`post`对象：
 
 | 字段 | 类型 | 内容 | 备注 |
@@ -702,6 +708,7 @@ _请求方式：GET_
 | link_card_list | arr | 该文章所含的链接卡片的信息 | |
 | help_sys | null | 待调查 | |
 | is_official_master | bool | 待调查 | |
+| self_operation | obj | Cookie对应账号（SToken）对该评论的操作信息 | |
 | is_user_master | bool | 待调查 | |
 | hot_reply_exist | bool | 待调查 | |
 | vote_count | num | 待调查 | |
@@ -756,10 +763,10 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | --- | ---- | ---- |
-| id | num | 板块id | |
-| name | str | 板块名称 | |
-| icon | str | 板块图标 | |
-| game_id | num | 板块所属的游戏id | |
+| id | num | 论坛分区ID | |
+| name | str | 论坛分区名称 | |
+| icon | str | 论坛分区图标 | |
+| game_id | num | 论坛分区所属的游戏ID | |
 | forum_cate | null | 待调查 | |
 
 `data`对象→`post`对象→`topics`数组→对象：
@@ -839,6 +846,13 @@ _请求方式：GET_
 | landing_url_type | num | 待调查 | |
 | card_meta | null | 待调查 | |
 | origin_user_avatar_url | str | 待调查 | |
+
+`data`对象→`post`对象→`self_operation`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| is_collected | bool | 是否收藏 | |
+| attitude | num | 是否点赞<br>0 未点赞<br>1 点赞 | |
 
 
 <details>
@@ -1029,7 +1043,9 @@ _请求方式：GET_
 | order_type | num | 排序方式<br>1 最早（发布时间升序）<br>2 最新（发布时间倒序） | 若参数`is_hot`非true，则必须传递此参数 |
 | post_id | num | 将要获取评论的文章的ID | |
 | size | num | 请求的最大评论数量 | 范围为0-20 |
-| last_id | num | 从该评论ID处向下获取评论 | 若不传入该字段，则默认从评论第1条开始获取 |
+| last_id | num | 从该评论数量处向下获取评论 | 若不传入该字段，则默认从评论第1条开始获取 |
+
+若要继续获取评论，则需要将“当前`size` * (页数 - 1)”的结果传入`last_id`
 
 根对象：
 
@@ -1060,7 +1076,7 @@ _请求方式：GET_
 | r_reply | null | 待调查 | |
 | r_user | obj | 被回复的用户信息 | 当评论为回复时为对象，否则为空 |
 | reply | obj | 回复信息 | |
-| self_operation | obj | 待调查 | |
+| self_operation | obj | Cookie对应账号（SToken）对该评论的操作信息 | |
 | stat | obj | 评论统计信息 | |
 | sub_replies | arr | 该评论下的评论信息 | |
 | sub_reply_count | num | 该评论下的回复数量 | |
@@ -1104,6 +1120,13 @@ _请求方式：GET_
 | structured_content_rows | arr | 待调查 | |
 | uid | str | 发表评论的用户的uid | |
 | updated_at | num | 上次更新时间的Unix时间戳 | |
+
+`data`对象→`list`数组→对象→`self_operation`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| reply_vote_attitude | num | 是否点赞、点踩<br>0 未点赞、点踩<br>1 点赞<br>2 点踩 | |
+| attitude | num | 是否点赞<br>0 未点赞<br>1 点赞 | |
 
 `data`对象→`list`数组→对象→`stat`对象：
 
