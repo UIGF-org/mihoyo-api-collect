@@ -6,6 +6,7 @@
 - [获取官方资讯](#获取官方资讯)
 - [获取完整文章信息](#获取完整文章信息)
 - [获取文章评论信息](#获取文章评论信息)
+- [获取文章动态数据](#获取文章动态数据)
 
 ---
 
@@ -708,7 +709,7 @@ _请求方式：GET_
 | link_card_list | arr | 该文章所含的链接卡片的信息 | |
 | help_sys | null | 待调查 | |
 | is_official_master | bool | 待调查 | |
-| self_operation | obj | Cookie对应账号（SToken）对该评论的操作信息 | |
+| self_operation | obj | Cookie对应账号（SToken）对该文章的操作信息 | |
 | is_user_master | bool | 待调查 | |
 | hot_reply_exist | bool | 待调查 | |
 | vote_count | num | 待调查 | |
@@ -1348,4 +1349,92 @@ _请求方式：GET_
 }
 ```
 
+</details>
+
+## 获取文章动态数据
+
+_请求方式：GET_
+
+`https://bbs-api.miyoushe.com/post/wapi/getDynamicData`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| post_ids | str | 通过英文逗号分隔的文章ID | |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 文章动态数据 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| list | arr | 文章动态数据 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| post_id | str | 文章ID | |
+| is_upvote | bool | 是否点赞 | |
+| self_operation | obj | Cookie对应账号（SToken）对该文章的操作信息 | |
+| stat | obj | 该文章的动态数据 | |
+
+`data`对象→`list`数组→对象→`self_operation`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| is_collected | bool | 是否收藏 | |
+| attitude | num | 是否点赞<br>0 未点赞<br>1 点赞 | |
+
+`data`对象→`list`数组→对象→`stat`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| --- | ---- | ---- | ---- |
+| bookmark_num | num | 收藏数量 | |
+| forward_num | num | 转发数量 | |
+| like_num | num | 点赞数量 | |
+| view_num | num | 观看数量 | |
+| reply_num | num | 评论数量 | |
+| original_like_num | num | 待调查 | |
+| post_upvote_stat | arr | 待调查 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "list": [
+      {
+        "post_id": "43052645",
+        "is_upvote": false,
+        "stat": {
+          "view_num": 669448,
+          "reply_num": 2615,
+          "like_num": 111948,
+          "bookmark_num": 771,
+          "forward_num": 0,
+          "original_like_num": 0,
+          "post_upvote_stat": []
+        },
+        "self_operation": {
+          "attitude": 0,
+          "is_collected": false
+        }
+      }
+    ]
+  }
+}
+```
 </details>
