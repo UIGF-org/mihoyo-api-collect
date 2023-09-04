@@ -147,7 +147,7 @@ _请求方式：POST_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | account | str | 要登录的账户 | 使用RSA + Base64加密，加密方式[详见该页面](password_passport.md#%E8%8E%B7%E5%8F%96login-ticket) |
-| password | str | 密码 | 使用RSA + Base64加密，加密方式[详见该页面](password_passport.md.md#%E8%8E%B7%E5%8F%96login-ticket) |
+| password | str | 密码 | 使用RSA + Base64加密，加密方式[详见该页面](password_passport.md#%E8%8E%B7%E5%8F%96login-ticket) |
 
 **JSON返回：**
 
