@@ -88,7 +88,7 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码<br>-3001 请求头缺少参数<br>-3501 二维码已过期<br>-3505 用户取消扫码 | |
+| retcode | num | 返回码 | -3001 请求头缺少参数<br>-3501 二维码已过期<br>-3505 用户取消扫码 |
 | message | str | 返回消息 | |
 | data | obj | 二维码状态 | |
 
@@ -102,7 +102,7 @@ _请求方式：POST_
 | need_realperson | bool | | |
 | realname_info | obj | | 确认登录之前为空 |
 | scanned_at | str | 扫码时间戳 | 扫描之前为空 |
-| status | str | 二维码状态<br>Created 未扫描<br>Scanned 已扫描<br>Confirmed 已确认 | |
+| status | str | 二维码状态 | Created 未扫描<br>Scanned 已扫描<br>Confirmed 已确认 |
 | tokens | arr | | 总是为空 |
 | user_info | obj | 登录用户的信息 | 确认登录之前为空 |
 
