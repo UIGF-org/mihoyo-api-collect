@@ -95,8 +95,8 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| account | str | 要登录的账户 | 使用RSA + Base64加密，加密方式[详见该页面](https://github.com/Error063/mihoyo-api-collect/blob/main/hoyolab/login/password.md#%E8%8E%B7%E5%8F%96login-ticket) |
-| password | str | 密码 | 使用RSA + Base64加密，加密方式[详见该页面](https://github.com/Error063/mihoyo-api-collect/blob/main/hoyolab/login/password.md#%E8%8E%B7%E5%8F%96login-ticket) |
+| account | str | 要登录的账户 | 使用RSA + Base64加密，加密方式[详见该页面](https://github.com/Error063/mihoyo-api-collect/blob/main/hoyolab/login/password_passport.md#%E8%8E%B7%E5%8F%96login-ticket) |
+| password | str | 密码 | 使用RSA + Base64加密，加密方式[详见该页面](https://github.com/Error063/mihoyo-api-collect/blob/main/hoyolab/login/password_passport.md.md#%E8%8E%B7%E5%8F%96login-ticket) |
 
 **JSON返回：**
 
@@ -106,7 +106,7 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | retcode | num | 返回码<br> | |
 | message | str | 返回消息 | |
-| data | obj | 账户x'x | |
+| data | obj | 账户信息| |
 
 `data`对象：
 
