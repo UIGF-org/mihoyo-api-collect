@@ -29,10 +29,10 @@ _请求方式：POST_
 | device_id  | str  | 设备id                              |                                                           |
 | seed_id    | str  | 种子id                              | 可随机生成                                                |
 | seed_time  | str  | 当前UNIX时间戳                      |                                                           |
-| platform   | str  | 设备平台                            | 不同的设备平台需要包含的请求内容不同                      |
+| platform   | str  | 设备平台                            | 不同的设备平台需要包含的拓展字段内容不同                      |
 | device_fp  | str  | 设备指纹信息                        | 可随机生成                                                |
 | app_name   | str  | 请求的应用名称<br />  bbs_cn 米游社 |                                                           |
-| ext_fields | str  | 拓展字段                            | 为使用字符串包裹的 json 字段，其中必须包含 userAgent 字段 |
+| ext_fields | str  | 拓展字段                            | 为使用字符串包裹的 json 字段，若platform为4则必须包含 userAgent 字段，若platform为2则需要包含['cpuType', 'romCapacity', 'productName', 'romRemain', 'manufacturer', 'appMemory', 'hostname', 'screenSize', 'osVersion', 'aaid', 'vendor', 'accelerometer', 'buildTags', 'model', 'brand', 'oaid', 'hardware', 'deviceType', 'devId', 'serialNumber', 'buildTime', 'buildUser', 'ramCapacity', 'magnetometer', 'display', 'ramRemain', 'deviceInfo', 'gyroscope', 'vaid', 'buildType', 'sdkVersion', 'board']字段 |
 
 **JSON 返回：**
 
