@@ -165,7 +165,7 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | login_ticket    | str  | Login Ticket             |      |
 | need_realperson | str  | 是否要求用户进行实名认证 |      |
-| token           | obj  | 包含cookie token?的对象  |      |
+| token           | obj  | 包含stoken_v2?的对象  |      |
 | user_info       | obj  | 用户信息                 |      |
 
 `user_info`对象：
