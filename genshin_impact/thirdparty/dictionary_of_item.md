@@ -1,7 +1,7 @@
 # 项目ID与名称的字典
 
 - [UIGF API](#uigf-api)
-- [Caughtwind API](#caughtwind-api已弃用)
+- [Caughtwind API（已弃用）](#caughtwind-api已弃用)
 
 ---
 
