@@ -1,11 +1,13 @@
 # 用户Token
 
 - [Token](#token)
-  - [通过Login Ticket获取SToken和LToken](#通过login-ticket获取stoken和ltoken)
+  - [通过Login Ticket获取SToken（V1）和LToken（V1）](#通过login-ticket获取stokenv1和ltokenv1)
   - [通过SToken获取Cookie Token](#通过stoken获取cookie-token)
-  - [通过Game Token获取SToken](#通过game-token获取stoken)
+  - [通过Game Token获取SToken（V1）](#通过game-token获取stokenv1)
   - [通过Game Token获取Cookie Token](#通过game-token获取cookie-token)
   - [通过Cookie Token获取Hk4e Token](#通过cookie-token获取hk4e-token)
+  - [通过SToken（V1）获取SToken（V2）](#通过stokenv1获取stokenv2)
+  - [通过SToken获取LToken（V1）](#通过stoken获取ltokenv1)
 - [Action Ticket](#action-ticket)
   - [通过SToken获取Action Ticket](#通过stoken获取action-ticket)
 - [Auth Key](#auth-key)
@@ -16,7 +18,7 @@
 
 ## Token
 
-### 通过Login Ticket获取SToken和LToken
+### 通过Login Ticket获取SToken（V1）和LToken（V1）
 
 **国服：**
 
@@ -130,7 +132,7 @@ _请求方式：GET_
 ```
 </details>
 
-### 通过Game Token获取SToken
+### 通过Game Token获取SToken（V1）
 
 **国服：**
 
@@ -331,6 +333,127 @@ _请求方式：POST_
 ```
 </details>
 
+### 通过SToken（V1）获取SToken（V2）
+
+**国服：**
+
+_请求方式：POST_
+
+> _需要验证请求头_
+>
+> `x-rpc-app_id`：`bll8iq97cem8`
+
+> _需要验证Cookie_
+>
+> SToken
+
+`https://passport-api.mihoyo.com/account/ma-cn-session/app/getTokenBySToken`
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 该账号的SToken（V2）与部分账号个人信息 | 个人信息已隐藏 |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| token | obj | 该账号的SToken（V2） | |
+| user_info | obj | 部分账号个人信息 | 个人信息已隐藏 |
+| need_realperson | bool | 待调查 | |
+| realname_info | | 待调查 | |
+
+`data`对象→`token`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| token_type | num | 1 | |
+| token | str | 该账号的SToken（V2） | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "token": {
+      "token_type": 1,
+      "token": "***"
+    },
+    "user_info": {
+      "aid": "317832114",
+      "mid": "******",
+      "account_name": "",
+      "email": "****",
+      "is_email_verify": 1,
+      "area_code": "+86",
+      "mobile": "****",
+      "safe_area_code": "",
+      "safe_mobile": "",
+      "realname": "***",
+      "identity_code": "************",
+      "rebind_area_code": "",
+      "rebind_mobile": "",
+      "rebind_mobile_time": "0",
+      "links": [],
+      "country": ""
+    },
+    "realname_info": null,
+    "need_realperson": false
+  }
+}
+```
+</details>
+
+### 通过SToken获取LToken（V1）
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> SToken
+
+`https://passport-api.mihoyo.com/account/auth/api/getLTokenBySToken`
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 该账号的LToken（V1） | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| ltoken | str | 该账号的LToken（V1） | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "ltoken": "******"
+  }
+}
+```
+</details>
+
 ## Action Ticket
 
 ### 通过SToken获取Action Ticket
@@ -345,7 +468,7 @@ _请求方式：GET_
 
 `https://api-takumi.mihoyo.com/auth/api/getActionTicketBySToken`
 
-**JSON请求：**
+**参数：**
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |

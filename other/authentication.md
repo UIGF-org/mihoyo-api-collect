@@ -360,7 +360,7 @@ const final = `${t},${r},${ds}` // 最终结果
 
 即`ltoken_v2`和`ltoken`。
 
-`ltoken_v2`和`ltoken`并不总是使用相同的值，多用于查询用户的游戏账号信息。
+`ltoken_v2`和`ltoken`并不总是使用相同的值，多用于查询用户的游戏账号信息。其被命名为“LToken（V1）”与“LToken（V2）”。
 
 `ltoken_v2`必须与[`ltmid_v2`](#mihoyo-id)一起使用，`ltoken`必须与[`ltuid`](#account-id)一起使用。
 
@@ -380,7 +380,7 @@ const final = `${t},${r},${ds}` // 最终结果
 
 #### MiHoYo ID
 
-分为与[LToken](#ltoken)一起使用的`ltmid_v2`，和与[SToken](#stoken)一起使用的`mid`
+分为与[LToken](#ltoken)一起使用的`ltmid_v2`，和与[SToken](#stoken)一起使用的`mid`。其被命名为“SToken（V1）”与“SToken（V2）”。
 
 `ltmid_v2`和`mid`的值是相同，对应一个账号。
 
