@@ -287,6 +287,10 @@ _请求方式：POST
 
 _请求方式：POST_
 
+> _需要验证请求头`x-rpc-client_type`, `x-rpc-client_type`_
+>
+> _需要验证cookie`stoken_v1`_,`stuid`,`ltoken_v1`,`ltuid`,`cookie_token`,`account_id`
+
 `https://{游戏id}-sdk.mihoyo.com/{游戏区服id}/mdk/atropos/api/createOrder`
 例如：`https://hk4e-sdk.mihoyo.com/hk4e_cn/mdk/atropos/api/createOrder`
 
@@ -321,6 +325,76 @@ _请求方式：POST_
 | pay_plat | str | 支付平台 | alipay 支付宝 |
 | pay_type | str | 支付方式 | alipay 支付宝 |
 | pay_vendor | str | 支付供应商 | alipay 支付宝 |
+
+注：
+
+订单签名生成方式：
+
+所需的key为`6bdc3982c25f3f3c38668a32d287d16b`
+
+1. 根据字典的键进行排序
+
+2. 根据排序后的键依次获取他们的值并拼接成字符串
+
+3. 使用上述的key和HmacSHA256算法对得到的字符串进行加密，得到的字符串结果为16进制
+
+示例代码如下（Python）：
+
+   
+
+```python
+import json
+import pprint
+import time
+from hashlib import sha256
+import hmac
+
+import requests
+
+h = """Cookie: stoken=***; stuid=311526738; ltoken=***; ltuid=311526738; cookie_token=***; account_id=311526738
+x-rpc-client_type: 4
+x-rpc-device_id: ***"""
+
+header = dict(list(map(lambda l: l.split(": "), h.split("\n"))))
+
+def get_sign(data, key):
+    key = key.encode('utf-8')
+    message = data.encode('utf-8')
+    sign = hmac.new(key, message, digestmod=sha256).hexdigest()
+    print(sign)
+    return sign
+
+key = '6bdc3982c25f3f3c38668a32d287d16b'
+
+post_data = {"open_id": "", "special_info": "topup_center",
+       "order": {"account": "311526738",
+                 "region": "cn_gf01",
+                 "uid": "216973385",
+                 "delivery_url": "",
+                 "device": "***",
+                 "channel_id": 1,
+                 "client_ip": "",
+                 "client_type": 4,
+                 "game": "hk4e_cn",
+                 "amount": "3000",
+                 "goods_num": 1,
+                 "goods_id": "ys_chn_blessofmoon_tier5",
+                 "goods_title": "空月祝福",
+                 "price_tier": "Tier_5",
+                 "currency": "CNY",
+                 "pay_plat": "alipay",
+                 "pay_type": "alipay",
+                 "pay_vendor": "alipay"},
+       "sign": ""}
+
+sort_key = sorted(post_data['order'].keys())
+values_str = ''.join([str(post_data['order'][key]) for key in sort_key])
+print(values_str)
+
+post_data['sign'] = get_sign(values_str, key)
+b = requests.post('https://hk4e-sdk.mihoyo.com/hk4e_cn/mdk/atropos/api/createOrder', json=post_data, headers=header)
+pprint.pprint(b.json())
+```
 
 **JSON返回：**
 
@@ -386,6 +460,10 @@ _请求方式：POST_
 ### 获取订单支付状态
 
 _请求方式：GET_
+
+> _需要验证请求头`x-rpc-client_type`, `x-rpc-client_type`_
+>
+> _需要验证cookie`stoken_v1`_,`stuid`,`ltoken_v1`,`ltuid`,`cookie_token`,`account_id`
 
 `https://{游戏标识符id}-sdk.mihoyo.com/{游戏区服id}/mdk/atropos/api/checkOrder`
 例如：`https://hk4e-sdk.mihoyo.com/hk4e_cn/mdk/atropos/api/checkOrder`
