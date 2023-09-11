@@ -20,7 +20,7 @@
 
 ### 请求商店内容
 
-_请求方式：POST
+_请求方式：POST_
 
 `https://{游戏id}-sdk.mihoyo.com/{游戏区服id}/mdk/shopwindow/shopwindow/fetchGoods`
 例如：`https://hk4e-sdk.mihoyo.com/hk4e_cn/mdk/shopwindow/shopwindow/fetchGoods`
@@ -287,9 +287,25 @@ _请求方式：POST
 
 _请求方式：POST_
 
-> _需要验证请求头`x-rpc-client_type`, `x-rpc-client_type`_
+> _需要验证请求头_
 >
-> _需要验证cookie`stoken_v1`_,`stuid`,`ltoken_v1`,`ltuid`,`cookie_token`,`account_id`
+> _`x-rpc-client_type`:`4`_
+>
+> _`x-rpc-device_id`_
+>
+> _需要验证cookie_
+>
+> _`stoken_v1`_
+>
+> *`stuid`*
+>
+> *`ltoken_v1`*
+>
+> *`ltuid`*
+>
+> *`cookie_token`*
+>
+> *`account_id`*
 
 `https://{游戏id}-sdk.mihoyo.com/{游戏区服id}/mdk/atropos/api/createOrder`
 例如：`https://hk4e-sdk.mihoyo.com/hk4e_cn/mdk/atropos/api/createOrder`
@@ -461,9 +477,25 @@ pprint.pprint(b.json())
 
 _请求方式：GET_
 
-> _需要验证请求头`x-rpc-client_type`, `x-rpc-client_type`_
+> _需要验证请求头_
 >
-> _需要验证cookie`stoken_v1`_,`stuid`,`ltoken_v1`,`ltuid`,`cookie_token`,`account_id`
+> _`x-rpc-client_type`:`4`_
+>
+> _`x-rpc-device_id`_
+>
+> _需要验证cookie_
+>
+> _`stoken_v1`_
+>
+> *`stuid`*
+>
+> *`ltoken_v1`*
+>
+> *`ltuid`*
+>
+> *`cookie_token`*
+>
+> *`account_id`*
 
 `https://{游戏标识符id}-sdk.mihoyo.com/{游戏区服id}/mdk/atropos/api/checkOrder`
 例如：`https://hk4e-sdk.mihoyo.com/hk4e_cn/mdk/atropos/api/checkOrder`
