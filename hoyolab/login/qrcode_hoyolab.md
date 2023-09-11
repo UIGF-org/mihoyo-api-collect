@@ -13,7 +13,7 @@
 
 1. [生成二维码](#生成二维码)，记录返回`data`对象的`url`，和`data`对象的`ticket`字段（下称`ticket`）。
 2. 生成二维码供用户扫描。
-3. 不断[查询二维码扫描状态](#查询二维码扫描状态)。在用户扫描并确认登录后，获取请求头中所有`Set-Cookie`。可获取的Cookie有：Account ID、MiHoYo id、LToken、特定Cookie Token。
+3. 不断[查询二维码扫描状态](#查询二维码扫描状态)。在用户扫描并确认登录后，获取响应头中所有`Set-Cookie`。可获取的Cookie有：Account ID、MiHoYo id、LToken（V2）、特定Cookie Token。
 
 ### 生成二维码
 
@@ -112,50 +112,50 @@ _请求方式：POST_
 ```json
 // 未扫描
 {
-    "retcode": 0,
-    "message": "OK",
-    "data": {
-        "status": "Created",
-        "app_id": "bll8iq97cem8",
-        "client_type": 4,
-        "created_at": "1693555708",
-        "scanned_at": "0",
-        "tokens": [],
-        "user_info": null,
-        "realname_info": null,
-        "need_realperson": false
-    }
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "status": "Created",
+    "app_id": "bll8iq97cem8",
+    "client_type": 4,
+    "created_at": "1693555708",
+    "scanned_at": "0",
+    "tokens": [],
+    "user_info": null,
+    "realname_info": null,
+    "need_realperson": false
+  }
 }
 
 // 已扫描
 {
-    "retcode": 0,
-    "message": "OK",
-    "data": {
-        "status": "Scanned",
-        "app_id": "bll8iq97cem8",
-        "client_type": 4,
-        "created_at": "1693555708",
-        "scanned_at": "1693555708",
-        "tokens": [],
-        "user_info": null,
-        "realname_info": null,
-        "need_realperson": false
-    }
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "status": "Scanned",
+    "app_id": "bll8iq97cem8",
+    "client_type": 4,
+    "created_at": "1693555708",
+    "scanned_at": "1693555708",
+    "tokens": [],
+    "user_info": null,
+    "realname_info": null,
+    "need_realperson": false
+  }
 }
 
 // 已过期
 {
-    "data": null,
-    "message": "二维码已失效，请刷新后重新扫描",
-    "retcode": -3501
+  "data": null,
+  "message": "二维码已失效，请刷新后重新扫描",
+  "retcode": -3501
 }
 
 //取消扫码
 {
-    "data": null,
-    "message": "扫码登录已取消，重新生成二维码",
-    "retcode": -3505
+  "data": null,
+  "message": "扫码登录已取消，重新生成二维码",
+  "retcode": -3505
 }
 
 // 已确认

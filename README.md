@@ -77,8 +77,9 @@
 
 - [ ] [米游社](hoyolab)
   - [ ] [登录](hoyolab/login)
-    - [x] [密码登录](hoyolab/login/password.md)
     - [x] [验证码登录](hoyolab/login/sms.md)
+    - [x] [密码登录（米游社）](hoyolab/login/password_hoyolab.md)
+    - [x] [密码登录（米哈游通行证）](hoyolab/login/password_passport.md)
     - [x] [扫码登录（GameToken）](hoyolab/login/qrcode_hk4e.md)
     - [x] [扫码登录（米游社）](hoyolab/login//qrcode_hoyolab.md)
   - [ ] [论坛](hoyolab/forum)
