@@ -183,6 +183,7 @@
 | 18 | eYd89JmJ | 原神 | 官服 | 国服 | |
 | 33 | 6KcVuOkbcqjJomjZ | 崩坏：星穹铁道 | 官服 | 国服 | |
 | 35 | vplOVX8Vn7cwG8yb | 崩坏：星穹铁道 | 国际服 | 国际服 | |
+| 28 | fSPJNRwFHRipkprW | 崩坏：星穹铁道 | 哔哩哔哩服 | 国服 | |
 
 ## 游戏标识符
 
