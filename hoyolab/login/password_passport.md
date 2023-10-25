@@ -24,8 +24,8 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| scene_type | num | 暂不知道具体含义，可直接使用值 `1` | 可参考[米哈游通行证密码登录页](https://user.mihoyo.com/#/login/password)使用的值为 `1` |
-| now | num | 当前的Unix时间戳 | |
+| scene_type | num | 暂不知道具体含义，可直接使用值 `1` | 必须传入，可参考[米哈游通行证密码登录页](https://user.mihoyo.com/#/login/password)使用的值为 `1` |
+| now | num | 当前的Unix时间戳 | 必须传入 |
 | reason | str | 调用API的网页链接 | 可参考[米哈游通行证密码登录页](https://user.mihoyo.com/#/login/password)使用`user.mihoyo.com%2523%252Flogin%252Fpassword`（已进行URL编码） |
 | action_type | str | 登录方式<br>login_by_password 密码登录 | |
 | t | num | 当前的Unix时间戳 | |
@@ -55,15 +55,16 @@ _请求方式：GET_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | mmt_key | str | 验证任务 | 当 `mmt_data` 对象仅包含该字段时，说明不需要进行人机验证，可直接使用该值进行登录 |
-| gt | str | 验证ID | 验证ID，即[极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)中的`captchaId`，通常为服务器申请得到 |
+| gt | str | 验证ID | 验证ID，即[极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)中的`captchaId`，通常为服务器申请得到（服务器要求使用极验第四代行为验证时）；验证ID，通常为`6697d9dd2614c8a2a55752732494fd56`（服务器要求使用极验第三代行为验时） |
+| challenge | str | 验证流水号 | 服务器要求使用极验第三代行为验时需要用到 |
 | new_captcha | num | 极验验证码相关的参数，是否为新验证码类型的离线情况下使用 | 一般为 `1` |
-| risk_type | str | 结合风控融合，指定验证形式<br>slide 拖动滑块完成拼图 | |
+| risk_type | str | 结合风控融合，指定验证形式<br>slide 拖动滑块完成拼图 | 服务器要求使用极验第三代行为验时不返回该项 |
 | success | num | 是否成功<br>1 成功 | |
-| use_v4 | bool | 是否使用[极验第4代适应性验证](https://www.geetest.com/adaptive-captcha) | |
+| use_v4 | bool | 是否使用[极验第4代适应性验证](https://www.geetest.com/adaptive-captcha) | 服务器要求使用极验第三代行为验时不返回该项 |
 
 **备注：**
 
-- 一般来说，密码登录基本上都不会被要求人机验证（但是谁知道呢）
+- 若直接访问该api，将有很大概率要求使用极验第三代行为验
 - 通常首次申请验证任务返回的`mmt_data`对象只会包含`mmt_key`，不会返回`gt`等其他字段，这说明不需要进行人机验证，可直接使用`mmt_key`字段值进行登录（也可通过`mmt_type`判断）
 - JSON返回数据的`mmt_data`对象中一些字段说明参考自[极验官方文档](https://docs.geetest.com/gt4/apirefer/api/web)
 
@@ -85,7 +86,7 @@ _请求方式：GET_
   }
 }
 
-// 需要进行验证时
+// 需要进行验证时 - 要求使用第四代验证
 {
   "code": 200,
   "data": {
@@ -103,6 +104,23 @@ _请求方式：GET_
     "status": 1
   }
 }
+// 需要进行验证时 - 要求使用第三代验证
+{
+    "code": 200,
+    "data": {
+        "mmt_data": {
+            "challenge": "6697d9dd2614c8a2a55752732494fd56",
+            "gt": "ae0942d9463f21fb73d27d49ed2f1154",
+            "mmt_key": "gdfjQZgTpYAJbI7XpqV5vBtmFwHXttR2",
+            "new_captcha": 1,
+            "success": 1
+        },
+        "mmt_type": 1,
+        "msg": "成功",
+        "scene_type": 1,
+        "status": 1
+    }
+}
 ```
 </details>
 
@@ -117,11 +135,27 @@ _请求方式：POST_
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | mmt_key | str | 验证任务 | |
+| geetest_v4_data   | obj  | 验证结果数据                                                 | 即 [极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#getValidate) 中 `getValidate()` 返回的对象<br>具体内容：[请求参数](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)<br />若使用第三代验证时无需传入此项 |
+| geetest_challenge | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的验证流水号 | 若使用第四代验证时无需传入此项                               |
+| geetest_validate | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的validate | 若使用第四代验证时无需传入此项 |
+| geetest_seccode | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的seccode | 若使用第四代验证时无需传入此项 |
 | account | str | 要登录的账户 | |
 | password | str | 密码（使用RSA + Base64加密或不加密） |      |
 | is_crypto | bool | 密码是否被加密 |  |
 | source | str | 登录操作来源 | 可参考 [米哈游通行证密码登录页](https://user.mihoyo.com/#/login/password) 使用的是 `user.mihoyo.com` |
 | t | num | 当前的秒级时间戳 | |
+
+`geetest_v4_data`对象：
+
+| 字段           | 类型 | 内容           | 备注 |
+| -------------- | ---- | -------------- | ---- |
+| lot_number     | str  | 验证流水号     |      |
+| captcha_output | str  | 验证输出信息   |      |
+| pass_token     | str  | 验证通过标识   |      |
+| gen_time       | str  | 验证通过时间戳 |      |
+| captcha_id     | str  | 验证 ID        |      |
+| sign_token     | str  | 验证签名       |      |
+
 
 注：
 
