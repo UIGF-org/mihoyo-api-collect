@@ -27,8 +27,8 @@ _请求方式：GET_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| scene_type | num | 暂不知道具体含义，可直接使用值 `1` | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的值为 `1` |
-| now | num | 当前的秒级时间戳 | |
+| scene_type | num | 暂不知道具体含义，可直接使用值 `1` | 必须传入，可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的值为 `1` |
+| now | num | 当前的秒级时间戳 | 必须传入 |
 | reason | str | 调用API的网页链接 | 可参考 [米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha) 使用的是 `user.mihoyo.com%2523%252Flogin%252Fcaptcha`（已进行URL编码）|
 | action_type | str | 登陆方式<br>`login_by_mobile_captcha` 短信验证码登录 | |
 
@@ -53,20 +53,21 @@ _请求方式：GET_
 
 `data`对象→`mmt_data`对象：
 
-| 字段 | 类型 | 内容 | 备注 |
+| 字段        | 类型 | 内容                                                     | 备注                                                         |
 | ---- | ---- | ---- | ---- |
-| mmt_key | str | 验证任务 | 当 `mmt_data` 对象仅包含该字段时，说明不需要进行人机验证，可直接使用该值发送短信验证码 |
-| gt | str | 验证ID | 验证ID，即 [极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) 中的`captchaId`，极验后台申请得到 |
-| new_captcha | num | 宕机情况下使用 | 一般为 `1` |
-| risk_type | str | 结合风控融合，指定验证形式<br>`slide` 拖动滑块完成拼图 | |
-| success | num | 是否成功<br>`1` 成功 | |
-| use_v4 | bool | 是否使用极验第四代适应性验证 | 极验官网：https://www.geetest.com/adaptive-captcha |
+| mmt_key     | str  | 验证任务                                                 | 当 `mmt_data` 对象仅包含该字段时，说明不需要进行人机验证，可直接使用该值进行登录 |
+| gt          | str  | 验证ID                                                   | 验证ID，即[极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)中的`captchaId`，通常为服务器申请得到（服务器要求使用极验第四代行为验证时）；验证ID，通常为`6697d9dd2614c8a2a55752732494fd56`（服务器要求使用极验第三代行为验时） |
+| challenge   | str  | 验证流水号                                               | 服务器要求使用极验第三代行为验时需要用到                     |
+| new_captcha | num  | 极验验证码相关的参数，是否为新验证码类型的离线情况下使用 | 一般为 `1`                                                   |
+| risk_type   | str  | 结合风控融合，指定验证形式<br>slide 拖动滑块完成拼图     | 服务器要求使用极验第三代行为验时不返回该项                   |
+| success     | num  | 是否成功<br>1 成功                                       |                                                              |
 
 **备注：**
 
+- 若直接访问该api，将有很大概率要求使用极验第三代行为验
 - 通常首次申请验证任务返回的 `mmt_data` 对象只会包含 `mmt_key`，不会返回 `gt` 等其他字段，这说明不需要进行人机验证，可直接使用 `mmt_key` 字段值调用短信验证码发送API（也可通过 `mmt_type` 判断）
 - JSON返回数据的 `mmt_data` 对象中一些字段说明参考自 [极验官方文档](https://docs.geetest.com/gt4/apirefer/api/web)
-- 在2023年5月左右[米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha)从极验GT3升级至GT4，目前 [短信验证码发送](#发送短信验证码) 接口不再支持GT3验证结果，因此文档不包含GT3验证结果的使用方法
+- ~~在2023年5月左右[米哈游通行证验证码登录页](https://user.mihoyo.com/#/login/captcha)从极验GT3升级至GT4，目前 [短信验证码发送](#发送短信验证码) 接口不再支持GT3验证结果，因此文档不包含GT3验证结果的使用方法~~ 经实测，GT3验证方式仍然可用
 
 <details>
 <summary>查看示例</summary>
@@ -90,6 +91,7 @@ _请求方式：GET_
     ```
   - 需要进行人机验证的情况：
     ```json
+    //第四代验证方式
     {
       "code": 200,
       "data": {
@@ -107,6 +109,23 @@ _请求方式：GET_
           "status": 1
       }
     }
+    //第三代验证方式
+    {
+        "code": 200,
+        "data": {
+            "mmt_data": {
+                "challenge": "b6ff1cdc0901e80402b1c1c306fa5191",
+                "gt": "ae0942d9463f21fb73d27d49ed2f1154",
+                "mmt_key": "fSLRd2fYAVI6xpq009O0Ja1hx3MelDAM",
+                "new_captcha": 1,
+                "success": 1
+            },
+            "mmt_type": 1,
+            "msg": "成功",
+            "scene_type": 1,
+            "status": 1
+        }
+    }
     ```
 
 </details>
@@ -123,7 +142,10 @@ _请求方式：POST_
 | ---- | ---- | ---- | ---- |
 | action_type | num | 操作类型<br>`login` 登录<br>`regist` 注册 | |
 | mmt_key | str | 验证任务，与 [申请人机验证任务](#申请人机验证任务) 中的 `mmt_key` 相同 | |
-| geetest_v4_data | obj | 验证结果数据 | 即 [极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#getValidate) 中 `getValidate()` 返回的对象<br>具体内容：[请求参数](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0) |
+| geetest_v4_data | obj | 验证结果数据 | 即 [极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#getValidate) 中 `getValidate()` 返回的对象<br>具体内容：[请求参数](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)<br />若使用第三代验证时无需传入此项 |
+| geetest_challenge | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的验证流水号 | 若使用第四代验证时无需传入此项 |
+| geetest_validate | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的validate | 若使用第四代验证时无需传入此项 |
+| geetest_seccode | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的seccode | 若使用第四代验证时无需传入此项 |
 | mobile | str | 目标手机号 | |
 | t | num | 当前的秒级时间戳 | |
 
