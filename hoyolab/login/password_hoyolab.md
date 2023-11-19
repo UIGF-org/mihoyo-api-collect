@@ -4,6 +4,7 @@
   - [操作步骤](#操作步骤)
   - [获取设备指纹（`device_fp`）](#获取设备指纹)
   - [发送登录请求](#发送登录请求)
+  - [新设备验证](#新设备登录验证)
 
 ---
 
@@ -153,8 +154,8 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码 | |
-| message | str | 返回消息 | |
+| retcode | num | 返回码 | -3235新设备登录([需手机短信验证](#新设备登录验证)) |
+| message | str | 返回消息 |  |
 | data | obj | 账号信息 | |
 
 `data`对象：
@@ -243,4 +244,135 @@ _请求方式：POST_
   "retcode": 0
 }
 ```
+</details>    
+
+### 新设备登录验证 
+
+
+**国服：**  
+
+前提-->[获取登录信息接口响应头](#获取登录信息)：
+
+`X-Rpc-Verify`:
+```json 
+{
+  "action_ticket":"106ffc83feb64f5f9bfa9e0dd1c91dca",
+  "verify_str":
+    {
+      "ticket":"23123433c12e1bf40f2a76bb2",
+      "verify_type":"2"
+    }
+}
+```
+
+
+| 字段            | 类型 | 内容                                         | 备注         |
+| --------------- | ---- | -------------------------------------------- | ------------ |
+| action_ticket   | str  | 待考察                                       |               |
+
+`verify_str`根对象
+| 字段            | 类型 | 内容                                         | 备注         |
+| --------------- | ---- | -------------------------------------------- | ------------ |
+| ticket          | str  | 用户验证标识符                                | 总是为空字符串 |
+| verify_type     | str  | 验证类型                                      |              |
+
+<details>
+<summary>查看示例</summary>
+
+```text
+HTTP/1.1 200 OK
+Date: Sun, 19 Nov 2023 10:23:44 GMT
+Content-Type: application/json
+Content-Length: 138
+Connection: keep-alive
+Set-Cookie: aliyungf_tc=###; Path=/; HttpOnly
+Access-Control-Expose-Headers: x-rpc-verify
+Vary: Origin
+Vary: Accept-Encoding
+X-Powered-By: takumi
+X-Rpc-Verify: {"action_ticket":"106ffc83f123asdzfa9e0dd1c91dca","verify_str":"{\"ticket\":\"23123433c12e1bf40f2a76bb2\",\"verify_type\":\"2\"}"}
+X-Trace-Id: 2d79248aa55754e9:2d79248aa55754e9:0:1
+
+{"data":null,"message":"您正在新设备上登录，为保障您的账号安全，请先使用手机短信验证身份","retcode":-3235}
+```
 </details>
+
+
+
+_请求方式：POST_    
+`https://passport-api.mihoyo.com/account/ma-cn-verifier/verifier/createMobileCaptchaByActionTicket`   
+> _需要验证请求头_
+>
+> `x-rpc-app_id`：`bll8iq97cem8`
+>
+> `x-rpc-client_type`：`2`
+>
+> `x-rpc-game_biz`：`bbs_cn`
+>
+> `x-rpc-device_fp`：刚获取的设备指纹
+>
+> `x-rpc-device_id`：与上个步骤传递的设备ID相同
+
+**JSON请求：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_ticket | str | 登录信息响应体中的ticket |  |
+| action_type | str | 操作 |此处为verify_for_component |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "action_ticket":"fbca6ce757964296be7b0d0a3c558c5c",
+  "action_type":"verify_for_component"
+}
+```
+</details>
+
+
+**JSON返回：**
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | 为-3101触发人机验证 |
+| message | str | 返回信息 |  |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode":0,
+  "message":"OK",
+  "data":{}
+}
+```
+</details>
+
+
+**触发人机验证：**
+
+**响应头**
+[极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)
+
+`X-Rpc-Aigis`: 
+```json
+{
+  "session_id":"12131231231aa028d9c",
+  "mmt_type":1,
+  "data":
+        {
+          "success":1,
+          "gt":"123123123123123b162892",
+          "challenge":"123123123123ea064ed3a76",
+          "new_captcha":1
+        }
+}
+```
+
+
+
+
