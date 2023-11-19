@@ -268,7 +268,7 @@ _请求方式：POST_
 
 | 字段            | 类型 | 内容                                         | 备注         |
 | --------------- | ---- | -------------------------------------------- | ------------ |
-| action_ticket   | str  | 待考察                                       |               |
+| action_ticket   | str  | 设备通过后用于请求获取用户登录信息              |               |
 
 `verify_str`根对象
 | 字段            | 类型 | 内容                                         | 备注         |
@@ -279,6 +279,7 @@ _请求方式：POST_
 <details>
 <summary>查看示例</summary>
 
+只需要 X-Rpc-Verify 字段内容
 ```text
 HTTP/1.1 200 OK
 Date: Sun, 19 Nov 2023 10:23:44 GMT
@@ -372,6 +373,78 @@ _请求方式：POST_
         }
 }
 ```
+
+#### 设备验证请求
+_请求方式：post_
+`https://passport-api.mihoyo.com/account/ma-cn-verifier/verifier/verifyActionTicketPartly`
+
+*json请求*
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_ticket | str | 响应体获取的ticket |  |
+| action_type | str | 操作 |此处为verify_for_component |
+| verify_method | num | 验证模式 | 此处参考米游社为1 |
+| mobile_captcha | str | 设备接收到的验证码 |  |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "action_ticket":"23123433c12e1bf40f2a76bb2",
+  "action_type":"verify_for_component",
+  "verify_method":1,
+  "mobile_captcha":"980243"
+}
+```
+</details>
+
+
+**JSON返回：**
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | 为-3101触发人机验证 |
+| message | str | 返回信息 |  |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode":0,
+  "message":"OK",
+  "data":{}
+}
+```
+</details>
+
+
+#### 通过Ticket获取登录信息
+_请求方式：post_
+https://passport-api.mihoyo.com/account/ma-cn-passport/app/checkRiskVerified
+
+**json请求**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_ticket | str | 响应体获取获取的action_ticket |  |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "action_ticket":"106ffc83f123asdzfa9e0dd1c91dca"
+}
+```
+</details>
+
+**JSON返回：**
+
+与[获取登录信息](#获取登录信息)一致
 
 
 
