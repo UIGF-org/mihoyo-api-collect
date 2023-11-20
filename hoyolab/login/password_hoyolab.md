@@ -253,7 +253,8 @@ _请求方式：POST_
 
 前提->[获取登录信息接口响应头](#获取登录信息)(在recode返回-3235时)：
 
-`x-rpc-verify`:
+`x-rpc-verify`:  
+
 ```json 
 {
   "action_ticket":"106ffc83feb64f5f9bfa9e0dd1c91dca",
@@ -268,13 +269,13 @@ _请求方式：POST_
 
 | 字段            | 类型 | 内容                                         | 备注         |
 | --------------- | ---- | -------------------------------------------- | ------------ |
-| action_ticket   | str  | 设备通过后用于请求获取用户登录信息              |               |
+| action_ticket   | str  | 设备通过后用于请求获取用户登录信息              |               |  
 
 `verify_str`根对象
 | 字段            | 类型 | 内容                                         | 备注         |
 | --------------- | ---- | -------------------------------------------- | ------------ |
 | ticket          | str  | 用户验证标识符                                |  |
-| verify_type     | str  | 验证类型                                      |              |
+| verify_type     | str  | 验证类型                                      |              |  
 
 <details>
 <summary>查看示例</summary>
@@ -296,12 +297,12 @@ _请求方式：POST_
   "retcode": -3235
 }
 ```
-</details>
+</details>  
 
 
 
 _请求方式：POST_    
-`https://passport-api.mihoyo.com/account/ma-cn-verifier/verifier/createMobileCaptchaByActionTicket`   
+
 > _需要验证请求头_
 >
 > `x-rpc-app_id`：`bll8iq97cem8`
@@ -312,9 +313,12 @@ _请求方式：POST_
 >
 > `x-rpc-device_fp`：刚获取的设备指纹
 >
-> `x-rpc-device_id`：与上个步骤传递的设备ID相同
+> `x-rpc-device_id`：与上个步骤传递的设备ID相同  
 
-**JSON请求：**
+
+`https://passport-api.mihoyo.com/account/ma-cn-verifier/verifier/createMobileCaptchaByActionTicket`   
+
+**JSON请求：**  
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
@@ -322,7 +326,7 @@ _请求方式：POST_
 | action_type | str | 操作 |此处为verify_for_component |
 
 
-<details>
+<details>  
 <summary>查看示例</summary>
 
 ```json
@@ -354,13 +358,14 @@ _请求方式：POST_
 </details>
 
 
-**触发人机验证：**
+**触发人机验证：**  
 
-**响应头**
+**响应头**  
 [参考极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)
 
 
 `x-rpc-aigis`: 
+
 ```json
 {
   "session_id":"12131231231aa028d9c",
@@ -375,18 +380,20 @@ _请求方式：POST_
 }
 ```
 
-#### 设备验证请求
-_请求方式：post_
+#### 设备验证请求  
+
+_请求方式：POST_  
+
 `https://passport-api.mihoyo.com/account/ma-cn-verifier/verifier/verifyActionTicketPartly`
 
-*json请求*
+**json请求**  
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
 | action_ticket | str | 响应体下verify_str的ticket参数 |  |
 | action_type | str | 操作 |此处为verify_for_component |
 | verify_method | num | 验证模式 | 此处参考米游社为1 |
-| mobile_captcha | str | 设备接收到的验证码 |  |
+| mobile_captcha | str | 设备接收到的验证码 |  |  
 
 
 <details>
@@ -424,8 +431,9 @@ _请求方式：post_
 
 
 #### 通过Ticket获取登录信息
-_请求方式：post_
-https://passport-api.mihoyo.com/account/ma-cn-passport/app/checkRiskVerified
+_请求方式：POST_   
+
+`https://passport-api.mihoyo.com/account/ma-cn-passport/app/checkRiskVerified`
 
 **json请求**
 
