@@ -251,9 +251,9 @@ _请求方式：POST_
 
 **国服：**  
 
-前提-->[获取登录信息接口响应头](#获取登录信息)：
+前提->[获取登录信息接口响应头](#获取登录信息)(在recode返回-3235时)：
 
-`X-Rpc-Verify`:
+`x-rpc-verify`:
 ```json 
 {
   "action_ticket":"106ffc83feb64f5f9bfa9e0dd1c91dca",
@@ -273,28 +273,28 @@ _请求方式：POST_
 `verify_str`根对象
 | 字段            | 类型 | 内容                                         | 备注         |
 | --------------- | ---- | -------------------------------------------- | ------------ |
-| ticket          | str  | 用户验证标识符                                | 总是为空字符串 |
+| ticket          | str  | 用户验证标识符                                |  |
 | verify_type     | str  | 验证类型                                      |              |
 
 <details>
 <summary>查看示例</summary>
 
-只需要 X-Rpc-Verify 字段内容
-```text
-HTTP/1.1 200 OK
-Date: Sun, 19 Nov 2023 10:23:44 GMT
-Content-Type: application/json
-Content-Length: 138
-Connection: keep-alive
-Set-Cookie: aliyungf_tc=###; Path=/; HttpOnly
-Access-Control-Expose-Headers: x-rpc-verify
-Vary: Origin
-Vary: Accept-Encoding
-X-Powered-By: takumi
-X-Rpc-Verify: {"action_ticket":"106ffc83f123asdzfa9e0dd1c91dca","verify_str":"{\"ticket\":\"23123433c12e1bf40f2a76bb2\",\"verify_type\":\"2\"}"}
-X-Trace-Id: 2d79248aa55754e9:2d79248aa55754e9:0:1
 
-{"data":null,"message":"您正在新设备上登录，为保障您的账号安全，请先使用手机短信验证身份","retcode":-3235}
+```json
+// 响应头
+// x-rpc-verify
+{
+  "action_ticket": "106ffc83f123asdzfa9e0dd1c91dca",
+  "verify_str": "{\"ticket\":\"23123433c12e1bf40f2a76bb2\",\"verify_type\":\"2\"}"
+}
+
+
+// 响应体：
+{
+  "data": null,
+  "message": "您正在新设备上登录，为保障您的账号安全，请先使用手机短信验证身份",
+  "retcode": -3235
+}
 ```
 </details>
 
@@ -357,9 +357,10 @@ _请求方式：POST_
 **触发人机验证：**
 
 **响应头**
-[极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)
+[参考极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)
 
-`X-Rpc-Aigis`: 
+
+`x-rpc-aigis`: 
 ```json
 {
   "session_id":"12131231231aa028d9c",
@@ -382,7 +383,7 @@ _请求方式：post_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| action_ticket | str | 响应体获取的ticket |  |
+| action_ticket | str | 响应体下verify_str的ticket参数 |  |
 | action_type | str | 操作 |此处为verify_for_component |
 | verify_method | num | 验证模式 | 此处参考米游社为1 |
 | mobile_captcha | str | 设备接收到的验证码 |  |
@@ -405,7 +406,7 @@ _请求方式：post_
 **JSON返回：**
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码 | 为-3101触发人机验证 |
+| retcode | num | 返回码 |  |
 | message | str | 返回信息 |  |
 
 
@@ -430,7 +431,7 @@ https://passport-api.mihoyo.com/account/ma-cn-passport/app/checkRiskVerified
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| action_ticket | str | 响应体获取获取的action_ticket |  |
+| action_ticket | str | 响应体下的action_ticket |  |
 
 <details>
 <summary>查看示例</summary>
