@@ -4,6 +4,7 @@
   - [操作步骤](#操作步骤)
   - [获取设备指纹（`device_fp`）](#获取设备指纹)
   - [发送登录请求](#发送登录请求)
+  - [新设备验证](#新设备登录验证)
 
 ---
 
@@ -153,8 +154,8 @@ _请求方式：POST_
 
 | 字段 | 类型 | 内容 | 备注 |
 | ---- | ---- | ---- | ---- |
-| retcode | num | 返回码 | |
-| message | str | 返回消息 | |
+| retcode | num | 返回码 | -3235新设备登录([需手机短信验证](#新设备登录验证)) |
+| message | str | 返回消息 |  |
 | data | obj | 账号信息 | |
 
 `data`对象：
@@ -243,4 +244,217 @@ _请求方式：POST_
   "retcode": 0
 }
 ```
+</details>    
+
+### 新设备登录验证 
+
+
+**国服：**  
+
+前提->[获取登录信息接口响应头](#获取登录信息)(在recode返回-3235时)：
+
+`x-rpc-verify`:  
+
+```json 
+{
+  "action_ticket":"106ffc83feb64f5f9bfa9e0dd1c91dca",
+  "verify_str":
+    {
+      "ticket":"23123433c12e1bf40f2a76bb2",
+      "verify_type":"2"
+    }
+}
+```
+
+
+| 字段            | 类型 | 内容                                         | 备注         |
+| --------------- | ---- | -------------------------------------------- | ------------ |
+| action_ticket   | str  | 设备通过后用于请求获取用户登录信息              |               |  
+
+`verify_str`根对象
+| 字段            | 类型 | 内容                                         | 备注         |
+| --------------- | ---- | -------------------------------------------- | ------------ |
+| ticket          | str  | 用户验证标识符                                |  |
+| verify_type     | str  | 验证类型                                      |              |  
+
+<details>
+<summary>查看示例</summary>
+
+
+```json
+// 响应头
+// x-rpc-verify
+{
+  "action_ticket": "106ffc83f123asdzfa9e0dd1c91dca",
+  "verify_str": "{\"ticket\":\"23123433c12e1bf40f2a76bb2\",\"verify_type\":\"2\"}"
+}
+
+
+// 响应体：
+{
+  "data": null,
+  "message": "您正在新设备上登录，为保障您的账号安全，请先使用手机短信验证身份",
+  "retcode": -3235
+}
+```
+</details>  
+
+
+
+_请求方式：POST_    
+
+> _需要验证请求头_
+>
+> `x-rpc-app_id`：`bll8iq97cem8`
+>
+> `x-rpc-client_type`：`2`
+>
+> `x-rpc-game_biz`：`bbs_cn`
+>
+> `x-rpc-device_fp`：刚获取的设备指纹
+>
+> `x-rpc-device_id`：与上个步骤传递的设备ID相同  
+
+
+`https://passport-api.mihoyo.com/account/ma-cn-verifier/verifier/createMobileCaptchaByActionTicket`   
+
+**JSON请求：**  
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_ticket | str | 登录信息响应体中的ticket |  |
+| action_type | str | 操作 |此处为verify_for_component |
+
+
+<details>  
+<summary>查看示例</summary>
+
+```json
+{
+  "action_ticket":"fbca6ce757964296be7b0d0a3c558c5c",
+  "action_type":"verify_for_component"
+}
+```
 </details>
+
+
+**JSON返回：**
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | 为-3101触发人机验证 |
+| message | str | 返回信息 |  |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode":0,
+  "message":"OK",
+  "data":{}
+}
+```
+</details>
+
+
+**触发人机验证：**  
+
+**响应头**  
+[参考极验文档](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)
+
+
+`x-rpc-aigis`: 
+
+```json
+{
+  "session_id":"12131231231aa028d9c",
+  "mmt_type":1,
+  "data":
+        {
+          "success":1,
+          "gt":"123123123123123b162892",
+          "challenge":"123123123123ea064ed3a76",
+          "new_captcha":1
+        }
+}
+```
+
+#### 设备验证请求  
+
+_请求方式：POST_  
+
+`https://passport-api.mihoyo.com/account/ma-cn-verifier/verifier/verifyActionTicketPartly`
+
+**json请求**  
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_ticket | str | 响应体下verify_str的ticket参数 |  |
+| action_type | str | 操作 |此处为verify_for_component |
+| verify_method | num | 验证模式 | 此处参考米游社为1 |
+| mobile_captcha | str | 设备接收到的验证码 |  |  
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "action_ticket":"23123433c12e1bf40f2a76bb2",
+  "action_type":"verify_for_component",
+  "verify_method":1,
+  "mobile_captcha":"980243"
+}
+```
+</details>
+
+
+**JSON返回：**
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 |  |
+| message | str | 返回信息 |  |
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode":0,
+  "message":"OK",
+  "data":{}
+}
+```
+</details>
+
+
+#### 通过Ticket获取登录信息
+_请求方式：POST_   
+
+`https://passport-api.mihoyo.com/account/ma-cn-passport/app/checkRiskVerified`
+
+**json请求**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action_ticket | str | 响应体下的action_ticket |  |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "action_ticket":"106ffc83f123asdzfa9e0dd1c91dca"
+}
+```
+</details>
+
+**JSON返回：**
+
+与[获取登录信息](#获取登录信息)一致
+
+
+
+
