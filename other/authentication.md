@@ -41,11 +41,29 @@
 
 <h3 id="hoyolab_header">米游社</h3>
 
-大多数API需要验证的请求头：`x-rpc-app_version`、`x-rpc-client_type`、`x-rpc-device_id`、`X-Requested-With`、`Origin`、`Referer`、`Host`、`DS`、`User-Agent`。
+大多数API需要验证的请求头：
+- `x-rpc-app_version`
+- `x-rpc-client_type`
+- `x-rpc-device_id`
+- `X-Requested-With`
+- `Origin`
+- `Referer`
+- `Host`
+- `DS`
+- `User-Agent`
  
-少数API才需要验证的额外的请求头：`x-rpc-device_fp`、`x-rpc-challenge`、`x-rpc-app_id`、`x-rpc-verify_key`。
+少数API才需要验证的额外的请求头：
+- `x-rpc-device_fp`
+- `x-rpc-challenge`
+- `x-rpc-app_id`
+- `x-rpc-verify_key`
 
-可选请求头：`x-rpc-device_name`、`x-rpc-device_model`、`x-rpc-sys_version`、`x-rpc-channel`、`x-rpc-game_biz`。
+可选请求头：
+- `x-rpc-device_name`
+- `x-rpc-device_model`
+- `x-rpc-sys_version`
+- `x-rpc-channel`
+- `x-rpc-game_biz`
 
 **说明：**
 
@@ -126,6 +144,12 @@ fun getDeviceId(context: Context): String {
     val uuid = UUID.nameUUIDFromBytes(androidId.toByteArray())
     return uuid.toString()
 }
+```
+电脑上可以
+```python
+import uuid
+def getDevice():
+    return uuid.uuid4()
 ```
 
 #### `X-Requested-With`
