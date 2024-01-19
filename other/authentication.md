@@ -145,6 +145,12 @@ fun getDeviceId(context: Context): String {
     return uuid.toString()
 }
 ```
+电脑上可以
+```
+import uuid
+def getDevice():
+    return uuid.uuid4()
+```
 
 #### `X-Requested-With`
 
