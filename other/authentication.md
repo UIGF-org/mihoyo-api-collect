@@ -146,7 +146,7 @@ fun getDeviceId(context: Context): String {
 }
 ```
 电脑上可以
-```
+```python
 import uuid
 def getDevice():
     return uuid.uuid4()
