@@ -1,6 +1,6 @@
 # 历史祈愿UP池
 
-- [Caughtwind API](#caughtwind-api已弃用)
+- [Caughtwind API(已弃用)](#caughtwind-api已弃用)
 
 ---
 
