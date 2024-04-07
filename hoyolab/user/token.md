@@ -3,7 +3,7 @@
 - [Token](#token)
   - [通过Login Ticket获取SToken（V1）和LToken（V1）](#通过login-ticket获取stokenv1和ltokenv1)
   - [通过SToken获取Cookie Token](#通过stoken获取cookie-token)
-  - [通过Game Token获取SToken（V1）]通过game-token获取stokenv1)
+  - [通过Game Token获取SToken（V1）](#通过game-token获取stokenv1)
   - [通过Game Token获取Cookie Token](#通过game-token获取cookie-token)
   - [通过Cookie Token获取Hk4e Token](#通过cookie-token获取hk4e-token)
   - [通过SToken（V1）获取SToken（V2）](#通过stokenv1获取stokenv2)

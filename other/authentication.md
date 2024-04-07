@@ -396,9 +396,9 @@ const final = `${t},${r},${ds}` // 最终结果
 
 即`stoken`。
 
-`stoken`多用于在米游社内的操作。
+`stoken`多用于在米游社内的操作。有两种类型的值：以`v2_`开头和不以`v2_`开头，分别被命名为“SToken（V2）”与“SToken（V1）”。
 
-必须与[`mid`](#mihoyo-id)一起使用。
+“SToken（V2）”必须与[`mid`](#mihoyo-id)一起使用，“SToken（V1）”必须与[`stuid`](#account-id)一起使用。
 
 在修改米游社账号的密码后将会发生变化。
 
