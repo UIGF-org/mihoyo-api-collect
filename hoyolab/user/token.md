@@ -418,14 +418,11 @@ _请求方式：POST_
 
 _请求方式：GET_
 
+> _需要验证Cookie_
+>
+> SToken
+
 `https://passport-api.mihoyo.com/account/auth/api/getLTokenBySToken`
-
-**参数：**
-
-| 字段     | 类型 | 内容            | 备注 |
-|--------| ---- |---------------| ---- |
-| uid    | num | 对应的米游社账号UID   | |
-| stoken | str | 有效的SToken（V1） | |
 
 **JSON返回：**
 
