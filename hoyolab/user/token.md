@@ -8,6 +8,7 @@
   - [通过Cookie Token获取Hk4e Token](#通过cookie-token获取hk4e-token)
   - [通过SToken（V1）获取SToken（V2）](#通过stokenv1获取stokenv2)
   - [通过SToken获取LToken（V1）](#通过stoken获取ltokenv1)
+  - [通过SToken获取Game Token](#通过stoken获取game-token)
 - [Action Ticket](#action-ticket)
   - [通过SToken获取Action Ticket](#通过stoken获取action-ticket)
 - [Auth Key](#auth-key)
@@ -449,6 +450,48 @@ _请求方式：GET_
   "message": "OK",
   "data": {
     "ltoken": "******"
+  }
+}
+```
+</details>
+
+### 通过SToken获取Game Token
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> SToken
+
+`https://api-takumi.mihoyo.com/auth/api/getGameToken`
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容             | 备注 |
+| ---- | ---- |----------------| ---- |
+| retcode | num | 返回码            | |
+| message | str | 返回消息           | |
+| data | obj | 该账号的Game Token | |
+
+`data`对象：
+
+| 字段         | 类型 | 内容             | 备注 |
+|------------| ---- |----------------| ---- |
+| game_token | str | 该账号的Game Token | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "game_token": "******"
   }
 }
 ```
