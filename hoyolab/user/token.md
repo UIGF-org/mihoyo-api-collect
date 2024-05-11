@@ -1,7 +1,7 @@
 # 用户Token
 
 - [Token](#token)
-  - [通过Login Ticket获取SToken（V1）和LToken（V1）](#通过login-ticket获取stokenv1和ltokenv1)
+  - [通过Login Ticket获取LToken（V1）](#通过login-ticket获取ltokenv1)
   - [通过SToken获取Cookie Token](#通过stoken获取cookie-token)
   - [通过Game Token获取SToken（V1）](#通过game-token获取stokenv1)
   - [通过Game Token获取Cookie Token](#通过game-token获取cookie-token)
@@ -19,7 +19,9 @@
 
 ## Token
 
-### 通过Login Ticket获取SToken（V1）和LToken（V1）
+### 通过Login Ticket获取LToken（V1）
+
+> 现在该接口只返回 `ltoken`，详见 [`#46`](https://github.com/UIGF-org/mihoyo-api-collect/issues/46)
 
 **国服：**
 
@@ -29,11 +31,11 @@ _请求方式：GET_
 
 **参数：**
 
-| 字段 | 类型 | 内容 | 备注 |
-| ---- | ---- | ---- | ---- |
-| token_types | num | 获取的Token的类型<br>1 仅SToken<br>2 仅LToken<br>3 SToken和LToken<br>4 无 | |
-| login_ticket | str | 有效的Login Ticket | |
-| uid | num | 对应的米游社账号UID | |
+| 字段 | 类型 | 内容                                                                                  | 备注 |
+| ---- | ---- |-------------------------------------------------------------------------------------| ---- |
+| token_types | num | 获取的Token的类型<br>~~1 仅SToken~~ 已弃用<br>2 仅LToken<br>3 ~~SToken和LToken~~ 仅LToken<br>4 无 | |
+| login_ticket | str | 有效的Login Ticket                                                                     | |
+| uid | num | 对应的米游社账号UID                                                                         | |
 
 **JSON返回：**
 
