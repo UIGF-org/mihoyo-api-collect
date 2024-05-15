@@ -7,6 +7,7 @@
 - [原神](#原神)
   - [获取首页信息](#genshin-home)
   - [获取游戏账号基本信息](#genshin-role-basics)
+  - [获取实时便笺信息](#genshin-dailynote)
   - [获取角色信息](#genshin-characters)
   - [获取深境螺旋信息](#genshin-spiral-abyss)
   - [获取祈愿记录](#genshin-wish)
@@ -696,6 +697,273 @@ _请求方式：GET_
   }
 }
 ```
+</details>
+
+
+<h3 id="genshin-dailynote">获取实时便笺信息</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+> 
+> `x-rpc-client_type`：`5`
+> 
+> 4X`salt`
+> 
+> `DS2`
+
+> _需要验证Cookie_
+> 
+> LToken
+
+`https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/dailyNote`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| server | str | 服务器名称 | |
+| role_id | num | 原神UID | |
+
+**JSON返回**
+
+根对象：
+
+| 字段 | 类型 | 内容           | 备注 |
+| ---- | ---- |--------------| ---- |
+| retcode | num | 返回码          | |
+| message | str | 返回消息         | |
+| data | obj | 该游戏账号的实时便笺信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容       | 备注 |
+| ---- | ---- |----------|-|
+| current_resin | num | 当前树脂     | |
+| max_resin | num | 树脂上限     | 恒为160 |
+| resin_recovery_time | str | 树脂恢复时间   | 以秒为单位 |
+| finished_task_num | num | 已完成任务数   | 为日常委托完成数 |
+| total_task_num | num | 总任务数     | 为日常委托总数 |
+| is_extra_task_reward_received | bool | 是否领取额外奖励 | |
+| remain_resin_discount_num | num | 剩余周本折扣次数 | |
+| resin_discount_num_limit | num | 周本折扣次数上限 | |
+| current_expedition_num | num | 当前探索次数   | |
+| max_expedition_num | num | 探索次数上限   | |
+| expeditions | arr | 探索队伍信息   | |
+| current_home_coin | num | 当前家园币    | |
+| max_home_coin | num | 家园币上限    | |
+| home_coin_recovery_time | str | 家园币恢复时间  | 以秒为单位 |
+| calendar_url | str | 日历链接     | |
+| transformer | obj | 转换器信息    | |
+| daily_task | obj | 日常任务信息   | |
+| archon_quest_progress | obj | 主线任务进度   | |
+
+`data`对象→`expeditions`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注                          |
+| ---- | ---- | ---- |-----------------------------|
+| avatar_side_icon | str | 角色头像 |                             |
+| status | str | 状态 | Ongoing-派遣中<br/>Finished-完成 |
+| remained_time | str | 剩余时间 | 以秒为单位                       |
+
+`data`对象→`transformer`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| obtained | bool | 是否获得 | |
+| recovery_time | obj | 恢复时间 | |
+| wiki | str | 百科链接 | |
+| noticed | bool | 是否通知 | |
+| latest_job_id | str | 最新任务ID | |
+
+`data`对象→`transformer`对象→`recovery_time`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| Day | num | 天数 | |
+| Hour | num | 小时 | |
+| Minute | num | 分钟 | |
+| Second | num | 秒数 | |
+| reached | bool | 是否到达 | |
+
+`data`对象→`daily_task`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| total_num | num | 总任务数 | |
+| finished_num | num | 已完成任务数 | |
+| is_extra_task_reward_received | bool | 是否领取额外奖励 | |
+| task_rewards | arr | 任务奖励 | |
+| attendance_rewards | arr | 签到奖励 | |
+| attendance_visible | bool | 是否显示签到 | |
+
+`data`对象→`daily_task`对象→`task_rewards`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- |----|
+| status | str | 状态 |    |
+
+> `task_rewards.status` 枚举类型如下：
+> 
+> + `TaskRewardStatusInvalid`：无效
+> + `TaskRewardStatusTakenAward`：已领取
+> + `TaskRewardStatusUnfinished`：未完成
+> + `TaskRewardStatusFinished`：已完成
+
+`data`对象→`daily_task`对象→`attendance_rewards`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注     |
+| ---- | ---- | ---- |--------|
+| status | str | 状态 |        |
+| progress | num | 进度 | 最大2000 |
+
+> `attendance_rewards.status` 枚举类型如下：
+> 
+> + `AttendanceRewardStatusInvalid`：无效
+> + `AttendanceRewardStatusTakenAward`：已领取
+> + `AttendanceRewardStatusWaitTaken`：等待领取
+> + `AttendanceRewardStatusUnfinished`：未完成
+> + `AttendanceRewardStatusFinishedNonReward`：已完成但无奖励
+> + `AttendanceRewardStatusForbid`：禁止领取
+
+`data`对象→`archon_quest_progress`对象：
+
+| 字段 | 类型 | 内容         | 备注 |
+| ---- | ---- |------------| ---- |
+| list | arr | 任务列表       | |
+| is_open_archon_quest | bool | 是否开启主线任务   | |
+| is_finish_all_mainline | bool | 是否完成所有主线任务 | |
+| is_finish_all_interchapter | bool | 是否完成所有间章任务 | |
+| wiki_url | str | 百科链接       | |
+
+`data`对象→`archon_quest_progress`对象→`list`数组→对象：
+
+| 字段 | 类型  | 内容   | 备注 |
+| ---- |-----|------| ---- |
+| id | num | 任务ID | |
+| chapter_title | str | 任务名称 | |
+| chapter_num | str | 任务章节 | |
+| status | str | 任务状态 | |
+
+> `archon_quest_progress.list.status` 枚举类型如下：
+> 
+> + `StatusNotOpen`：未开启
+> + `StatusOngoing`：进行中
+> + `StatusFinished`：已完成
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "current_resin": 160,
+    "max_resin": 160,
+    "resin_recovery_time": "0",
+    "finished_task_num": 4,
+    "total_task_num": 4,
+    "is_extra_task_reward_received": true,
+    "remain_resin_discount_num": 3,
+    "resin_discount_num_limit": 3,
+    "current_expedition_num": 5,
+    "max_expedition_num": 5,
+    "expeditions": [
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u1536f/d06041afad12e786feec4bd91af88c47.png",
+        "status": "Ongoing",
+        "remained_time": "50850"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u1536f/0a690548d7aa399313856434db3a43dc.png",
+        "status": "Ongoing",
+        "remained_time": "50850"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u1536f/a4f153a2f89c05b83943c3cc51346c41.png",
+        "status": "Ongoing",
+        "remained_time": "50850"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u1536f/2e2786b714207285c98e02f265dcc103.png",
+        "status": "Ongoing",
+        "remained_time": "1954"
+      },
+      {
+        "avatar_side_icon": "https://act-webstatic.mihoyo.com/hk4e/e20200928calculate/item_avatar_side_icon_u1536f/3fddceeb1aac42fb6077446a007915c4.png",
+        "status": "Ongoing",
+        "remained_time": "1954"
+      }
+    ],
+    "current_home_coin": 0,
+    "max_home_coin": 2400,
+    "home_coin_recovery_time": "284857",
+    "calendar_url": "https://bbs.mihoyo.com/ys/obc/channel/map/193?bbs_presentation_style=no_header",
+    "transformer": {
+      "obtained": true,
+      "recovery_time": {
+        "Day": 0,
+        "Hour": 0,
+        "Minute": 0,
+        "Second": 0,
+        "reached": true
+      },
+      "wiki": "https://bbs.mihoyo.com/ys/obc/content/1562/detail?bbs_presentation_style=no_header",
+      "noticed": false,
+      "latest_job_id": "0"
+    },
+    "daily_task": {
+      "total_num": 4,
+      "finished_num": 4,
+      "is_extra_task_reward_received": true,
+      "task_rewards": [
+        {
+          "status": "TaskRewardStatusUnfinished"
+        },
+        {
+          "status": "TaskRewardStatusUnfinished"
+        },
+        {
+          "status": "TaskRewardStatusUnfinished"
+        },
+        {
+          "status": "TaskRewardStatusUnfinished"
+        }
+      ],
+      "attendance_rewards": [
+        {
+          "status": "AttendanceRewardStatusTakenAward",
+          "progress": 2000
+        },
+        {
+          "status": "AttendanceRewardStatusTakenAward",
+          "progress": 2000
+        },
+        {
+          "status": "AttendanceRewardStatusTakenAward",
+          "progress": 2000
+        },
+        {
+          "status": "AttendanceRewardStatusTakenAward",
+          "progress": 2000
+        }
+      ],
+      "attendance_visible": true
+    },
+    "archon_quest_progress": {
+      "list": [],
+      "is_open_archon_quest": true,
+      "is_finish_all_mainline": true,
+      "is_finish_all_interchapter": true,
+      "wiki_url": ""
+    }
+  }
+}
+```
+
 </details>
 
 <h3 id="genshin-characters">获取角色信息</h3>
