@@ -747,8 +747,8 @@ _请求方式：GET_
 | finished_task_num | num | 已完成任务数   | 为日常委托完成数 |
 | total_task_num | num | 总任务数     | 为日常委托总数 |
 | is_extra_task_reward_received | bool | 是否领取额外奖励 | |
-| remain_resin_discount_num | num | 剩余树脂折扣次数 | |
-| resin_discount_num_limit | num | 树脂折扣次数上限 | |
+| remain_resin_discount_num | num | 剩余周本折扣次数 | |
+| resin_discount_num_limit | num | 周本折扣次数上限 | |
 | current_expedition_num | num | 当前探索次数   | |
 | max_expedition_num | num | 探索次数上限   | |
 | expeditions | arr | 探索队伍信息   | |
@@ -830,13 +830,13 @@ _请求方式：GET_
 
 `data`对象→`archon_quest_progress`对象：
 
-| 字段 | 类型 | 内容 | 备注 |
-| ---- | ---- | ---- | ---- |
-| list | arr | 任务列表 | |
-| is_open_archon_quest | bool | 是否开启主线任务 | |
+| 字段 | 类型 | 内容         | 备注 |
+| ---- | ---- |------------| ---- |
+| list | arr | 任务列表       | |
+| is_open_archon_quest | bool | 是否开启主线任务   | |
 | is_finish_all_mainline | bool | 是否完成所有主线任务 | |
-| is_finish_all_interchapter | bool | 是否完成所有剧情任务 | |
-| wiki_url | str | 百科链接 | |
+| is_finish_all_interchapter | bool | 是否完成所有间章任务 | |
+| wiki_url | str | 百科链接       | |
 
 `data`对象→`archon_quest_progress`对象→`list`数组→对象：
 
