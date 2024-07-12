@@ -310,7 +310,9 @@ UIGF API收集了角色、物品、武器的ID，[此文档](genshin_impact/thir
 
 <h3 id="star-rail-characters">角色ID</h3>
 
-| ID | 角色 | 命途 | 元素属性 | 阵营 |
+UIGF API收集了角色、物品、武器的ID，[此文档](genshin_impact/thirdparty/dictionary_of_item.md)列出了一些API；[此处](https://uigf.org/zh/API.html)即为UIGF API的使用指南。
+
+<!--| ID | 角色 | 命途 | 元素属性 | 阵营 |
 | -- | --- | ---- | ---- | -------- |
 | 1001 | 三月七 | 存护 | 冰 | 星穹列车 |
 | 1002 | 丹恒 | 巡猎 | 风 | 星穹列车 |
@@ -326,7 +328,8 @@ UIGF API收集了角色、物品、武器的ID，[此文档](genshin_impact/thir
 | 1206 | 素裳 | 巡猎 | 物理 | 仙舟「罗浮」 |
 | 1209 | 彦卿 | 巡猎 | 冰 | 仙舟「罗浮」 |
 | 8002 | 开拓者 | | | 星穹列车 |
-| 1013 | 黑塔 | 智识 | 冰 | 空间站「黑塔」 |
+| 1013 | 黑塔 | 智识 | 冰 | 空间站「黑塔」 | --!>
+
 
 ## 崩坏3
 
