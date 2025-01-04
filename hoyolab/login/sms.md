@@ -143,9 +143,9 @@ _请求方式：POST_
 | action_type | num | 操作类型<br>`login` 登录<br>`regist` 注册 | |
 | mmt_key | str | 验证任务，与 [申请人机验证任务](#申请人机验证任务) 中的 `mmt_key` 相同 | |
 | geetest_v4_data | obj | 验证结果数据 | 即 [极验文档](https://docs.geetest.com/gt4/apirefer/api/web/#getValidate) 中 `getValidate()` 返回的对象<br>具体内容：[请求参数](https://docs.geetest.com/gt4/deploy/server#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)<br />若使用第三代验证时无需传入此项 |
-| geetest_challenge | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的验证流水号 | 若使用第四代验证时无需传入此项 |
-| geetest_validate | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的validate | 若使用第四代验证时无需传入此项 |
-| geetest_seccode | str | [极验第三代行为验的sdk返回]([geetest-Web-sensebot-api](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate))的seccode | 若使用第四代验证时无需传入此项 |
+| geetest_challenge | str | [极验第三代行为验的sdk返回](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate)的验证流水号 | 若使用第四代验证时无需传入此项 |
+| geetest_validate | str | [极验第三代行为验的sdk返回](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate)的validate | 若使用第四代验证时无需传入此项 |
+| geetest_seccode | str | [极验第三代行为验的sdk返回](https://docs.geetest.com/sensebot/apirefer/api/web#getValidate)的seccode | 若使用第四代验证时无需传入此项 |
 | mobile | str | 目标手机号 | |
 | t | num | 当前的秒级时间戳 | |
 
