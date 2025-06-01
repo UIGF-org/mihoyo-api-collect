@@ -609,6 +609,29 @@ _请求方式：GET_
 
 </details>
 
+**国服：(官服，无需ds)**
+
+_请求方式：GET_
+
+> _需要验证请求头_
+> 
+>`User-Agent`：`miHoYoBBS/2.88.2`
+> 
+> `x-rpc-device_fp`：`38d80bcbeca99`
+>
+> [_Cookie_](https://github.com/UIGF-org/mihoyo-api-collect/blob/main/hoyolab/login/qrcode_hoyolab.md)
+> 
+> ~~时至2025.6.1此法生成的请求头是可用的~~
+
+`https://api-takumi-record.mihoyo.com/game_record/app/genshin/api/index`
+
+参数：
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| role_id | num | 原神UID | |
+| server | str | 服务器名称 | |
+| avatar_list_type | num | 未知 | 默认为1，但可以不传 |
+
 **国际服：**
 
 _请求方式：GET_
